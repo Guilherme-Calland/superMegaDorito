@@ -8,7 +8,7 @@ export var gravity = 5
 
 func _physics_process(delta):
 	inputs = $Inputs.retrieveInput()
-	motion = $Movement.move(inputs, motion, speed, jumpForce, gravity, is_on_floor())
+	motion = $Movement.move(inputs, motion, speed, jumpForce, gravity, is_on_floor(), is_on_ceiling(), is_on_wall())
 	$Animation.animate(inputs, $AnimatedSprite, is_on_floor())
 	
 	move_and_slide(motion, Vector2(0,-1))

@@ -1,6 +1,6 @@
 extends Node
 
-func move(inputs, motion, speed, jumpForce, gravity, isOnFloor):
+func move(inputs, motion, speed, jumpForce, gravity, isOnFloor, isOnCeiling, isOnWall):
 	if inputs == null:
 		return
 	
@@ -21,5 +21,14 @@ func move(inputs, motion, speed, jumpForce, gravity, isOnFloor):
 			motion.y = -jumpForce
 	else:
 		motion.y += gravity
+		
+		if isOnWall:
+			if motion.x > 0:
+				motion.x = 1
+			else:
+				motion.x = -1
+		
+		if isOnCeiling:
+			motion.y = gravity
 	
 	return motion
