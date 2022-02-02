@@ -29,10 +29,13 @@ func animate(inputs, sprite, isOnFloor, isOnWall):
 				sprite.play("duck")
 	
 	if isOnWall:
-		if not grab:
-			sprite.play("touch")
-		elif grab:
-			sprite.play("grab")
+		if not duck:
+			if not grab:
+				sprite.play("touch")
+			elif grab:
+				sprite.play("grab")
+		elif duck:
+			sprite.play("duckTouch")
 	
 	elif not isOnFloor:
 		sprite.play("jump")
