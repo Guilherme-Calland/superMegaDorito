@@ -24,24 +24,19 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 11 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "duck",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "run",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 15 ) ],
-"loop": true,
-"name": "touch",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "duckMove",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 16 ) ],
-"loop": true,
-"name": "duckTouch",
+"frames": [ ExtResource( 14 ) ],
+"loop": false,
+"name": "grab",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ) ],
@@ -49,15 +44,20 @@ animations = [ {
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ) ],
-"loop": false,
-"name": "grab",
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "touch",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 16 ) ],
 "loop": true,
-"name": "duck",
+"name": "duckTouch",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "duckMove",
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -71,7 +71,8 @@ speed = 50
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "duckTouch"
+animation = "duck"
+frame = 1
 speed_scale = 0.5
 playing = true
 
@@ -81,7 +82,7 @@ shape = SubResource( 2 )
 
 [node name="CollisionDucking" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3.015 )
-scale = Vector2( 0.521, 0.567 )
+scale = Vector2( 0.521, 0.551 )
 shape = SubResource( 2 )
 disabled = true
 
