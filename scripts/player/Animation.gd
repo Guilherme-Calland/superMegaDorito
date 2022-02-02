@@ -8,6 +8,7 @@ func animate(inputs, sprite, isOnFloor, isOnWall, duckLock):
 	var right = inputs["right"]
 	var duck = inputs["duck"]
 	var grab = inputs["grab"]
+	var jump = inputs["jump"]
 	
 	if duckLock:
 		if left: 
@@ -48,5 +49,8 @@ func animate(inputs, sprite, isOnFloor, isOnWall, duckLock):
 		elif duck:
 			sprite.play("duckTouch")
 	
+		if jump:
+			sprite.flip_h = not sprite.flip_h
+			
 	elif not isOnFloor:
 		sprite.play("jump")

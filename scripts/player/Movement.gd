@@ -28,11 +28,18 @@ func move(inputs, motion, speed, jumpForce, gravity, isOnFloor, isOnCeiling, isO
 			motion.y = gravity
 			
 	if isOnWall:
+		if motion.x > 0:
+			motion.x = 1
+		elif motion.x < 0:
+			motion.x = -1
+		if grab:
+			motion.y = 0
+		
+		if jump:
 			if motion.x > 0:
-				motion.x = 1
-			else:
-				motion.x = -1
-			if grab:
-				motion.y = 0
-			
+				motion.x = -speed
+			elif motion.x < 0:
+				motion.x = speed
+			motion.y = -jumpForce
+		
 	return motion
