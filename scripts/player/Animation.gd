@@ -6,15 +6,27 @@ func animate(inputs, sprite, isOnFloor):
 	
 	var left = inputs["left"]
 	var right = inputs["right"]
+	var duck = inputs["duck"]
 	
 	if isOnFloor:
 		if left:
-			sprite.play("run")
+			if not duck:
+				sprite.play("run")
+			elif duck:
+				sprite.play("duckMove")
 			sprite.flip_h = true
 		elif right:
-			sprite.play("run")
+			if not duck:
+				sprite.play("run")
+			elif duck:
+				sprite.play("duckMove")
 			sprite.flip_h = false
 		else:
-			sprite.play("idle")
-	else:
+			if not duck:
+				sprite.play("idle")
+			elif duck:
+				sprite.play("duck")
+	
+		
+	elif not isOnFloor:
 		sprite.play("jump")

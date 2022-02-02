@@ -4,7 +4,8 @@ func retrieveInput():
 	var inputs = {
 		"right" : false,
 		"left" : false,
-		"jump" : false
+		"jump" : false,
+		"duck" : false
 	}
 	
 	if Input.is_action_pressed("right") and not Input.is_action_pressed("left"):
@@ -14,5 +15,8 @@ func retrieveInput():
 	
 	if Input.is_action_just_pressed("jump"):
 		inputs["jump"] = true
+	
+	if Input.is_action_pressed("duck"):
+		inputs["duck"] = true
 		
 	return inputs
