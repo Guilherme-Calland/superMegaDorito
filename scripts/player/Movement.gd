@@ -1,6 +1,6 @@
 extends Node
 
-func move(inputs, motion, speed, jumpForce, gravity, isOnFloor, isOnCeiling, isOnWall):
+func move(inputs, motion, speed, jumpForce, gravity, isOnFloor, isOnCeiling, isOnWall, duckLock):
 	if inputs == null:
 		return
 	
@@ -11,9 +11,8 @@ func move(inputs, motion, speed, jumpForce, gravity, isOnFloor, isOnCeiling, isO
 	var grab = inputs["grab"]
 	
 	if isOnFloor:
-		if duck:
+		if duck or duckLock:
 			speed = speed/2
-		
 		if left:
 			motion.x = -speed
 		elif right:
@@ -24,7 +23,9 @@ func move(inputs, motion, speed, jumpForce, gravity, isOnFloor, isOnCeiling, isO
 		motion.y = gravity
 		if jump:
 			motion.y = -jumpForce
-	else:
+		return motion
+		
+	if not isOnFloor:
 		motion.y += gravity
 		
 		if isOnWall:
