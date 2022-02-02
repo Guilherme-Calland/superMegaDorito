@@ -1,5 +1,7 @@
 extends Node
 
+signal ducking
+
 func retrieveInput():
 	var inputs = {
 		"right" : false,
@@ -17,7 +19,11 @@ func retrieveInput():
 	if Input.is_action_just_pressed("jump"):
 		inputs["jump"] = true
 	elif Input.is_action_pressed("duck"):
+		if Input.is_action_just_pressed("duck"):
+			emit_signal("ducking", true)
 		inputs["duck"] = true
+	elif Input.is_action_just_released("duck"):
+		emit_signal("ducking", false)
 	
 	if Input.is_action_pressed("grab"):
 		inputs["grab"] = true
