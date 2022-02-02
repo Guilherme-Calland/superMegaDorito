@@ -8,6 +8,7 @@ func move(inputs, motion, speed, jumpForce, gravity, isOnFloor, isOnCeiling, isO
 	var right = inputs["right"]
 	var jump = inputs["jump"]
 	var duck = inputs["duck"]
+	var grab = inputs["grab"]
 	
 	if isOnFloor:
 		if duck:
@@ -31,6 +32,9 @@ func move(inputs, motion, speed, jumpForce, gravity, isOnFloor, isOnCeiling, isO
 				motion.x = 1
 			else:
 				motion.x = -1
+			
+			if grab:
+				motion.y = 0
 		
 		if isOnCeiling:
 			motion.y = gravity

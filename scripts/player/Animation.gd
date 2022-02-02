@@ -1,12 +1,13 @@
 extends Node
 
-func animate(inputs, sprite, isOnFloor):
+func animate(inputs, sprite, isOnFloor, isOnWall):
 	if inputs == null:
 		return
 	
 	var left = inputs["left"]
 	var right = inputs["right"]
 	var duck = inputs["duck"]
+	var grab = inputs["grab"]
 	
 	if isOnFloor:
 		if left:
@@ -27,6 +28,11 @@ func animate(inputs, sprite, isOnFloor):
 			elif duck:
 				sprite.play("duck")
 	
-		
+	if isOnWall:
+		if not grab:
+			sprite.play("touch")
+		elif grab:
+			sprite.play("grab")
+	
 	elif not isOnFloor:
 		sprite.play("jump")
