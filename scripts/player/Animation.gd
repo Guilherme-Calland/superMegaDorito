@@ -1,8 +1,25 @@
 extends Node
 
-func animate(inputs, sprite, isOnFloor, isOnWall, duckLock, dashing):
+func animate(inputs, spriteNormal, spriteTired, isOnFloor, isOnWall, duckLock, dashing, tired, direction):
 	if inputs == null:
 		return
+	var sprite
+	if not tired:
+		spriteNormal.show()
+		spriteTired.hide()
+		sprite = spriteNormal
+		if direction == "right":
+			sprite.flip_h = false
+		else:
+			sprite.flip_h = true
+	else:
+		spriteNormal.hide()
+		spriteTired.show()
+		sprite = spriteTired
+		if direction == "left":
+			sprite.flip_h = true
+		else:
+			sprite.flip_h = false
 	
 	var left = inputs["left"]
 	var right = inputs["right"]

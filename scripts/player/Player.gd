@@ -10,7 +10,7 @@ export var dashForce = 200
 var direction = "right"
 var duckLock = false
 var dashing = false
-onready var animatedSprite = $AnimatedSpriteNormal
+var tired = false
 
 func _ready():
 	$Inputs.connect("ducking", self, "changeCollision")	
@@ -21,8 +21,10 @@ func _physics_process(delta):
 	$Movement.connect("dashing", self,  "onDashSignal")
 	motion = motionBundle["motion"]
 	direction = motionBundle["direction"]
-	$Animation.animate(inputs, animatedSprite, is_on_floor(), is_on_wall(), duckLock, dashing)
+	$Animation.animate(inputs, $AnimatedSpriteNormal, $AnimatedSpriteTired, is_on_floor(), is_on_wall(), duckLock, dashing, tired, direction)
 	move_and_slide(motion, Vector2(0,-1))
+	if is_on_floor():
+		tired = false
 
 func changeCollision(ducking):
 	if ducking and is_on_floor():
@@ -41,7 +43,5 @@ func _on_TopArea_body_exited(body):
 func onDashSignal(d):
 	dashing = d
 	if dashing:
-		animatedSprite = $AnimatedSpriteTired
-		$AnimatedSpriteNormal.hide()
-		$AnimatedSpriteTired.show()
+		tired = true
 
