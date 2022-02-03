@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_dashing.png-337eeb3950442adddc4fe06bfee32aaa.stex"
+path="res://.import/player_touching_2.png-04c144b5fa13654cf983eae71627aeca.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/player/player_dashing.png"
-dest_files=[ "res://.import/player_dashing.png-337eeb3950442adddc4fe06bfee32aaa.stex" ]
+source_file="res://graphics/player/player_touching_2.png"
+dest_files=[ "res://.import/player_touching_2.png-04c144b5fa13654cf983eae71627aeca.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

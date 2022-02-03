@@ -1,6 +1,6 @@
 extends Node
 
-func animate(inputs, sprite, isOnFloor, isOnWall, duckLock):
+func animate(inputs, sprite, isOnFloor, isOnWall, duckLock, dashing):
 	if inputs == null:
 		return
 	
@@ -9,6 +9,10 @@ func animate(inputs, sprite, isOnFloor, isOnWall, duckLock):
 	var duck = inputs["duck"]
 	var grab = inputs["grab"]
 	var jump = inputs["jump"]
+	
+	if dashing:
+		sprite.play("dashHorizontal")
+		return
 	
 	if duckLock:
 		if left: 
@@ -21,7 +25,7 @@ func animate(inputs, sprite, isOnFloor, isOnWall, duckLock):
 			sprite.play("duck")
 		return
 	
-	if isOnFloor:
+	if isOnFloor and not isOnWall:
 		if left:
 			if not duck:
 				sprite.play("run")
@@ -43,7 +47,10 @@ func animate(inputs, sprite, isOnFloor, isOnWall, duckLock):
 	if isOnWall:
 		if not duck:
 			if not grab:
-				sprite.play("touch")
+				if isOnFloor:
+					sprite.play("touchIdle")
+				else:
+					sprite.play("touch")
 			elif grab:
 				sprite.play("grab")
 		elif duck:
@@ -51,6 +58,7 @@ func animate(inputs, sprite, isOnFloor, isOnWall, duckLock):
 	
 		if jump:
 			sprite.flip_h = not sprite.flip_h
-			
 	elif not isOnFloor:
 		sprite.play("jump")
+		
+	

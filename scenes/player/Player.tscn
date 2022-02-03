@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://AnimationSet.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://animationSet/AnimationSet.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/player/Player.gd" type="Script" id=3]
 [ext_resource path="res://scripts/player/Inputs.gd" type="Script" id=4]
 [ext_resource path="res://scripts/player/Movement.gd" type="Script" id=5]
@@ -18,19 +18,23 @@ collision_mask = 0
 collision/safe_margin = 0.01
 script = ExtResource( 3 )
 speed = 50
+windResistance = 0.5
+dashForce = 250
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
-animation = "idle"
-frame = 1
+animation = "dashHorizontal"
+frame = 9
 speed_scale = 0.5
 playing = true
 
 [node name="CollisionStanding" type="CollisionShape2D" parent="."]
+visible = false
 scale = Vector2( 0.521, 0.834 )
 shape = SubResource( 2 )
 
 [node name="CollisionDucking" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 3.015 )
 scale = Vector2( 0.521, 0.526 )
 shape = SubResource( 2 )
@@ -53,12 +57,12 @@ drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 
 [node name="TopArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 script = ExtResource( 17 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopArea"]
+visible = false
 position = Vector2( 0, -5.984 )
 scale = Vector2( 0.504, 0.224 )
 shape = SubResource( 3 )
