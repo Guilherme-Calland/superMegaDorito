@@ -56,6 +56,11 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 	if isOnFloor:
 		if duck or duckLock:
 			speed = speed/2
+		motion.y = gravity
+		if jump:
+			motion.y = -jumpForce
+	
+	if not isOnWall or not grab:
 		if left:
 			direction = "left"
 			motion.x = -speed
@@ -64,10 +69,8 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 			motion.x = speed
 		else:
 			motion.x = 0
-		motion.y = gravity
-		if jump:
-			motion.y = -jumpForce
-	elif not isOnFloor:
+	
+	if not isOnFloor:
 		if not dashing:
 			if motion.x > 0:
 				motion.x -= windResistance
@@ -76,7 +79,6 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 			motion.y += gravity
 			if isOnCeiling:
 				motion.y = gravity
-			
 	
 	if isOnWall:
 		if direction == "right":

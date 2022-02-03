@@ -76,7 +76,8 @@ func animate(inputs, spriteNormal, spriteTired, isOnFloor, isOnWall, direction, 
 			elif grab:
 				sprite.play("grab")
 		elif duck:
-			sprite.play("duckTouch")
+			if isOnFloor:
+				sprite.play("duckTouch")
 	
 		if jump:
 			sprite.flip_h = not sprite.flip_h

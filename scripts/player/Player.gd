@@ -7,6 +7,7 @@ export var jumpForce = 100
 export var gravity = 5
 export var windResistance = 1.0
 export var dashForce = 200
+
 var direction = "right"
 var dashDirection
 var duckLock = false
@@ -22,8 +23,7 @@ func _physics_process(delta):
 	var motionBundle = $Movement.move(
 		inputs,
 		motion,
-		speed, jumpForce, gravity, windResistance, dashForce, 
-		direction, dashDirection,
+		speed, jumpForce, gravity, windResistance, dashForce,
 		is_on_floor(), is_on_ceiling(), is_on_wall(), 
 		duckLock, dashing, tired)
 	motion = motionBundle["motion"]
