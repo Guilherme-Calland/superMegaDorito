@@ -24,8 +24,7 @@ dashForce = 250
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
 animation = "dashHorizontal"
-frame = 9
-speed_scale = 0.5
+frame = 18
 playing = true
 
 [node name="CollisionStanding" type="CollisionShape2D" parent="."]
