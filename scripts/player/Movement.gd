@@ -53,6 +53,7 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 		}
 	
 	if isOnFloor:
+		emit_signal("jumpLock", false)
 		if duck or duckLock:
 			speed = speed/2
 		motion.y = gravity

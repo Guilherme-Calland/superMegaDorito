@@ -24,11 +24,11 @@ dashForce = 250
 
 [node name="AnimatedSpriteNormal" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
-animation = "dashVertical"
-frame = 16
+animation = "jump"
 playing = true
 
 [node name="AnimatedSpriteTired" type="AnimatedSprite" parent="."]
+visible = false
 frames = ExtResource( 2 )
 animation = "dashDown"
 frame = 20
@@ -55,7 +55,7 @@ script = ExtResource( 5 )
 script = ExtResource( 8 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 40, -79 )
+position = Vector2( 0, -1 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 process_mode = 0
