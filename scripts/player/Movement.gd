@@ -1,8 +1,9 @@
 extends Node
 
 signal dashing
+signal jumpLock
 
-func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, direction, dashDirection, isOnFloor, isOnCeiling, isOnWall, duckLock, dashing, tired):
+func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, direction, dashDirection, isOnFloor, isOnCeiling, isOnWall, duckLock, dashing, tired, jumpLock):
 	if inputs == null:
 		return
 	
@@ -46,8 +47,6 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 					dashing = false
 		emit_signal("dashing", dashing, dashDirection)
 		
-		
-		
 		return {
 		"motion": motion, 
 		"direction": direction
@@ -60,7 +59,7 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 		if jump:
 			motion.y = -jumpForce
 	
-	if not isOnWall or not grab:
+	if (not isOnWall or not grab) and not jumpLock:
 		if left:
 			direction = "left"
 			motion.x = -speed
@@ -79,6 +78,8 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 			motion.y += gravity
 			if isOnCeiling:
 				motion.y = gravity
+		if motion.y >= gravity*8:
+			emit_signal("jumpLock", false)
 	
 	if isOnWall:
 		if direction == "right":
@@ -89,6 +90,7 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 			motion.y = 0
 		
 		if jump:
+			emit_signal("jumpLock", true)
 			if direction == "right":
 				motion.x = -speed
 				direction = "left"

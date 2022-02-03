@@ -11,12 +11,15 @@ export var dashForce = 200
 var direction = "right"
 var dashDirection
 var duckLock = false
+var jumpLock = false
 var dashing = false
 var tired = false
 
 func _ready():
 	$Inputs.connect("ducking", self, "changeCollision")
 	$Movement.connect("dashing", self,  "onDashSignal")
+	$Movement.connect("jumpLock", self, "onWallJump")
+	
 func _physics_process(delta):
 	inputs = $Inputs.retrieveInput()
 	var motionBundle = $Movement.move(
@@ -25,7 +28,7 @@ func _physics_process(delta):
 		speed, jumpForce, gravity, windResistance, dashForce,
 		direction, dashDirection,
 		is_on_floor(), is_on_ceiling(), is_on_wall(), 
-		duckLock, dashing, tired)
+		duckLock, dashing, tired, jumpLock)
 	motion = motionBundle["motion"]
 	direction = motionBundle["direction"]
 	$Animation.animate(
@@ -58,3 +61,5 @@ func onDashSignal(d, dd):
 	if dashing:
 		tired = true
 
+func onWallJump(b):
+	jumpLock = b
