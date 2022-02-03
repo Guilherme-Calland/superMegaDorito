@@ -14,7 +14,8 @@ var dashing = false
 var tired = false
 
 func _ready():
-	$Inputs.connect("ducking", self, "changeCollision")	
+	$Inputs.connect("ducking", self, "changeCollision")
+	$Movement.connect("dashing", self,  "onDashSignal")	
 
 func _physics_process(delta):
 	inputs = $Inputs.retrieveInput()
@@ -25,7 +26,6 @@ func _physics_process(delta):
 		direction, dashDirection,
 		is_on_floor(), is_on_ceiling(), is_on_wall(), 
 		duckLock, dashing, tired)
-	$Movement.connect("dashing", self,  "onDashSignal")
 	motion = motionBundle["motion"]
 	direction = motionBundle["direction"]
 	dashDirection = motionBundle["dashDirection"]
