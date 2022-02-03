@@ -1,9 +1,17 @@
 extends Node
 
-func animate(inputs, spriteNormal, spriteTired, isOnFloor, isOnWall, direction, dashDirection, duckLock, dashing, tired):
+func animate(inputs, spriteNormal, spriteTired, isOnFloor, isOnWall, direction, dashDirection, duckLock, dashing, tired, dying):
 	if inputs == null:
 		return
 	var sprite
+	
+	if dying:
+		spriteNormal.show()
+		spriteTired.hide()
+		sprite = spriteNormal
+		sprite.play("die")
+		return
+	
 	if not tired:
 		spriteNormal.show()
 		spriteTired.hide()

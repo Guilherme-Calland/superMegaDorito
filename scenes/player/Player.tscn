@@ -24,7 +24,8 @@ dashForce = 250
 
 [node name="AnimatedSpriteNormal" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
-animation = "jump"
+animation = "die"
+frame = 6
 playing = true
 
 [node name="AnimatedSpriteTired" type="AnimatedSprite" parent="."]

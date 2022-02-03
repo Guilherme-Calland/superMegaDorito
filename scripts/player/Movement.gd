@@ -3,9 +3,16 @@ extends Node
 signal dashing
 signal jumpLock
 
-func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, direction, dashDirection, isOnFloor, isOnCeiling, isOnWall, duckLock, dashing, tired, jumpLock):
+func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, direction, dashDirection, isOnFloor, isOnCeiling, isOnWall, duckLock, dashing, tired, jumpLock, dying):
 	if inputs == null:
 		return
+	
+	if dying:
+		motion = Vector2(0,0)
+		return {
+		"motion": motion, 
+		"direction": direction
+		}
 	
 	var left = inputs["left"]
 	var right = inputs["right"]

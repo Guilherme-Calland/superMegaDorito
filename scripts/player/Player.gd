@@ -7,6 +7,7 @@ export var jumpForce = 100
 export var gravity = 5
 export var windResistance = 1.0
 export var dashForce = 200
+export var dying = false
 
 var direction = "right"
 var dashDirection
@@ -28,7 +29,7 @@ func _physics_process(delta):
 		speed, jumpForce, gravity, windResistance, dashForce,
 		direction, dashDirection,
 		is_on_floor(), is_on_ceiling(), is_on_wall(), 
-		duckLock, dashing, tired, jumpLock)
+		duckLock, dashing, tired, jumpLock, dying)
 	motion = motionBundle["motion"]
 	direction = motionBundle["direction"]
 	$Animation.animate(
@@ -36,7 +37,7 @@ func _physics_process(delta):
 		$AnimatedSpriteNormal, $AnimatedSpriteTired, 
 		is_on_floor(), is_on_wall(), 
 		direction, dashDirection,
-		duckLock, dashing, tired)
+		duckLock, dashing, tired, dying)
 	move_and_slide(motion, Vector2(0,-1))
 	if is_on_floor():
 		tired = false
@@ -63,3 +64,6 @@ func onDashSignal(d, dd):
 
 func onWallJump(b):
 	jumpLock = b
+	
+func die():
+	dying = true
