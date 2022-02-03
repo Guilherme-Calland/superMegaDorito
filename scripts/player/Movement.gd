@@ -45,6 +45,7 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 			elif dashDirection == "down":
 				if isOnFloor:
 					dashing = false
+		emit_signal("jumpLock", false)
 		emit_signal("dashing", dashing, dashDirection)
 		
 		return {
