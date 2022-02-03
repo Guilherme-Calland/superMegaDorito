@@ -1,6 +1,6 @@
 extends Node
 
-func animate(inputs, spriteNormal, spriteTired, isOnFloor, isOnWall, direction, duckLock, dashing, tired):
+func animate(inputs, spriteNormal, spriteTired, isOnFloor, isOnWall, direction, dashDirection, duckLock, dashing, tired):
 	if inputs == null:
 		return
 	var sprite
@@ -28,7 +28,12 @@ func animate(inputs, spriteNormal, spriteTired, isOnFloor, isOnWall, direction, 
 	var jump = inputs["jump"]
 	
 	if dashing:
-		sprite.play("dashHorizontal")
+		if dashDirection == "left" or dashDirection == "right":
+			sprite.play("dashHorizontal")
+		elif dashDirection == "up":
+			sprite.play("dashUp")
+		elif dashDirection == "down":
+			sprite.play("dashDown")
 		return
 	
 	if duckLock:

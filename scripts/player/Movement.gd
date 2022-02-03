@@ -2,7 +2,7 @@ extends Node
 
 signal dashing
 
-func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, direction, isOnFloor, isOnCeiling, isOnWall, duckLock, dashing, tired):
+func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, direction, dashDirection, isOnFloor, isOnCeiling, isOnWall, duckLock, dashing, tired):
 	if inputs == null:
 		return
 	
@@ -12,21 +12,34 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 	var duck = inputs["duck"]
 	var grab = inputs["grab"]
 	var dash = inputs["dash"]
+	var up = inputs["up"]
+	var down = inputs["down"]
 	
 	if dashing:
-		motion.y = 0
-		if direction == "right":
-			motion.x -= windResistance * 20
+		if dashDirection == "right":
+			motion.y = 0
+			motion.x -= windResistance*20
 			if motion.x < dashForce/4:
 				dashing = false
-		elif direction == "left":
-			motion.x += windResistance * 20
+		elif dashDirection == "left":
+			motion.y = 0
+			motion.x += windResistance*20
 			if motion.x > -dashForce/4:
 				dashing = false
+		else:
+			motion.x = 0
+			motion.y += gravity*2
+			if dashDirection == "up":
+				if motion.y >= -dashForce/4:
+					dashing = false
+			elif dashDirection == "down":
+				if isOnFloor:
+					dashing = false
 		emit_signal("dashing", dashing)
 		return {
 		"motion": motion, 
 		"direction": direction,
+		"dashDirection": dashDirection
 		}
 	
 	if isOnFloor:
@@ -73,13 +86,32 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 	
 	if dash and not tired:
 		dashing = true
-		if direction == "right":
-			motion.x = dashForce
-		elif direction == "left":
+		
+		if up: 
+			motion.y = -dashForce
+			dashDirection = "up"
+		elif down:
+			motion.y = dashForce
+			dashDirection = "down"
+		elif left:
+			direction = "left"
+			dashDirection = "left"
 			motion.x = -dashForce
+		elif right:
+			direction = "right"
+			dashDirection = "right"
+			motion.x = dashForce
+		else:
+			if direction == "right":
+				dashDirection = "right"
+				motion.x = dashForce
+			elif direction == "left":
+				dashDirection = "left"
+				motion.x = -dashForce
 		emit_signal("dashing", dashing)
 	
 	return {
 		"motion": motion, 
 		"direction": direction,
+		"dashDirection" : dashDirection
 		}

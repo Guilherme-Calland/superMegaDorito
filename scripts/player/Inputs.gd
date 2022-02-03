@@ -4,6 +4,8 @@ signal ducking
 
 func retrieveInput():
 	var inputs = {
+		"up" : false,
+		"down" : false,
 		"right" : false,
 		"left" : false,
 		"jump" : false,
@@ -16,6 +18,11 @@ func retrieveInput():
 		inputs["right"] = true
 	elif Input.is_action_pressed("left") and not Input.is_action_pressed("right"):
 		inputs["left"] = true
+	
+	if Input.is_action_pressed("up") and not Input.is_action_pressed("down"):
+		inputs["up"] = true
+	elif Input.is_action_pressed("down") and not Input.is_action_pressed("up"):
+		inputs["down"] = true
 	
 	if Input.is_action_just_pressed("jump"):
 		inputs["jump"] = true
