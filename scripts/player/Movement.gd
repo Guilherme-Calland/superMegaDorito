@@ -1,5 +1,7 @@
 extends Node
 
+signal dashing
+
 func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, direction, isOnFloor, isOnCeiling, isOnWall, duckLock, dashing):
 	if inputs == null:
 		return
@@ -21,10 +23,10 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 			motion.x += windResistance * 20
 			if motion.x > -dashForce/4:
 				dashing = false
+		emit_signal("dashing", dashing)
 		return {
 		"motion": motion, 
 		"direction": direction,
-		"dashing" : dashing
 		}
 	
 	if isOnFloor:
@@ -75,9 +77,9 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 			motion.x = dashForce
 		elif direction == "left":
 			motion.x = -dashForce
+		emit_signal("dashing", dashing)
 	
 	return {
 		"motion": motion, 
 		"direction": direction,
-		"dashing" : dashing
 		}

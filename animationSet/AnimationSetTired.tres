@@ -1,0 +1,78 @@
+[gd_resource type="SpriteFrames" load_steps=24 format=2]
+
+[ext_resource path="res://graphics/player/player_ducked_touching_1_tired.png" type="Texture" id=1]
+[ext_resource path="res://graphics/player/player_jumping_tired.png" type="Texture" id=2]
+[ext_resource path="res://graphics/player/player_ducked_2_tired.png" type="Texture" id=3]
+[ext_resource path="res://graphics/player/player_idle_1_tired.png" type="Texture" id=4]
+[ext_resource path="res://graphics/player/player_running_1_tired.png" type="Texture" id=5]
+[ext_resource path="res://graphics/player/player_idle_2_tired.png" type="Texture" id=6]
+[ext_resource path="res://graphics/player/player_ducked_moving_1_tired.png" type="Texture" id=7]
+[ext_resource path="res://graphics/player/player_ducked_moving_2_tired.png" type="Texture" id=8]
+[ext_resource path="res://graphics/player/player_grabbing_tired.png" type="Texture" id=9]
+[ext_resource path="res://graphics/player/player_touching_2_tired.png" type="Texture" id=10]
+[ext_resource path="res://graphics/player/player_ducked_1_tired.png" type="Texture" id=11]
+[ext_resource path="res://graphics/player/player_running_2_tired.png" type="Texture" id=12]
+[ext_resource path="res://graphics/player/player_dashing_horizontal_1.png" type="Texture" id=13]
+[ext_resource path="res://graphics/player/player_touching_1_tired.png" type="Texture" id=14]
+[ext_resource path="res://graphics/player/player_dashing_horizontal_2.png" type="Texture" id=15]
+[ext_resource path="res://graphics/player/player_dashing_horizontal_3.png" type="Texture" id=16]
+[ext_resource path="res://graphics/player/player_dashing_horizontal_4.png" type="Texture" id=17]
+[ext_resource path="res://graphics/player/player_dashing_horizontal_5.png" type="Texture" id=18]
+[ext_resource path="res://graphics/player/player_dashing_horizontal_10.png" type="Texture" id=19]
+[ext_resource path="res://graphics/player/player_dashing_horizontal_6.png" type="Texture" id=20]
+[ext_resource path="res://graphics/player/player_dashing_horizontal_9.png" type="Texture" id=21]
+[ext_resource path="res://graphics/player/player_dashing_horizontal_7.png" type="Texture" id=22]
+[ext_resource path="res://graphics/player/player_dashing_horizontal_8.png" type="Texture" id=23]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 2.5
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "duck",
+"speed": 2.5
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "grab",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "duckMove",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "duckTouch",
+"speed": 2.5
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": false,
+"name": "touch",
+"speed": 2.5
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "touchIdle",
+"speed": 2.5
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 21 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 15 ) ],
+"loop": false,
+"name": "dashHorizontal",
+"speed": 100.0
+} ]

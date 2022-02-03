@@ -10,6 +10,7 @@ export var dashForce = 200
 var direction = "right"
 var duckLock = false
 var dashing = false
+onready var animatedSprite = $AnimatedSpriteNormal
 
 func _ready():
 	$Inputs.connect("ducking", self, "changeCollision")	
@@ -17,10 +18,10 @@ func _ready():
 func _physics_process(delta):
 	inputs = $Inputs.retrieveInput()
 	var motionBundle = $Movement.move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, direction, is_on_floor(), is_on_ceiling(), is_on_wall(), duckLock, dashing)
+	$Movement.connect("dashing", self,  "onDashSignal")
 	motion = motionBundle["motion"]
 	direction = motionBundle["direction"]
-	dashing = motionBundle["dashing"]
-	$Animation.animate(inputs, $AnimatedSprite, is_on_floor(), is_on_wall(), duckLock, dashing)
+	$Animation.animate(inputs, animatedSprite, is_on_floor(), is_on_wall(), duckLock, dashing)
 	move_and_slide(motion, Vector2(0,-1))
 
 func changeCollision(ducking):
@@ -36,3 +37,11 @@ func _on_TopArea_body_entered(body):
 func _on_TopArea_body_exited(body):
 	duckLock = false
 	$CollisionStanding.set_deferred("disabled", false)
+
+func onDashSignal(d):
+	dashing = d
+	if dashing:
+		animatedSprite = $AnimatedSpriteTired
+		$AnimatedSpriteNormal.hide()
+		$AnimatedSpriteTired.show()
+
