@@ -17,11 +17,22 @@ func _ready():
 
 func _physics_process(delta):
 	inputs = $Inputs.retrieveInput()
-	var motionBundle = $Movement.move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, direction, is_on_floor(), is_on_ceiling(), is_on_wall(), duckLock, dashing)
+	var motionBundle = $Movement.move(
+		inputs,
+		motion,
+		speed, jumpForce, gravity, windResistance, dashForce, 
+		direction, 
+		is_on_floor(), is_on_ceiling(), is_on_wall(), 
+		duckLock, dashing, tired)
 	$Movement.connect("dashing", self,  "onDashSignal")
 	motion = motionBundle["motion"]
 	direction = motionBundle["direction"]
-	$Animation.animate(inputs, $AnimatedSpriteNormal, $AnimatedSpriteTired, is_on_floor(), is_on_wall(), duckLock, dashing, tired, direction)
+	$Animation.animate(
+		inputs, 
+		$AnimatedSpriteNormal, $AnimatedSpriteTired, 
+		is_on_floor(), is_on_wall(), 
+		direction,
+		duckLock, dashing, tired)
 	move_and_slide(motion, Vector2(0,-1))
 	if is_on_floor():
 		tired = false

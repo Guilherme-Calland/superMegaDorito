@@ -1,6 +1,6 @@
 extends Node
 
-func animate(inputs, spriteNormal, spriteTired, isOnFloor, isOnWall, duckLock, dashing, tired, direction):
+func animate(inputs, spriteNormal, spriteTired, isOnFloor, isOnWall, direction, duckLock, dashing, tired):
 	if inputs == null:
 		return
 	var sprite

@@ -2,7 +2,7 @@ extends Node
 
 signal dashing
 
-func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, direction, isOnFloor, isOnCeiling, isOnWall, duckLock, dashing):
+func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, direction, isOnFloor, isOnCeiling, isOnWall, duckLock, dashing, tired):
 	if inputs == null:
 		return
 	
@@ -71,7 +71,7 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 				direction = "right"
 			motion.y = -jumpForce
 	
-	if dash:
+	if dash and not tired:
 		dashing = true
 		if direction == "right":
 			motion.x = dashForce
