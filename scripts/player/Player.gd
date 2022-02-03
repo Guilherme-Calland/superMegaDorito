@@ -15,7 +15,7 @@ var tired = false
 
 func _ready():
 	$Inputs.connect("ducking", self, "changeCollision")
-	$Movement.connect("dashing", self,  "onDashSignal")	
+	$Movement.connect("dashing", self,  "onDashSignal")
 
 func _physics_process(delta):
 	inputs = $Inputs.retrieveInput()
@@ -28,7 +28,6 @@ func _physics_process(delta):
 		duckLock, dashing, tired)
 	motion = motionBundle["motion"]
 	direction = motionBundle["direction"]
-	dashDirection = motionBundle["dashDirection"]
 	$Animation.animate(
 		inputs, 
 		$AnimatedSpriteNormal, $AnimatedSpriteTired, 
@@ -53,7 +52,8 @@ func _on_TopArea_body_exited(body):
 	duckLock = false
 	$CollisionStanding.set_deferred("disabled", false)
 
-func onDashSignal(d):
+func onDashSignal(d, dd):
+	dashDirection = dd
 	dashing = d
 	if dashing:
 		tired = true

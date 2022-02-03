@@ -16,33 +16,41 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 	var down = inputs["down"]
 	
 	if dashing:
-		if isOnWall or isOnCeiling:
-			dashing = false
+		if dashDirection == "right":
+			motion.y = 0
+			motion.x -= 10
+			if isOnWall:
+				motion.x = 1
+				dashing = false
+			if motion.x < dashForce/4:
+				dashing = false
+		elif dashDirection == "left":
+			motion.y = 0
+			motion.x += 10
+			if isOnWall:
+				motion.x = -1
+				dashing = false
+			if motion.x > -dashForce/4:
+				dashing = false
 		else:
-			if dashDirection == "right":
-				motion.y = 0
-				motion.x -= 10
-				if motion.x < dashForce/4:
+			motion.x = 0
+			motion.y += 10
+			if dashDirection == "up":
+				if isOnCeiling:
+					motion.y = gravity
 					dashing = false
-			elif dashDirection == "left":
-				motion.y = 0
-				motion.x += 10
-				if motion.x > -dashForce/4:
+				if motion.y >= -dashForce/4:
 					dashing = false
-			else:
-				motion.x = 0
-				motion.y += 10
-				if dashDirection == "up":
-					if motion.y >= -dashForce/4:
-						dashing = false
-				elif dashDirection == "down":
-					if isOnFloor:
-						dashing = false
-		emit_signal("dashing", dashing)
+			elif dashDirection == "down":
+				if isOnFloor:
+					dashing = false
+		emit_signal("dashing", dashing, dashDirection)
+		
+		
+		
 		return {
 		"motion": motion, 
-		"direction": direction,
-		"dashDirection": dashDirection
+		"direction": direction
 		}
 	
 	if isOnFloor:
@@ -111,10 +119,9 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 			elif direction == "left":
 				dashDirection = "left"
 				motion.x = -dashForce
-		emit_signal("dashing", dashing)
+		emit_signal("dashing", dashing, dashDirection)
 	
 	return {
 		"motion": motion, 
-		"direction": direction,
-		"dashDirection" : dashDirection
+		"direction": direction
 		}
