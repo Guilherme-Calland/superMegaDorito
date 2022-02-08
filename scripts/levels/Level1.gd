@@ -1,11 +1,19 @@
 extends Node2D
 
+onready var track1 = $Music/MusicTrack1
+onready var track2 = $Music/MusicTrack2
+onready var track3 = $Music/MusicTrack3
 
 func _ready():
-	$Music/MusicTrack1.play()
+	track1.play()
 
 func _process(delta):
 	$Player.play()
 	
 func _on_CueMusic_body_entered(body):
-	$Music/MusicTrack2.play($Music/MusicTrack1.get_playback_position())
+	var track1Position = track1.get_playback_position()
+	track2.play(track1Position)
+
+func _on_CueMusic2_body_entered(body):
+	var track1Position = track1.get_playback_position()
+	track3.play(track1Position)
