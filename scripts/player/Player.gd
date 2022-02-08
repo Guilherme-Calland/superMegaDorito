@@ -21,7 +21,7 @@ func _ready():
 	$Movement.connect("dashing", self,  "onDashSignal")
 	$Movement.connect("jumpLock", self, "onWallJump")
 	
-func _physics_process(delta):
+func play():
 	inputs = $Inputs.retrieveInput()
 	var motionBundle = $Movement.move(
 		inputs,
