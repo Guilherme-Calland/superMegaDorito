@@ -4,15 +4,20 @@ var areaType
 
 onready var jumpAudio1Path = "res://sound/soundEffects/jumping/jump1.ogg"
 onready var jumpAudio2Path = "res://sound/soundEffects/jumping/jump2.ogg"
+onready var dashAudioPath = "res://sound/soundEffects/dash.wav"
+
 
 var randomNumberGenerator
 
 func _ready():
 	randomNumberGenerator = RandomNumberGenerator.new()
 
-func emitAudio(jumping):
-	if jumping:
+func emitAudio(onJump, onDash):
+	if onJump:
 		playJumpAudio()
+#
+	if onDash:
+		playDashAudio()
 
 func playJumpAudio():
 	randomNumberGenerator.randomize()
@@ -22,6 +27,11 @@ func playJumpAudio():
 	else:
 		stream = load(jumpAudio2Path)
 	play()
+
+func playDashAudio():
+	stream = load(dashAudioPath)
+	play()
+	
 
 #func playAudio(sfx):
 #	if sfx == "jump":

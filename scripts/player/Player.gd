@@ -12,18 +12,20 @@ export var dying = false
 var direction = "right"
 var dashDirection
 var duckLock = false
-var jumpLock = false
+var wallJumpLock = false
 var dashing = false
-var jumping = false
+var onJump = false
+var onDash = false
 var tired = false
 var areaType
 
 func _ready():
 	$Inputs.connect("ducking", self, "changeCollision")
-	$Movement.connect("dashing", self,  "onDash")
-	$Movement.connect("jumping", self,  "onJump")
-	$Movement.connect("jumpLock", self, "onWallJump")
+	$Movement.connect("dashing", self,  "onDashing")
+	$Movement.connect("onJump", self,  "onJump")
+	$Movement.connect("wallJumpLock", self, "setWallJumpLock")
 	$Movement.connect("landed", self, "onLanding")
+	$Movement.connect("onDash", self, "onDash")
 	
 func play():
 	$Sound.areaType = areaType
@@ -34,7 +36,7 @@ func play():
 		speed, jumpForce, gravity, windResistance, dashForce,
 		direction, dashDirection,
 		is_on_floor(), is_on_ceiling(), is_on_wall(), 
-		duckLock, dashing, tired, jumpLock, dying)
+		duckLock, dashing, tired, wallJumpLock, dying)
 	motion = motionBundle["motion"]
 	direction = motionBundle["direction"]
 	$Animation.animate(
@@ -44,8 +46,9 @@ func play():
 		direction, dashDirection,
 		duckLock, dashing, tired, dying)
 	move_and_slide(motion, Vector2(0,-1))
-	$Sound.emitAudio(jumping)
-	jumping = false
+	$Sound.emitAudio(onJump, onDash)
+	onJump = false
+	onDash = false
 
 func changeCollision(ducking):
 	if ducking and is_on_floor():
@@ -61,17 +64,20 @@ func _on_TopArea_body_exited(body):
 	duckLock = false
 	$CollisionStanding.set_deferred("disabled", false)
 
-func onDash(d, dd):
+func onDashing(d, dd):
 	dashDirection = dd
 	dashing = d
 	if dashing:
 		tired = true
 
 func onJump():
-	jumping = true
+	onJump = true
 
-func onWallJump(b):
-	jumpLock = b
+func onDash():
+	onDash = true
+
+func setWallJumpLock(b):
+	wallJumpLock = b
 	
 func die():
 	dying = true
@@ -79,5 +85,3 @@ func die():
 func onLanding():
 	tired = false
 
-#func playAudio(sfx):
-#	$Sound.playAudio(sfx)
