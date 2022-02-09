@@ -10,7 +10,6 @@ export var dashForce = 200
 export var dying = false
 
 var direction = "right"
-var dashDirection
 var duckLock = false
 var wallJumpLock = false
 var dashing = false
@@ -32,9 +31,7 @@ func play():
 	inputs = $Inputs.retrieveInput()
 	var motionBundle = $Movement.move(
 		inputs,
-		motion,
-		speed, jumpForce, dashForce, gravity, windResistance, 
-		direction, dashDirection,
+		motion, speed, jumpForce, dashForce, gravity, windResistance, 
 		is_on_floor(), is_on_wall(), is_on_ceiling(), 
 		duckLock, dashing, tired, wallJumpLock, dying)
 	motion = motionBundle["motion"]
@@ -43,7 +40,7 @@ func play():
 		inputs, 
 		$AnimatedSpriteNormal, $AnimatedSpriteTired, 
 		is_on_floor(), is_on_wall(), 
-		direction, dashDirection,
+		direction,
 		duckLock, dashing, tired, dying)
 	move_and_slide(motion, Vector2(0,-1))
 	$Sound.emitAudio(onJump, onDash)
@@ -65,7 +62,7 @@ func _on_TopArea_body_exited(body):
 	$CollisionStanding.set_deferred("disabled", false)
 
 func setDashing(d, dd):
-	dashDirection = dd
+	direction = dd
 	dashing = d
 	if dashing:
 		tired = true
