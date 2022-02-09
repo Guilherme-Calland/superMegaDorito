@@ -2,6 +2,7 @@ extends Node
 
 signal dashing
 signal jumpLock
+signal sfx
 
 func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, direction, dashDirection, isOnFloor, isOnCeiling, isOnWall, duckLock, dashing, tired, jumpLock, dying):
 	if inputs == null:
@@ -62,19 +63,33 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 	
 	if isOnFloor:
 		emit_signal("jumpLock", false)
+		if motion.y > gravity:
+			if motion.y > 2*jumpForce:
+				emit_signal("sfx", "land", 3)
+			elif motion.y > jumpForce:
+				emit_signal("sfx", "land", 2)
+			else: 
+				emit_signal("sfx", "land", 1)
+		
 		if duck or duckLock:
 			speed = speed/2
 		motion.y = gravity
 		if jump:
 			motion.y = -jumpForce
+			emit_signal("sfx", "jump", 0)
 	
 	if (not isOnWall or not grab) and not jumpLock:
 		if left:
 			direction = "left"
 			motion.x = -speed
+			if isOnFloor:
+				emit_signal("sfx", "run", 0)
 		elif right:
 			direction = "right"
 			motion.x = speed
+			if isOnFloor:
+				emit_signal("sfx", "run", 0)
+			
 		else:
 			motion.x = 0
 	
@@ -100,6 +115,7 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 		
 		if jump:
 			emit_signal("jumpLock", true)
+			emit_signal("sfx", "jump", 0)
 			if direction == "right":
 				motion.x = -speed
 				direction = "left"
@@ -110,7 +126,7 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 	
 	if dash and not tired:
 		dashing = true
-		
+		emit_signal("sfx","dash", 0)
 		if up: 
 			motion.y = -dashForce
 			dashDirection = "up"

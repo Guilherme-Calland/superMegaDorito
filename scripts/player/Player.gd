@@ -15,13 +15,16 @@ var duckLock = false
 var jumpLock = false
 var dashing = false
 var tired = false
+var areaType
 
 func _ready():
 	$Inputs.connect("ducking", self, "changeCollision")
 	$Movement.connect("dashing", self,  "onDashSignal")
 	$Movement.connect("jumpLock", self, "onWallJump")
+	$Movement.connect("sfx", self, "playAudio")
 	
 func play():
+	$Sound.areaType = areaType
 	inputs = $Inputs.retrieveInput()
 	var motionBundle = $Movement.move(
 		inputs,
@@ -67,3 +70,6 @@ func onWallJump(b):
 	
 func die():
 	dying = true
+
+func playAudio(sfx, intensity):
+	$Sound.playAudio(sfx, intensity)
