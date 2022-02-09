@@ -21,21 +21,21 @@ var areaType
 
 func _ready():
 	$Inputs.connect("ducking", self, "changeCollision")
-	$Movement.connect("dashing", self,  "onDashing")
+	$Movement.connect("dashing", self,  "setDashing")
 	$Movement.connect("onJump", self,  "onJump")
 	$Movement.connect("wallJumpLock", self, "setWallJumpLock")
 	$Movement.connect("landed", self, "onLanding")
 	$Movement.connect("onDash", self, "onDash")
-	
+#	inputs, motion, speed, jumpForce, dashForce, gravity, windResistance, direction, dashDirection, isOnFloor, isOnWall, isOnCeiling, duckLock, dashing, tired, wallJumpLock, dying
 func play():
 	$Sound.areaType = areaType
 	inputs = $Inputs.retrieveInput()
 	var motionBundle = $Movement.move(
 		inputs,
 		motion,
-		speed, jumpForce, gravity, windResistance, dashForce,
+		speed, jumpForce, dashForce, gravity, windResistance, 
 		direction, dashDirection,
-		is_on_floor(), is_on_ceiling(), is_on_wall(), 
+		is_on_floor(), is_on_wall(), is_on_ceiling(), 
 		duckLock, dashing, tired, wallJumpLock, dying)
 	motion = motionBundle["motion"]
 	direction = motionBundle["direction"]
@@ -64,7 +64,7 @@ func _on_TopArea_body_exited(body):
 	duckLock = false
 	$CollisionStanding.set_deferred("disabled", false)
 
-func onDashing(d, dd):
+func setDashing(d, dd):
 	dashDirection = dd
 	dashing = d
 	if dashing:

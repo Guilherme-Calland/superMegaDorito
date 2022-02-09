@@ -7,17 +7,9 @@ signal wallJumpLock
 signal sfx
 signal landed
 
-func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, direction, dashDirection, isOnFloor, isOnCeiling, isOnWall, duckLock, dashing, tired, wallJumpLock, dying):
+func move(inputs, motion, speed, jumpForce, dashForce, gravity, windResistance, direction, dashDirection, isOnFloor, isOnWall, isOnCeiling, duckLock, dashing, tired, wallJumpLock, dying):
 	if inputs == null:
 		return
-	
-	if dying:
-		motion = Vector2(0,0)
-		return {
-		"motion": motion, 
-		"direction": direction
-		}
-	
 	var left = inputs["left"]
 	var right = inputs["right"]
 	var jump = inputs["jump"]
@@ -27,42 +19,11 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 	var up = inputs["up"]
 	var down = inputs["down"]
 	
+	if dying:
+		return onDying()
+	
 	if dashing:
-		if dashDirection == "right":
-			motion.y = 0
-			motion.x -= 10
-			if isOnWall:
-				motion.x = 1
-				dashing = false
-			if motion.x < dashForce/4:
-				dashing = false
-		elif dashDirection == "left":
-			motion.y = 0
-			motion.x += 10
-			if isOnWall:
-				motion.x = -1
-				dashing = false
-			if motion.x > -dashForce/4:
-				dashing = false
-		else:
-			motion.x = 0
-			motion.y += 10
-			if dashDirection == "up":
-				if isOnCeiling:
-					motion.y = gravity
-					dashing = false
-				if motion.y >= -dashForce/4:
-					dashing = false
-			elif dashDirection == "down":
-				if isOnFloor:
-					dashing = false
-		emit_signal("wallJumpLock", false)
-		emit_signal("dashing", dashing, dashDirection)
-		
-		return {
-		"motion": motion, 
-		"direction": direction
-		}
+		return onDashing(motion, dashForce, gravity, direction, dashDirection, isOnFloor, isOnWall, isOnCeiling, dashing)
 	
 	if isOnFloor:
 		emit_signal("landed")
@@ -158,3 +119,47 @@ func move(inputs, motion, speed, jumpForce, gravity, windResistance, dashForce, 
 		"motion": motion, 
 		"direction": direction
 		}
+
+
+func onDying():
+		return {
+		"motion": Vector2(0,0), 
+		"direction": ""
+		}
+
+func onDashing(motion, dashForce, gravity, direction, dashDirection, isOnFloor, isOnWall, isOnCeiling, dashing):
+	if dashDirection == "right":
+		motion.y = 0
+		motion.x -= 10
+		if isOnWall:
+			motion.x = 1
+			dashing = false
+		if motion.x < dashForce/4:
+			dashing = false
+	elif dashDirection == "left":
+		motion.y = 0
+		motion.x += 10
+		if isOnWall:
+			motion.x = -1
+			dashing = false
+		if motion.x > -dashForce/4:
+			dashing = false
+	else:
+		motion.x = 0
+		motion.y += 10
+		if dashDirection == "up":
+			if isOnCeiling:
+				motion.y = gravity
+				dashing = false
+			if motion.y >= -dashForce/4:
+				dashing = false
+		elif dashDirection == "down":
+			if isOnFloor:
+				dashing = false
+	emit_signal("wallJumpLock", false)
+	emit_signal("dashing", dashing, dashDirection)
+	
+	return {
+	"motion": motion, 
+	"direction": direction
+	}
