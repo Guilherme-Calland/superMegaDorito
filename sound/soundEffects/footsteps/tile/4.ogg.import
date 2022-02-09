@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/4.ogg-90b8384ee47b1ad7c417b4c4d0e2738d.oggstr"
+
+[deps]
+
+source_file="res://sound/soundEffects/footsteps/tile/4.ogg"
+dest_files=[ "res://.import/4.ogg-90b8384ee47b1ad7c417b4c4d0e2738d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

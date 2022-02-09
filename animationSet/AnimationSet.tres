@@ -46,11 +46,6 @@ animations = [ {
 "name": "idle",
 "speed": 2.5
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "duck",
-"speed": 2.5
-}, {
 "frames": [ ExtResource( 9 ) ],
 "loop": false,
 "name": "grab",
@@ -61,24 +56,39 @@ animations = [ {
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "duck",
+"speed": 2.5
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 37 ), ExtResource( 33 ), ExtResource( 36 ), ExtResource( 38 ) ],
+"loop": false,
+"name": "die",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "run",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "duckTouch",
-"speed": 2.5
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 21 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 15 ) ],
 "loop": false,
 "name": "dashHorizontal",
 "speed": 100.0
 }, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "duckTouch",
+"speed": 2.5
+}, {
 "frames": [ ExtResource( 10 ) ],
 "loop": false,
 "name": "touch",
+"speed": 2.5
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "touchIdle",
 "speed": 2.5
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 11 ) ],
@@ -86,18 +96,8 @@ animations = [ {
 "name": "duckMove",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "touchIdle",
-"speed": 2.5
-}, {
 "frames": [ ExtResource( 31 ), ExtResource( 32 ), ExtResource( 28 ), ExtResource( 26 ), ExtResource( 24 ), ExtResource( 27 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 25 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 28 ), ExtResource( 32 ), ExtResource( 31 ) ],
 "loop": false,
 "name": "dashVertical",
 "speed": 100.0
-}, {
-"frames": [ ExtResource( 1 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 37 ), ExtResource( 33 ), ExtResource( 36 ), ExtResource( 38 ) ],
-"loop": false,
-"name": "die",
-"speed": 10.0
 } ]

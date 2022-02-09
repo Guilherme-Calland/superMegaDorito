@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/5.ogg-a9a9ba2f87d2793f74ff5e099249827a.oggstr"
+
+[deps]
+
+source_file="res://sound/soundEffects/footsteps/bones/5.ogg"
+dest_files=[ "res://.import/5.ogg-a9a9ba2f87d2793f74ff5e099249827a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

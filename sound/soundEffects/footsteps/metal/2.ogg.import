@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/2.ogg-c89484d84a1ac0dc5f0f570d916f9b85.oggstr"
+
+[deps]
+
+source_file="res://sound/soundEffects/footsteps/metal/2.ogg"
+dest_files=[ "res://.import/2.ogg-c89484d84a1ac0dc5f0f570d916f9b85.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
