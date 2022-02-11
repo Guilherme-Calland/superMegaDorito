@@ -20,7 +20,7 @@ func _process(delta):
 	updateBundle()
 	$Movement.move(bundle)
 	$Animation.animate($AnimatedSprite, bundle)
-	$Audio.emitAudio($AnimatedSprite)
+	$Audio.emitAudio($AnimatedSprite, flags)
 	move_and_slide(motion, Vector2(0,-1))
 
 func updateBundle():

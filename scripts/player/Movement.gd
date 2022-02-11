@@ -13,8 +13,9 @@ var jumpForce
 #flags
 var isOnFloor
 var isOnWall
-signal facingLeft
+var isOnCeiling
 
+signal facingLeft
 signal motion
 
 func move(bundle):
@@ -42,6 +43,7 @@ func unpackBundle(bundle):
 	#flags
 	isOnFloor = flags["isOnFloor"]
 	isOnWall = flags["isOnWall"]
+	isOnCeiling = flags["isOnCeiling"]
 
 func handleHorizontalPhysics():
 	if leftPressed:
@@ -60,6 +62,8 @@ func handleVerticalPhysics():
 			motion.y = -jumpForce
 	elif not isOnFloor:
 		motion.y += gravity
+	if isOnCeiling:
+		motion.y = gravity
 
 func handleWallPhysics():
 	motion.y = 0
