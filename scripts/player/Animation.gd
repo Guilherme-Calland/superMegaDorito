@@ -1,19 +1,17 @@
 extends Node
 
-#inputs
-var leftPressed
-var rightPressed
 #physics
 var motion
 #flags
 var isOnFloor
+var facingLeft
 
-func animate(sprite, bundle):
-	unpackBundle(bundle)
+func animate(sprite, motion, flags):
+	unpackBundle(flags)
 	
-	if leftPressed:
+	if facingLeft:
 		sprite.flip_h = true
-	elif rightPressed:
+	else:
 		sprite.flip_h = false
 	
 	if isOnFloor:
@@ -24,14 +22,7 @@ func animate(sprite, bundle):
 	else:
 		sprite.play("jump")
 
-func unpackBundle(bundle):
-	var inputs = bundle["inputs"]
-	var physics = bundle["physics"]
-	var flags = bundle["flags"]
-	#inputs
-	leftPressed = inputs["left"]
-	rightPressed = inputs["right"]
-	#motion
-	motion = physics["motion"]
+func unpackBundle(flags):
 	#flags
 	isOnFloor = flags["isOnFloor"]
+	facingLeft = flags["facingLeft"]

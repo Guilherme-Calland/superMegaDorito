@@ -13,13 +13,18 @@ var jumpForce
 var isOnFloor
 
 signal motion
+signal facingLeft
 
 func move(bundle):
 	unpackBundle(bundle)
 	
+	var facingLeft
+	
 	if leftPressed:
 		motion.x = -speed
+		emit_signal("facingLeft", true)
 	elif rightPressed:
+		emit_signal("facingLeft", false)
 		motion.x = speed
 	else:
 		motion.x = 0
@@ -31,7 +36,7 @@ func move(bundle):
 	else:
 		motion.y += gravity
 	
-	return motion
+	emit_signal("motion", motion)
 	
 func unpackBundle(bundle):
 	var inputs = bundle["inputs"]
