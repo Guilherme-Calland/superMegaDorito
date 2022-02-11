@@ -30,7 +30,7 @@ cell_size = Vector2( 6, 6 )
 format = 1
 
 [node name="WoodBoxScenary2" type="TileMap" parent="."]
-position = Vector2( 5.482, 0 )
+position = Vector2( 3.785, 0 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 12, 12 )
 format = 1
