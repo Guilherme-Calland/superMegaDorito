@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mud_tile_1.png-fbd8336fdf4398d95e8b0067b194628e.stex"
+path="res://.import/mud_1.png-bc178fd90cb2123d621707248eb61fe9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/tile/mud_tile_1.png"
-dest_files=[ "res://.import/mud_tile_1.png-fbd8336fdf4398d95e8b0067b194628e.stex" ]
+source_file="res://graphics/tile/mud_1.png"
+dest_files=[ "res://.import/mud_1.png-bc178fd90cb2123d621707248eb61fe9.stex" ]
 
 [params]
 
