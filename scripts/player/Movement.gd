@@ -17,25 +17,8 @@ signal facingLeft
 
 func move(bundle):
 	unpackBundle(bundle)
-	
-	var facingLeft
-	
-	if leftPressed:
-		motion.x = -speed
-		emit_signal("facingLeft", true)
-	elif rightPressed:
-		emit_signal("facingLeft", false)
-		motion.x = speed
-	else:
-		motion.x = 0
-	
-	if isOnFloor:
-		motion.y = gravity
-		if jumpPressed:
-			motion.y = -jumpForce
-	else:
-		motion.y += gravity
-	
+	handleHorizontalMovement()
+	handleVerticalMovement()
 	emit_signal("motion", motion)
 	
 func unpackBundle(bundle):
@@ -53,3 +36,21 @@ func unpackBundle(bundle):
 	jumpForce = physics["jumpForce"]
 	#flags
 	isOnFloor = flags["isOnFloor"]
+
+func handleHorizontalMovement():
+	if leftPressed:
+		motion.x = -speed
+		emit_signal("facingLeft", true)
+	elif rightPressed:
+		emit_signal("facingLeft", false)
+		motion.x = speed
+	else:
+		motion.x = 0
+
+func handleVerticalMovement():
+	if isOnFloor:
+		motion.y = gravity
+		if jumpPressed:
+			motion.y = -jumpForce
+	elif not isOnFloor:
+		motion.y += gravity

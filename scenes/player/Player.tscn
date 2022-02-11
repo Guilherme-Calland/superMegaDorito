@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://graphics/player/idle/player_idle_1.png" type="Texture" id=1]
 [ext_resource path="res://graphics/player/run/player_running_2.png" type="Texture" id=2]
@@ -6,13 +6,15 @@
 [ext_resource path="res://scripts/player/Inputs.gd" type="Script" id=4]
 [ext_resource path="res://scripts/player/Movement.gd" type="Script" id=5]
 [ext_resource path="res://graphics/player/run/player_running_1.png" type="Texture" id=6]
+[ext_resource path="res://graphics/player/touch/player_touching_1.png" type="Texture" id=7]
 [ext_resource path="res://scripts/player/Animation.gd" type="Script" id=8]
 [ext_resource path="res://graphics/player/player_jumping.png" type="Texture" id=9]
 [ext_resource path="res://graphics/player/idle/player_idle_2.png" type="Texture" id=10]
+[ext_resource path="res://graphics/player/touch/player_touching_2.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 10 ), ExtResource( 1 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
@@ -26,6 +28,16 @@ animations = [ {
 "loop": false,
 "name": "jump",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "touchIdle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "touch",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -38,11 +50,12 @@ speed = 50
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "idle"
+animation = "touch"
 speed_scale = 0.5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 scale = Vector2( 0.466, 0.858 )
 shape = SubResource( 2 )
 
