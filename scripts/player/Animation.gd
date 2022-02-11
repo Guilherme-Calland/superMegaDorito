@@ -10,7 +10,6 @@ var facingLeft
 #physics
 var motion
 
-
 func animate(sprite, bundle):
 	init(sprite, bundle)
 	
@@ -60,3 +59,6 @@ func unpackBundle(bundle):
 	isOnFloor = flags["isOnFloor"]
 	isOnWall = flags["isOnWall"]
 	facingLeft = flags["facingLeft"]
+	
+func helloWorld():
+	print("hello world")

@@ -1,5 +1,7 @@
 extends Node
 
+signal test
+
 func retrieveInput():
 	var inputs = {
 		"right" : false,
@@ -18,5 +20,6 @@ func retrieveInput():
 	
 	if Input.is_action_pressed("grab"):
 		inputs["grab"] = true
+		emit_signal("test")
 	
 	return inputs

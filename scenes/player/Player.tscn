@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://graphics/player/idle/player_idle_1.png" type="Texture" id=1]
 [ext_resource path="res://graphics/player/run/player_running_2.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://graphics/player/idle/player_idle_2.png" type="Texture" id=10]
 [ext_resource path="res://graphics/player/touch/player_touching_2.png" type="Texture" id=11]
 [ext_resource path="res://graphics/player/player_grabbing_1.png" type="Texture" id=12]
+[ext_resource path="res://scripts/player/Audio.gd" type="Script" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -73,6 +74,9 @@ script = ExtResource( 5 )
 
 [node name="Animation" type="Node" parent="."]
 script = ExtResource( 8 )
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+script = ExtResource( 13 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
