@@ -1,12 +1,16 @@
 extends Node
 
+var sprite
 #flags
 var isOnFloor
 var isOnWall
 var facingLeft
+#physics
+var motion
+
 
 func animate(sprite, motion, flags):
-	unpackBundle(flags)
+	init(sprite, motion, flags)
 	
 	if facingLeft:
 		sprite.flip_h = true
@@ -14,19 +18,30 @@ func animate(sprite, motion, flags):
 		sprite.flip_h = false
 	
 	if isOnWall:
-		if isOnFloor:
-			sprite.play("touchIdle")
-		elif not isOnFloor:
-			sprite.play("touch")
+		handleWallAnimation()
 	elif isOnFloor:
+		handleFloorAnimation()
+	else:
+		sprite.play("jump")
+	
+func init(inSprite, inMotion, inFlags):
+	sprite = inSprite
+	motion = inMotion
+	unpackBundle(inFlags)
+
+func handleWallAnimation():
+	if isOnFloor:
+		sprite.play("touchIdle")
+	elif not isOnFloor:
+		sprite.play("touch")
+
+func handleFloorAnimation():
+	if isOnFloor:
 		if motion.x != 0:
 			sprite.play("run")
 		else:
 			sprite.play("idle")
-	else:
-		sprite.play("jump")
 		
-	
 func unpackBundle(flags):
 	#flags
 	isOnFloor = flags["isOnFloor"]
