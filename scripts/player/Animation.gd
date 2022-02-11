@@ -1,20 +1,37 @@
 extends Node
 
-func animate(inputs, sprite, isOnFloor):
-	if inputs == null:
-		return
+#inputs
+var leftPressed
+var rightPressed
+#physics
+var motion
+#flags
+var isOnFloor
+
+func animate(sprite, bundle):
+	unpackBundle(bundle)
 	
-	var left = inputs["left"]
-	var right = inputs["right"]
+	if leftPressed:
+		sprite.flip_h = true
+	elif rightPressed:
+		sprite.flip_h = false
 	
 	if isOnFloor:
-		if left:
+		if motion.x != 0:
 			sprite.play("run")
-			sprite.flip_h = true
-		elif right:
-			sprite.play("run")
-			sprite.flip_h = false
 		else:
 			sprite.play("idle")
 	else:
 		sprite.play("jump")
+
+func unpackBundle(bundle):
+	var inputs = bundle["inputs"]
+	var physics = bundle["physics"]
+	var flags = bundle["flags"]
+	#inputs
+	leftPressed = inputs["left"]
+	rightPressed = inputs["right"]
+	#motion
+	motion = physics["motion"]
+	#flags
+	isOnFloor = flags["isOnFloor"]

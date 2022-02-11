@@ -1,31 +1,31 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://graphics/player/player_idle_1.png" type="Texture" id=1]
-[ext_resource path="res://graphics/player/player_idle_2.png" type="Texture" id=2]
+[ext_resource path="res://graphics/player/idle/player_idle_1.png" type="Texture" id=1]
+[ext_resource path="res://graphics/player/run/player_running_2.png" type="Texture" id=2]
 [ext_resource path="res://scripts/player/Player.gd" type="Script" id=3]
 [ext_resource path="res://scripts/player/Inputs.gd" type="Script" id=4]
 [ext_resource path="res://scripts/player/Movement.gd" type="Script" id=5]
-[ext_resource path="res://graphics/player/player_running_2.png" type="Texture" id=6]
-[ext_resource path="res://graphics/player/player_running_1.png" type="Texture" id=7]
+[ext_resource path="res://graphics/player/run/player_running_1.png" type="Texture" id=6]
 [ext_resource path="res://scripts/player/Animation.gd" type="Script" id=8]
 [ext_resource path="res://graphics/player/player_jumping.png" type="Texture" id=9]
+[ext_resource path="res://graphics/player/idle/player_idle_2.png" type="Texture" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 1 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "run",
-"speed": 10.0
 }, {
 "frames": [ ExtResource( 9 ) ],
 "loop": false,
 "name": "jump",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "run",
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]

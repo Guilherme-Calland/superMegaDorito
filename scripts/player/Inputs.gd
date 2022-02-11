@@ -1,5 +1,7 @@
 extends Node
 
+
+
 func retrieveInput():
 	var inputs = {
 		"right" : false,
@@ -14,5 +16,5 @@ func retrieveInput():
 	
 	if Input.is_action_just_pressed("jump"):
 		inputs["jump"] = true
-		
+	
 	return inputs
