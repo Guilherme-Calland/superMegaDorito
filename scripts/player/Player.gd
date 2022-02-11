@@ -19,7 +19,7 @@ func _ready():
 func _process(delta):
 	updateBundle()
 	$Movement.move(bundle)
-	$Animation.animate($AnimatedSprite, motion, flags)
+	$Animation.animate($AnimatedSprite, bundle)
 	move_and_slide(motion, Vector2(0,-1))
 
 func updateBundle():

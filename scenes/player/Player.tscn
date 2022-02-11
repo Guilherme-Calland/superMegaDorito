@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://graphics/player/idle/player_idle_1.png" type="Texture" id=1]
 [ext_resource path="res://graphics/player/run/player_running_2.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://graphics/player/player_jumping.png" type="Texture" id=9]
 [ext_resource path="res://graphics/player/idle/player_idle_2.png" type="Texture" id=10]
 [ext_resource path="res://graphics/player/touch/player_touching_2.png" type="Texture" id=11]
+[ext_resource path="res://graphics/player/player_grabbing_1.png" type="Texture" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -24,19 +25,24 @@ animations = [ {
 "name": "run",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "touchIdle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "touch",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 11 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "touchIdle",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 9 ) ],
 "loop": false,
 "name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "grab",
 "speed": 5.0
 } ]
 
@@ -50,7 +56,7 @@ speed = 50
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "touch"
+animation = "grab"
 speed_scale = 0.5
 playing = true
 

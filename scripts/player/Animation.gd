@@ -1,6 +1,8 @@
 extends Node
 
 var sprite
+#inputs
+var grabPressed
 #flags
 var isOnFloor
 var isOnWall
@@ -9,13 +11,10 @@ var facingLeft
 var motion
 
 
-func animate(sprite, motion, flags):
-	init(sprite, motion, flags)
+func animate(sprite, bundle):
+	init(sprite, bundle)
 	
-	if facingLeft:
-		sprite.flip_h = true
-	else:
-		sprite.flip_h = false
+	handleFlipHorizontalAnimation()
 	
 	if isOnWall:
 		handleWallAnimation()
@@ -24,13 +23,20 @@ func animate(sprite, motion, flags):
 	else:
 		sprite.play("jump")
 	
-func init(inSprite, inMotion, inFlags):
+func init(inSprite, bundle):
 	sprite = inSprite
-	motion = inMotion
-	unpackBundle(inFlags)
+	unpackBundle(bundle)
+
+func handleFlipHorizontalAnimation():
+	if facingLeft:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
 
 func handleWallAnimation():
-	if isOnFloor:
+	if grabPressed:
+		sprite.play("grab")
+	elif isOnFloor:
 		sprite.play("touchIdle")
 	elif not isOnFloor:
 		sprite.play("touch")
@@ -42,7 +48,14 @@ func handleFloorAnimation():
 		else:
 			sprite.play("idle")
 		
-func unpackBundle(flags):
+func unpackBundle(bundle):
+	var inputs = bundle["inputs"]
+	var physics = bundle["physics"]
+	var flags = bundle["flags"]
+	#inputs
+	grabPressed = inputs["grab"]
+	#physics
+	motion = physics["motion"]
 	#flags
 	isOnFloor = flags["isOnFloor"]
 	isOnWall = flags["isOnWall"]
