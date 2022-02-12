@@ -1,6 +1,7 @@
 extends AudioStreamPlayer
 
 var runAudioUnlocked = false
+var runAudioLock2Unlocked = true
 var landingAudioUnlocked = false
 var wallTouchAudioUnlocked = false
 var ceilingTouchAudioUnlocked = false
@@ -32,7 +33,17 @@ var grassAudioPaths = {
 	6 : "res://audio/player/grass/6.ogg",
 	7 : "res://audio/player/grass/7.ogg",
 	8 : "res://audio/player/grass/8.ogg",
-	
+}
+
+var metalAudioPaths = {
+	0 : "res://audio/player/metal/0.ogg",
+	1 : "res://audio/player/metal/1.ogg",
+	2 : "res://audio/player/metal/2.ogg",
+	3 : "res://audio/player/metal/3.ogg",
+	4 : "res://audio/player/metal/4.ogg",
+	5 : "res://audio/player/metal/5.ogg",
+	6 : "res://audio/player/metal/6.ogg",
+	7 : "res://audio/player/metal/7.ogg"
 }
 
 func emitAudio(sprite, flags):
@@ -72,10 +83,16 @@ func handleCeilingCollisionAudio():
 func handleRunAudio(sprite):
 	if sprite.animation == "run":
 		var frame = sprite.get_frame()
+		#so that the first frame or running no audio is played
 		if runAudioUnlocked:
 			if not playing:
 				if frame%2 == 0:
-					playTerrainAudio()
+					#so that the audio only plays once
+					if runAudioLock2Unlocked:
+						runAudioLock2Unlocked = false
+						playTerrainAudio()
+				else:
+					runAudioLock2Unlocked = true
 		if frame == 2:
 			runAudioUnlocked = true
 	else:
@@ -89,13 +106,19 @@ func handleCollisionAudio():
 func playTerrainAudio():
 	var generator = RandomNumberGenerator.new()
 	generator.randomize()
-	var randNum = generator.randf_range(0, 9) as int
+	var randNum
 	if terrain == "wood":
+		randNum = generator.randf_range(0, 9) as int
 		volume_db = 0
 		stream = load(woodAudioPaths[randNum]) 
 	elif terrain == "grass":
+		randNum = generator.randf_range(0, 9) as int
 		volume_db = -10
 		stream = load(grassAudioPaths[randNum]) 
+	elif terrain == "metal":
+		randNum = generator.randf_range(0, 8) as int
+		volume_db = 0
+		stream = load(metalAudioPaths[randNum])
 	play()
 
 func changeTerrain(t):

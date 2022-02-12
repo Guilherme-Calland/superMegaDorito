@@ -16,8 +16,8 @@ extents = Vector2( 10, 11.5012 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 6, 7 )
 0/navigation_offset = Vector2( 6, 7 )
-0/shape_offset = Vector2( 6, 7.266 )
-0/shape_transform = Transform2D( 0.644, 0, 0, 0.468, 6, 7.266 )
+0/shape_offset = Vector2( 6, 7.262 )
+0/shape_transform = Transform2D( 0.644, 0, 0, 0.461, 6, 7.262 )
 0/shape = SubResource( 1 )
 0/shape_one_way = false
 0/shape_one_way_margin = 1.0
@@ -26,7 +26,7 @@ extents = Vector2( 10, 11.5012 )
 "one_way": false,
 "one_way_margin": 1.0,
 "shape": SubResource( 1 ),
-"shape_transform": Transform2D( 0.644, 0, 0, 0.468, 6, 7.266 )
+"shape_transform": Transform2D( 0.644, 0, 0, 0.461, 6, 7.262 )
 } ]
 0/z_index = 0
 1/name = "Grass2"

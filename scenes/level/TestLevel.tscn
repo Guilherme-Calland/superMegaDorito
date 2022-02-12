@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://tileSet/WoodTiles.tres" type="TileSet" id=1]
+[ext_resource path="res://tileSet/BoxTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://tileSet/StoneTiles.tres" type="TileSet" id=3]
 [ext_resource path="res://tileSet/GrassTiles.tres" type="TileSet" id=4]
@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2.5, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 3, 10 )
 
 [node name="TestLevel" type="Node2D"]
 
@@ -27,8 +30,20 @@ collision_layer = 0
 position = Vector2( 3, 0 )
 shape = SubResource( 1 )
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GrassArea"]
+position = Vector2( 173, -2 )
+shape = SubResource( 1 )
+
+[node name="MetalArea" type="Area2D" parent="."]
+position = Vector2( 171, -8 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MetalArea"]
+position = Vector2( 183, -2 )
+shape = SubResource( 2 )
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, -29 )
+position = Vector2( 77, -17 )
 collision_mask = 0
 
 [node name="StoneTiles" type="TileMap" parent="."]
@@ -37,11 +52,13 @@ cell_size = Vector2( 12, 12 )
 collision_layer = 2
 format = 1
 
-[node name="WoodBoxTiles" type="TileMap" parent="."]
+[node name="BoxTiles" type="TileMap" parent="."]
+z_index = -2
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 12, 12 )
+collision_layer = 0
 format = 1
-tile_data = PoolIntArray( -262143, 536870912, 0, -262142, 536870912, 0, -262141, 536870912, 0, -262140, 536870912, 0, -131085, 536870912, 0, -131084, 536870912, 0, -196607, 536870912, 0, -196606, 536870912, 0, -196605, 536870912, 0, -196604, 536870912, 0, -65549, 536870912, 0, -65548, 536870912, 0, -13, 536870912, 0, -12, 536870912, 0, -7, 536870912, 0, -6, 536870912, 0, 65519, 536870912, 0, 65520, 536870912, 0, 65521, 536870912, 0, 65522, 536870912, 0, 65523, 536870912, 0, 65524, 536870912, 0, 65525, 536870912, 0, 65526, 536870912, 0, 65527, 536870912, 0, 65528, 536870912, 0, 65529, 536870912, 0, 65530, 536870912, 0, 65531, 536870912, 0, 65532, 536870912, 0, 65533, 536870912, 0, 65534, 536870912, 0, 65535, 536870912, 0, 0, 536870912, 0, 1, 536870912, 0, 2, 536870912, 0, 3, 536870912, 0, 4, 536870912, 0, 5, 536870912, 0, 6, 536870912, 0, 7, 536870912, 0, 8, 536870912, 0, 9, 536870912, 0, 10, 536870912, 0, 11, 536870912, 0, 12, 536870912, 0, 13, 536870912, 0 )
+tile_data = PoolIntArray( -262143, 536870912, 0, -262142, 536870912, 0, -262141, 536870912, 0, -262140, 536870912, 0, -131085, 536870912, 0, -131084, 536870912, 0, -196607, 536870912, 0, -196606, 536870912, 0, -196605, 536870912, 0, -196604, 536870912, 0, -65549, 536870912, 0, -65548, 536870912, 0, -13, 536870912, 0, -12, 536870912, 0, -7, 536870912, 0, -6, 536870912, 0, 65519, 536870912, 0, 65520, 536870912, 0, 65521, 536870912, 0, 65522, 536870912, 0, 65523, 536870912, 0, 65524, 536870912, 0, 65525, 536870912, 0, 65526, 536870912, 0, 65527, 536870912, 0, 65528, 536870912, 0, 65529, 536870912, 0, 65530, 536870912, 0, 65531, 536870912, 0, 65532, 536870912, 0, 65533, 536870912, 0, 65534, 536870912, 0, 65535, 536870912, 0, 0, 536870912, 0, 1, 536870912, 0, 2, 536870912, 0, 3, 536870912, 0, 4, 536870912, 0, 5, 536870912, 0, 6, 536870912, 0, 7, 536870912, 0, 8, 536870912, 0, 9, 536870912, 0, 10, 536870912, 0, 11, 536870912, 0, 12, 536870912, 0, 13, 536870912, 0, 29, 536870916, 0, 30, 536870916, 0, 31, 536870916, 0, 32, 536870916, 0, 33, 536870916, 0, 34, 536870916, 0, 35, 536870916, 0, 36, 536870916, 0, 37, 536870916, 0, 38, 536870916, 0, 39, 536870916, 0, 40, 536870916, 0, 41, 536870916, 0, 42, 536870916, 0, 43, 536870916, 0, 44, 536870916, 0 )
 
 [node name="WoodBoxScenary" type="TileMap" parent="."]
 position = Vector2( 2.784, 0 )
@@ -58,7 +75,7 @@ tile_set = ExtResource( 4 )
 cell_size = Vector2( 12, 12 )
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( 14, 536870912, 0, 15, 536870912, 0, 16, 536870912, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 536870912, 0 )
+tile_data = PoolIntArray( 14, 536870912, 0, 15, 536870912, 0, 16, 536870912, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0 )
 
 [node name="TestTiles" type="TileMap" parent="."]
 tile_set = ExtResource( 5 )
@@ -67,3 +84,4 @@ format = 1
 
 [connection signal="body_entered" from="WoodArea" to="Player" method="_on_WoodArea_body_entered"]
 [connection signal="body_entered" from="GrassArea" to="Player" method="_on_GrassArea_body_entered"]
+[connection signal="body_entered" from="MetalArea" to="Player" method="_on_MetalArea_body_entered"]
