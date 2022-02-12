@@ -7,6 +7,7 @@ export var jumpForce = 100
 export var gravity = 5
 #flags
 var facingLeft
+var wallJumpLock
 
 var bundle
 var inputs
@@ -35,7 +36,8 @@ func updateBundle():
 		"isOnFloor" : is_on_floor(),
 		"isOnWall" : is_on_wall(),
 		"isOnCeiling" : is_on_ceiling(),
-		"facingLeft" : facingLeft
+		"facingLeft" : facingLeft,
+		"wallJumpLock" : wallJumpLock
 	}
 	bundle = {
 		"inputs" : inputs,
@@ -49,9 +51,13 @@ func updateMotion(m):
 func updateFacingLeft(f):
 	facingLeft = f
 
+func updateWallJumpLock(w):
+	wallJumpLock = w
+
 func connectToSignals():
 	$Movement.connect("motion", self, "updateMotion")
 	$Movement.connect("facingLeft", self, "updateFacingLeft")
+	$Movement.connect("wallJumpLock", self, "updateWallJumpLock")
 
 func _on_GrassArea_body_entered(body):
 	$Audio.changeTerrain("grass")
