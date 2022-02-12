@@ -96,6 +96,7 @@ func handleRunAudio(sprite):
 				runAudioLock2Unlocked = true
 	else:
 		runAudioUnlocked = false
+		runAudioLock2Unlocked = true
 		
 func handleCollisionAudio():
 	handleFloorCollisionAudio()
