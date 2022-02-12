@@ -52,3 +52,9 @@ func updateFacingLeft(f):
 func connectToSignals():
 	$Movement.connect("motion", self, "updateMotion")
 	$Movement.connect("facingLeft", self, "updateFacingLeft")
+
+func _on_GrassArea_body_entered(body):
+	$Audio.changeTerrain("grass")
+
+func _on_WoodArea_body_entered(body):
+	$Audio.changeTerrain("wood")

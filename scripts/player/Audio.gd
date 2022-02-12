@@ -9,6 +9,8 @@ var isOnFloor
 var isOnWall
 var isOnCeiling
 
+var terrain = "wood"
+
 var woodAudioPath0 = "res://audio/player/wood/0.ogg"
 var woodAudioPath1 = "res://audio/player/wood/1.ogg"
 var woodAudioPath2 = "res://audio/player/wood/2.ogg"
@@ -18,6 +20,16 @@ var woodAudioPath5 = "res://audio/player/wood/5.ogg"
 var woodAudioPath6 = "res://audio/player/wood/6.ogg"
 var woodAudioPath7 = "res://audio/player/wood/7.ogg"
 var woodAudioPath8 = "res://audio/player/wood/8.ogg"
+
+var grassAudioPath0 = "res://audio/player/grass/0.ogg"
+var grassAudioPath1 = "res://audio/player/grass/1.ogg"
+var grassAudioPath2 = "res://audio/player/grass/2.ogg"
+var grassAudioPath3 = "res://audio/player/grass/3.ogg"
+var grassAudioPath4 = "res://audio/player/grass/4.ogg"
+var grassAudioPath5 = "res://audio/player/grass/5.ogg"
+var grassAudioPath6 = "res://audio/player/grass/6.ogg"
+var grassAudioPath7 = "res://audio/player/grass/7.ogg"
+var grassAudioPath8 = "res://audio/player/grass/8.ogg"
 
 func emitAudio(sprite, flags):
 	unpackBundle(flags)
@@ -34,7 +46,8 @@ func handleFloorCollisionAudio():
 		landingAudioUnlocked = true
 	elif isOnFloor:
 		if landingAudioUnlocked:
-			playWoodAudio()
+			landingAudioUnlocked = false
+			playTerrainAudio()
 			
 func handleWallCollisionAudio():
 	if not isOnWall:
@@ -42,7 +55,7 @@ func handleWallCollisionAudio():
 	elif isOnWall:
 		if wallTouchAudioUnlocked:
 			wallTouchAudioUnlocked = false
-			playWoodAudio()
+			playTerrainAudio()
 			
 func handleCeilingCollisionAudio():
 	if not isOnCeiling:
@@ -50,7 +63,7 @@ func handleCeilingCollisionAudio():
 	elif isOnCeiling:
 		if ceilingTouchAudioUnlocked:
 			ceilingTouchAudioUnlocked = false
-			playWoodAudio()
+			playTerrainAudio()
 			
 func handleRunAudio(sprite):
 	if sprite.animation == "run":
@@ -58,7 +71,7 @@ func handleRunAudio(sprite):
 		if runAudioUnlocked:
 			if not playing:
 				if frame%2 == 0:
-					playWoodAudio()
+					playTerrainAudio()
 		if frame == 2:
 			runAudioUnlocked = true
 	else:
@@ -69,29 +82,56 @@ func handleCollisionAudio():
 	handleWallCollisionAudio()
 	handleCeilingCollisionAudio()
 	
-func playWoodAudio():
-	landingAudioUnlocked = false
+func playTerrainAudio():
 	var generator = RandomNumberGenerator.new()
 	generator.randomize()
 	var randNum = generator.randf_range(0, 9) as int
-	var audioPath = woodAudioPath0
-	if randNum == 0:
-		audioPath = woodAudioPath0
-	elif randNum == 1:
-		audioPath = woodAudioPath1
-	elif randNum == 2:
-		audioPath= woodAudioPath2
-	elif randNum == 3:
-		audioPath == woodAudioPath3
-	elif randNum == 4:
-		audioPath = woodAudioPath4
-	elif randNum == 5:
-		audioPath = woodAudioPath5
-	elif randNum == 6:
-		audioPath = woodAudioPath6
-	elif randNum == 7:
-		audioPath = woodAudioPath7
-	elif randNum == 8:
-		audioPath = woodAudioPath8
-	stream = load(audioPath) 
+	
+	if terrain == "wood":
+		volume_db = 0
+		var audioPath = woodAudioPath0
+		if randNum == 0:
+			audioPath = woodAudioPath0
+		elif randNum == 1:
+			audioPath = woodAudioPath1
+		elif randNum == 2:
+			audioPath= woodAudioPath2
+		elif randNum == 3:
+			audioPath == woodAudioPath3
+		elif randNum == 4:
+			audioPath = woodAudioPath4
+		elif randNum == 5:
+			audioPath = woodAudioPath5
+		elif randNum == 6:
+			audioPath = woodAudioPath6
+		elif randNum == 7:
+			audioPath = woodAudioPath7
+		elif randNum == 8:
+			audioPath = woodAudioPath8
+		stream = load(audioPath) 
+	elif terrain == "grass":
+		volume_db = -10
+		var audioPath = grassAudioPath0
+		if randNum == 0:
+			audioPath = grassAudioPath0
+		elif randNum == 1:
+			audioPath = grassAudioPath1
+		elif randNum == 2:
+			audioPath= grassAudioPath2
+		elif randNum == 3:
+			audioPath == grassAudioPath3
+		elif randNum == 4:
+			audioPath = grassAudioPath4
+		elif randNum == 5:
+			audioPath = grassAudioPath5
+		elif randNum == 6:
+			audioPath = grassAudioPath6
+		elif randNum == 7:
+			audioPath = grassAudioPath7
+		elif randNum == 8:
+			audioPath = grassAudioPath8
+		stream = load(audioPath) 
 	play()
+
+func changeTerrain(t):
+	terrain = t

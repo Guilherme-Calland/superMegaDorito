@@ -21,9 +21,19 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 2 ) ],
 "loop": true,
-"name": "grab",
+"name": "run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "touchIdle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "touch",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ) ],
@@ -31,19 +41,9 @@ animations = [ {
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 12 ) ],
 "loop": true,
-"name": "run",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "touch",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "touchIdle",
+"name": "grab",
 "speed": 5.0
 } ]
 
@@ -51,7 +51,7 @@ animations = [ {
 
 [node name="Player" type="KinematicBody2D"]
 z_index = 1
-collision/safe_margin = 0.01
+collision/safe_margin = 0.1
 script = ExtResource( 3 )
 speed = 50
 
