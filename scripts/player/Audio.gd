@@ -83,18 +83,17 @@ func handleCeilingCollisionAudio():
 func handleRunAudio(sprite):
 	if sprite.animation == "run":
 		var frame = sprite.get_frame()
-		#so that the first frame or running no audio is played
-		if runAudioUnlocked:
-			if not playing:
-				if frame%2 == 0:
-					#so that the audio only plays once
-					if runAudioLock2Unlocked:
-						runAudioLock2Unlocked = false
-						playTerrainAudio()
-				else:
-					runAudioLock2Unlocked = true
 		if frame == 2:
 			runAudioUnlocked = true
+		#so that the first frame or running no audio is played
+		if runAudioUnlocked:
+			if frame%2 == 0:
+				#so that the audio only plays once
+				if runAudioLock2Unlocked:
+					runAudioLock2Unlocked = false
+					playTerrainAudio()
+			else:
+				runAudioLock2Unlocked = true
 	else:
 		runAudioUnlocked = false
 		
