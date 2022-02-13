@@ -61,6 +61,10 @@ var tamborineAudioPaths = {
 	1 : "res://audio/player/tamborine/tamborine2.ogg"
 }
 
+var instrumentAudioPaths = {
+	"pianoC" : "res://audio/player/keys/piano/c_long.ogg"
+}
+
 func emitAudio(sprite, flags):
 	unpackBundle(flags)
 	handleRunAudio(sprite)
@@ -142,6 +146,9 @@ func playTerrainAudio():
 		volume_db = 0
 		randNum = generator.randf_range(0,2) as int
 		stream = load(tamborineAudioPaths[randNum])
+	else:
+		volume_db = 0
+		stream = load(instrumentAudioPaths[terrain])
 	play()
 
 func changeTerrain(t):

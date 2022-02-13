@@ -73,3 +73,6 @@ func _on_BongoArea_body_entered(body):
 
 func _on_TamborineArea_body_entered(body):
 	$Audio.changeTerrain("tamborine")
+
+func _on_PianoC_body_entered(body):
+	$Audio.changeTerrain("pianoC")
