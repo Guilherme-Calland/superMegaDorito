@@ -97,3 +97,22 @@ func _on_PianoB_body_entered(body):
 
 func _on_PianoC8_body_entered(body):
 	$Audio.changeTerrain("pianoC8")
+
+func _on_PianoCsh_body_entered(body):
+	$Audio.changeTerrain("pianoCsh")
+	
+func _on_PianoDsh_body_entered(body):
+	$Audio.changeTerrain("pianoDsh")
+		
+func _on_PianoFsh_body_entered(body):
+	$Audio.changeTerrain("pianoFsh")
+		
+func _on_PianoGsh_body_entered(body):
+	$Audio.changeTerrain("pianoGsh")
+		
+func _on_PianoAsh_body_entered(body):
+	$Audio.changeTerrain("pianoAsh")
+		
+func _on_PianoC8sh_body_entered(body):
+	$Audio.changeTerrain("pianoC8sh")
+

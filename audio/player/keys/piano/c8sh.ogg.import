@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/c8sh.ogg-f4fb280fd555f7299d9c38d70e5457eb.oggstr"
+
+[deps]
+
+source_file="res://audio/player/keys/piano/c8sh.ogg"
+dest_files=[ "res://.import/c8sh.ogg-f4fb280fd555f7299d9c38d70e5457eb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

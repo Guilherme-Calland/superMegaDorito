@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://tileSet/BoxTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 6.25, 13 )
+
+[sub_resource type="RectangleShape2D" id=27]
+extents = Vector2( 1, 9 )
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 192, 18.5 )
@@ -80,11 +83,25 @@ collision/safe_margin = 0.001
 position = Vector2( -161, 174 )
 shape = SubResource( 26 )
 
+[node name="PianoCsh" type="Area2D" parent="Terrain/PianoArea"]
+position = Vector2( -166, 168 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/PianoArea/PianoCsh"]
+position = Vector2( -6, 9 )
+shape = SubResource( 27 )
+
 [node name="PianoD" type="Area2D" parent="Terrain/PianoArea"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/PianoArea/PianoD"]
 position = Vector2( -182, 174 )
 shape = SubResource( 26 )
+
+[node name="PianoDsh" type="Area2D" parent="Terrain/PianoArea"]
+position = Vector2( -186, 169 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/PianoArea/PianoDsh"]
+position = Vector2( -6, 9 )
+shape = SubResource( 27 )
 
 [node name="PianoE" type="Area2D" parent="Terrain/PianoArea"]
 position = Vector2( -25, 0 )
@@ -100,6 +117,13 @@ position = Vector2( -47, 0 )
 position = Vector2( -175, 174 )
 shape = SubResource( 26 )
 
+[node name="PianoFsh" type="Area2D" parent="Terrain/PianoArea"]
+position = Vector2( -226, 169 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/PianoArea/PianoFsh"]
+position = Vector2( -6, 9 )
+shape = SubResource( 27 )
+
 [node name="PianoG" type="Area2D" parent="Terrain/PianoArea"]
 position = Vector2( -72, 0 )
 
@@ -107,12 +131,26 @@ position = Vector2( -72, 0 )
 position = Vector2( -170, 174 )
 shape = SubResource( 26 )
 
+[node name="PianoGsh" type="Area2D" parent="Terrain/PianoArea"]
+position = Vector2( -246, 169 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/PianoArea/PianoGsh"]
+position = Vector2( -6, 9 )
+shape = SubResource( 27 )
+
 [node name="PianoA" type="Area2D" parent="Terrain/PianoArea"]
 position = Vector2( -96, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/PianoArea/PianoA"]
 position = Vector2( -165.5, 174 )
 shape = SubResource( 26 )
+
+[node name="PianoAsh" type="Area2D" parent="Terrain/PianoArea"]
+position = Vector2( -266, 169 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/PianoArea/PianoAsh"]
+position = Vector2( -6, 9 )
+shape = SubResource( 27 )
 
 [node name="PianoB" type="Area2D" parent="Terrain/PianoArea"]
 position = Vector2( -121, 0 )
@@ -127,6 +165,13 @@ position = Vector2( -143, 0 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/PianoArea/PianoC8"]
 position = Vector2( -158, 174 )
 shape = SubResource( 26 )
+
+[node name="PianoC8sh" type="Area2D" parent="Terrain/PianoArea"]
+position = Vector2( -305, 168 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/PianoArea/PianoC8sh"]
+position = Vector2( -6, 9 )
+shape = SubResource( 27 )
 
 [node name="WoodArea" type="Area2D" parent="Terrain"]
 position = Vector2( 165, -8 )
@@ -143,8 +188,6 @@ shape = SubResource( 13 )
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Terrain/WoodArea"]
 position = Vector2( 418, 121 )
 shape = SubResource( 16 )
-
-[node name="WoodArea" type="Area2D" parent="Terrain/WoodArea"]
 
 [node name="GrassArea" type="Area2D" parent="Terrain"]
 visible = false
@@ -287,15 +330,20 @@ format = 1
 tile_data = PoolIntArray( 2293745, 536870915, 0, 2293746, 3, 0, 2293747, 536870914, 0, 2293748, 536870914, 0, 2293749, 536870915, 0, 2293750, 3, 0, 2293751, 2, 0, 2293752, 1, 0 )
 
 [connection signal="body_entered" from="Terrain/PianoArea/PianoC" to="Player" method="_on_PianoC_body_entered"]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoCsh" to="Player" method="_on_PianoCsh_body_entered"]
 [connection signal="body_entered" from="Terrain/PianoArea/PianoD" to="Player" method="_on_PianoD_body_entered"]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoDsh" to="Player" method="_on_PianoDsh_body_entered"]
 [connection signal="body_entered" from="Terrain/PianoArea/PianoE" to="Player" method="_on_PianoE_body_entered"]
 [connection signal="body_entered" from="Terrain/PianoArea/PianoF" to="Player" method="_on_PianoF_body_entered"]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoFsh" to="Player" method="_on_PianoFsh_body_entered"]
 [connection signal="body_entered" from="Terrain/PianoArea/PianoG" to="Player" method="_on_PianoG_body_entered"]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoGsh" to="Player" method="_on_PianoGsh_body_entered"]
 [connection signal="body_entered" from="Terrain/PianoArea/PianoA" to="Player" method="_on_PianoA_body_entered"]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoAsh" to="Player" method="_on_PianoAsh_body_entered"]
 [connection signal="body_entered" from="Terrain/PianoArea/PianoB" to="Player" method="_on_PianoB_body_entered"]
 [connection signal="body_entered" from="Terrain/PianoArea/PianoC8" to="Player" method="_on_PianoC8_body_entered"]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoC8sh" to="Player" method="_on_PianoC8sh_body_entered"]
 [connection signal="body_entered" from="Terrain/WoodArea" to="Player" method="_on_WoodArea_body_entered"]
-[connection signal="body_entered" from="Terrain/WoodArea/WoodArea" to="Player" method="_on_WoodArea_body_entered"]
 [connection signal="body_entered" from="Terrain/GrassArea" to="Player" method="_on_GrassArea_body_entered"]
 [connection signal="body_entered" from="Terrain/GrassArea/GrassArea" to="Player" method="_on_GrassArea_body_entered"]
 [connection signal="body_entered" from="Terrain/MetalArea" to="Player" method="_on_MetalArea_body_entered"]
