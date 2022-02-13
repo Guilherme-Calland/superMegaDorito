@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tamborine2.ogg-6d9a755a7cc8a271f1f07c516aaedf3d.oggstr"
+
+[deps]
+
+source_file="res://audio/player/tamborine/tamborine2.ogg"
+dest_files=[ "res://.import/tamborine2.ogg-6d9a755a7cc8a271f1f07c516aaedf3d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

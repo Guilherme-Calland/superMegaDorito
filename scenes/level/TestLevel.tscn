@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://tileSet/BoxTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
@@ -16,6 +16,9 @@ extents = Vector2( 10.5, 43.6875 )
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 67.75, 4.25 )
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 4.5, 30.5 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3, 10 )
@@ -38,102 +41,154 @@ extents = Vector2( 20.5, 13.25 )
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 67.25, 5 )
 
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 70.5, 12 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 5, 30.5 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 44, 11.5 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 18.25, 11.5 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 36, 11 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 10, 40 )
+
 [node name="TestLevel" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 536, 134 )
+position = Vector2( 72, 138 )
 collision_mask = 0
 collision/safe_margin = 0.001
 
-[node name="WoodArea" type="Area2D" parent="."]
-visible = false
+[node name="Terrain" type="Node" parent="."]
+
+[node name="WoodArea" type="Area2D" parent="Terrain"]
 position = Vector2( 165, -8 )
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/WoodArea"]
 position = Vector2( -2, 0 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="WoodArea"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Terrain/WoodArea"]
 position = Vector2( 377, -16 )
 shape = SubResource( 3 )
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="WoodArea"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Terrain/WoodArea"]
 position = Vector2( 418.5, 117.688 )
 shape = SubResource( 6 )
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="WoodArea"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Terrain/WoodArea"]
 position = Vector2( 164.25, 175 )
 shape = SubResource( 12 )
 
-[node name="GrassArea" type="Area2D" parent="."]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Terrain/WoodArea"]
+position = Vector2( -167, 108 )
+shape = SubResource( 20 )
+
+[node name="GrassArea" type="Area2D" parent="Terrain"]
 visible = false
 position = Vector2( 171, -8 )
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GrassArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/GrassArea"]
 position = Vector2( 3, 0 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="GrassArea"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Terrain/GrassArea"]
 position = Vector2( 173, -2 )
 shape = SubResource( 1 )
 
-[node name="MetalArea" type="Area2D" parent="."]
+[node name="MetalArea" type="Area2D" parent="Terrain"]
+visible = false
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MetalArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/MetalArea"]
 position = Vector2( 353, -10 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MetalArea"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Terrain/MetalArea"]
 position = Vector2( 541, 1 )
 shape = SubResource( 4 )
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="MetalArea"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Terrain/MetalArea"]
 position = Vector2( 479.625, 158 )
 shape = SubResource( 8 )
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="MetalArea"]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Terrain/MetalArea"]
 position = Vector2( 653, 160 )
 shape = SubResource( 10 )
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="MetalArea"]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Terrain/MetalArea"]
 position = Vector2( 619.5, 101 )
 shape = SubResource( 9 )
 
-[node name="MetalAreaChild" type="Area2D" parent="MetalArea"]
+[node name="MetalAreaChild" type="Area2D" parent="Terrain/MetalArea"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MetalArea/MetalAreaChild"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/MetalArea/MetalAreaChild"]
 position = Vector2( 584.5, 158.25 )
 shape = SubResource( 11 )
 
-[node name="BongoArea" type="Area2D" parent="."]
-visible = false
+[node name="BongoArea" type="Area2D" parent="Terrain"]
 position = Vector2( 329, 176 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BongoArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/BongoArea"]
 position = Vector2( 0.25, -19 )
 shape = SubResource( 13 )
 
-[node name="BoxTiles" type="TileMap" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Terrain/BongoArea"]
+position = Vector2( -268.5, -22 )
+shape = SubResource( 14 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Terrain/BongoArea"]
+position = Vector2( -339, -76 )
+shape = SubResource( 16 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Terrain/BongoArea"]
+position = Vector2( -421, -22.5 )
+shape = SubResource( 17 )
+
+[node name="BongoAreaChild" type="Area2D" parent="Terrain/BongoArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/BongoArea/BongoAreaChild"]
+position = Vector2( -358, -22.5 )
+shape = SubResource( 18 )
+
+[node name="TamborineArea" type="Area2D" parent="Terrain"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/TamborineArea"]
+position = Vector2( 168, 149 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Terrain/TamborineArea"]
+position = Vector2( -33, 119 )
+shape = SubResource( 19 )
+
+[node name="BoxTiles" type="TileMap" parent="Terrain"]
 z_index = -2
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 12, 12 )
 collision_layer = 0
 format = 1
-tile_data = PoolIntArray( -262143, 536870912, 0, -262142, 536870912, 0, -262141, 536870912, 0, -262140, 536870912, 0, -131085, 536870912, 0, -131084, 536870912, 0, -196607, 536870912, 0, -196606, 536870912, 0, -196605, 536870912, 0, -196604, 536870912, 0, -196565, 536870912, 0, -196564, 536870912, 0, -196563, 536870912, 0, -196562, 536870912, 0, -65549, 536870912, 0, -65548, 536870912, 0, -13, 536870912, 0, -12, 536870912, 0, -7, 536870912, 0, -6, 536870912, 0, 65519, 536870912, 0, 65520, 536870912, 0, 65521, 536870912, 0, 65522, 536870912, 0, 65523, 536870912, 0, 65524, 536870912, 0, 65525, 536870912, 0, 65526, 536870912, 0, 65527, 536870912, 0, 65528, 536870912, 0, 65529, 536870912, 0, 65530, 536870912, 0, 65531, 536870912, 0, 65532, 536870912, 0, 65533, 536870912, 0, 65534, 536870912, 0, 65535, 536870912, 0, 0, 536870912, 0, 1, 536870912, 0, 2, 536870912, 0, 3, 536870912, 0, 4, 536870912, 0, 5, 536870912, 0, 6, 536870912, 0, 7, 536870912, 0, 8, 536870912, 0, 9, 536870912, 0, 10, 536870912, 0, 11, 536870912, 0, 12, 536870912, 0, 13, 536870912, 0, 29, 536870916, 0, 30, 536870916, 0, 31, 536870916, 0, 32, 536870916, 0, 33, 536870916, 0, 34, 536870916, 0, 35, 536870916, 0, 36, 536870916, 0, 37, 536870916, 0, 38, 536870916, 0, 39, 536870916, 0, 40, 536870916, 0, 41, 536870916, 0, 42, 536870916, 0, 43, 536870916, 0, 44, 536870916, 0, 45, 536870916, 0, 46, 536870916, 0, 47, 536870916, 0, 48, 536870916, 0, 49, 536870916, 0, 50, 536870916, 0, 51, 536870916, 0, 393264, 536870912, 0, 393267, 536870916, 0, 458800, 536870912, 0, 458803, 536870916, 0, 524336, 536870912, 0, 524339, 536870916, 0, 589872, 536870912, 0, 589875, 536870916, 0, 655408, 536870912, 0, 655411, 536870916, 0, 720944, 536870912, 0, 786480, 536870912, 0, 851974, 536870920, 0, 851975, 536870920, 0, 851976, 536870920, 0, 851977, 536870920, 0, 851978, 536870920, 0, 851985, 536870920, 0, 851986, 536870920, 0, 851987, 536870920, 0, 851988, 536870920, 0, 851989, 536870920, 0, 851990, 536870920, 0, 851991, 536870920, 0, 851992, 536870920, 0, 851993, 536870920, 0, 851994, 536870920, 0, 851995, 536870920, 0, 851996, 536870920, 0, 851997, 536870920, 0, 851998, 536870920, 0, 851999, 536870920, 0, 852000, 536870920, 0, 852001, 536870916, 0, 852002, 536870916, 0, 852003, 536870916, 0, 852004, 536870916, 0, 852005, 536870916, 0, 852006, 536870916, 0, 852007, 536870916, 0, 852008, 536870916, 0, 852009, 536870916, 0, 852010, 536870916, 0, 852011, 536870916, 0, 852012, 536870916, 0, 852013, 536870916, 0, 852014, 536870916, 0, 852015, 536870916, 0, 852016, 536870916, 0, 852017, 536870916, 0, 852018, 536870916, 0, 852019, 536870916, 0, 852020, 536870916, 0, 852021, 536870916, 0, 852022, 536870916, 0, 852023, 536870916, 0, 852024, 536870916, 0, 852025, 536870916, 0 )
+tile_data = PoolIntArray( -262143, 536870912, 0, -262142, 536870912, 0, -262141, 536870912, 0, -262140, 536870912, 0, -131085, 536870912, 0, -131084, 536870912, 0, -196607, 536870912, 0, -196606, 536870912, 0, -196605, 536870912, 0, -196604, 536870912, 0, -196565, 536870912, 0, -196564, 536870912, 0, -196563, 536870912, 0, -196562, 536870912, 0, -65549, 536870912, 0, -65548, 536870912, 0, -13, 536870912, 0, -12, 536870912, 0, -7, 536870912, 0, -6, 536870912, 0, 65519, 536870912, 0, 65520, 536870912, 0, 65521, 536870912, 0, 65522, 536870912, 0, 65523, 536870912, 0, 65524, 536870912, 0, 65525, 536870912, 0, 65526, 536870912, 0, 65527, 536870912, 0, 65528, 536870912, 0, 65529, 536870912, 0, 65530, 536870912, 0, 65531, 536870912, 0, 65532, 536870912, 0, 65533, 536870912, 0, 65534, 536870912, 0, 65535, 536870912, 0, 0, 536870912, 0, 1, 536870912, 0, 2, 536870912, 0, 3, 536870912, 0, 4, 536870912, 0, 5, 536870912, 0, 6, 536870912, 0, 7, 536870912, 0, 8, 536870912, 0, 9, 536870912, 0, 10, 536870912, 0, 11, 536870912, 0, 12, 536870912, 0, 13, 536870912, 0, 29, 536870916, 0, 30, 536870916, 0, 31, 536870916, 0, 32, 536870916, 0, 33, 536870916, 0, 34, 536870916, 0, 35, 536870916, 0, 36, 536870916, 0, 37, 536870916, 0, 38, 536870916, 0, 39, 536870916, 0, 40, 536870916, 0, 41, 536870916, 0, 42, 536870916, 0, 43, 536870916, 0, 44, 536870916, 0, 45, 536870916, 0, 46, 536870916, 0, 47, 536870916, 0, 48, 536870916, 0, 49, 536870916, 0, 50, 536870916, 0, 51, 536870916, 0, 458751, -2147483639, 0, 393264, 536870912, 0, 393267, 536870916, 0, 524287, -2147483639, 0, 458800, 536870912, 0, 458803, 536870916, 0, 589823, -2147483639, 0, 524336, 536870912, 0, 524339, 536870916, 0, 655359, -2147483639, 0, 589872, 536870912, 0, 589875, 536870916, 0, 720895, -2147483639, 0, 655408, 536870912, 0, 655411, 536870916, 0, 720944, 536870912, 0, 786480, 536870912, 0, 917493, 536870920, 0, 917494, 536870920, 0, 917495, 536870920, 0, 917496, 536870920, 0, 917497, 536870920, 0, 917498, 536870920, 0, 917499, 536870920, 0, 917500, 536870920, 0, 917501, 536870920, 0, 917502, 536870920, 0, 917503, 536870920, 0, 851968, 536870920, 0, 851969, 536870920, 0, 851970, 536870920, 0, 851971, 536870920, 0, 851972, 536870920, 0, 851973, 536870920, 0, 851974, 536870920, 0, 851975, 536870920, 0, 851976, 536870920, 0, 851977, 536870920, 0, 851978, 536870920, 0, 851985, 536870920, 0, 851986, 536870920, 0, 851987, 536870920, 0, 851988, 536870920, 0, 851989, 536870920, 0, 851990, 536870920, 0, 851991, 536870920, 0, 851992, 536870920, 0, 851993, 536870920, 0, 851994, 536870920, 0, 851995, 536870920, 0, 851996, 536870920, 0, 851997, 536870920, 0, 851998, 536870920, 0, 851999, 536870920, 0, 852000, 536870920, 0, 852001, 536870916, 0, 852002, 536870916, 0, 852003, 536870916, 0, 852004, 536870916, 0, 852005, 536870916, 0, 852006, 536870916, 0, 852007, 536870916, 0, 852008, 536870916, 0, 852009, 536870916, 0, 852010, 536870916, 0, 852011, 536870916, 0, 852012, 536870916, 0, 852013, 536870916, 0, 852014, 536870916, 0, 852015, 536870916, 0, 852016, 536870916, 0, 852017, 536870916, 0, 852018, 536870916, 0, 852019, 536870916, 0, 852020, 536870916, 0, 852021, 536870916, 0, 852022, 536870916, 0, 852023, 536870916, 0, 852024, 536870916, 0, 852025, 536870916, 0 )
 
-[node name="BoxScenary" type="TileMap" parent="."]
+[node name="BoxScenary" type="TileMap" parent="Terrain"]
 position = Vector2( 2.784, 0 )
 z_index = -1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 12, 12 )
 format = 1
-tile_data = PoolIntArray( -131071, 536870913, 0, -131070, 536870915, 0, -131069, 536870913, 0, -131068, 536870913, 0, -131029, 536870913, 0, -131028, 536870913, 0, -131027, 536870913, 0, -131026, 536870913, 0, -65535, 536870913, 0, -65534, 536870915, 0, -65533, 536870913, 0, -65532, 536870913, 0, -65493, 536870913, 0, -65492, 536870913, 0, -65491, 536870913, 0, -65490, 536870913, 0, 720947, 536870917, 0, 786483, 536870917, 0 )
+tile_data = PoolIntArray( -131071, 536870913, 0, -131070, 536870915, 0, -131069, 536870913, 0, -131068, 536870913, 0, -131029, 536870913, 0, -131028, 536870913, 0, -131027, 536870913, 0, -131026, 536870913, 0, -65535, 536870913, 0, -65534, 536870915, 0, -65533, 536870913, 0, -65532, 536870913, 0, -65493, 536870913, 0, -65492, 536870913, 0, -65491, 536870913, 0, -65490, 536870913, 0, 786431, 536870913, 0, 720947, 536870917, 0, 851967, 536870913, 0, 786483, 536870917, 0 )
 
-[node name="GrassTiles" type="TileMap" parent="."]
+[node name="GrassTiles" type="TileMap" parent="Terrain"]
 position = Vector2( 0, 3.967 )
 z_index = 7
 tile_set = ExtResource( 4 )
@@ -142,15 +197,17 @@ collision_layer = 2
 format = 1
 tile_data = PoolIntArray( 14, 536870912, 0, 15, 536870912, 0, 16, 536870912, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0 )
 
-[node name="TamborineTiles" type="TileMap" parent="."]
+[node name="TamborineTiles" type="TileMap" parent="Terrain"]
 position = Vector2( -11.991, 0 )
 tile_set = ExtResource( 3 )
-cell_size = Vector2( 24, 5 )
+cell_size = Vector2( 24, 4 )
 format = 1
-tile_data = PoolIntArray( 1900551, 536870912, 0, 1966086, 536870912, 0, 1966088, 536870912, 0 )
+tile_data = PoolIntArray( 1441791, -2147483648, 0, 1835007, -2147483648, 0, 2228223, -2147483648, 0, 2359303, 536870912, 0, 2490374, 536870912, 0, 2490376, 536870912, 0 )
 
-[connection signal="body_entered" from="WoodArea" to="Player" method="_on_WoodArea_body_entered"]
-[connection signal="body_entered" from="GrassArea" to="Player" method="_on_GrassArea_body_entered"]
-[connection signal="body_entered" from="MetalArea" to="Player" method="_on_MetalArea_body_entered"]
-[connection signal="body_entered" from="MetalArea/MetalAreaChild" to="Player" method="_on_MetalArea_body_entered"]
-[connection signal="body_entered" from="BongoArea" to="Player" method="_on_BongoArea_body_entered"]
+[connection signal="body_entered" from="Terrain/WoodArea" to="Player" method="_on_WoodArea_body_entered"]
+[connection signal="body_entered" from="Terrain/GrassArea" to="Player" method="_on_GrassArea_body_entered"]
+[connection signal="body_entered" from="Terrain/MetalArea" to="Player" method="_on_MetalArea_body_entered"]
+[connection signal="body_entered" from="Terrain/MetalArea/MetalAreaChild" to="Player" method="_on_MetalArea_body_entered"]
+[connection signal="body_entered" from="Terrain/BongoArea" to="Player" method="_on_BongoArea_body_entered"]
+[connection signal="body_entered" from="Terrain/BongoArea/BongoAreaChild" to="Player" method="_on_BongoArea_body_entered"]
+[connection signal="body_entered" from="Terrain/TamborineArea" to="Player" method="_on_TamborineArea_body_entered"]

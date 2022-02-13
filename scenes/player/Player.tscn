@@ -58,6 +58,7 @@ speed = 50
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "run"
+frame = 3
 speed_scale = 0.5
 playing = true
 

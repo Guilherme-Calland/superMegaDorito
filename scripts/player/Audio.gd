@@ -56,6 +56,11 @@ var bongoAudioPaths = {
 	6 : "res://audio/player/bongo/bongoG.ogg"
 }
 
+var tamborineAudioPaths = {
+	0 : "res://audio/player/tamborine/tamborine1.ogg",
+	1 : "res://audio/player/tamborine/tamborine2.ogg"
+}
+
 func emitAudio(sprite, flags):
 	unpackBundle(flags)
 	handleRunAudio(sprite)
@@ -132,8 +137,11 @@ func playTerrainAudio():
 	elif terrain == "bongo":
 		volume_db = 0
 		randNum = generator.randf_range(0,7) as int
-		print(randNum)
 		stream = load(bongoAudioPaths[randNum])
+	elif terrain == "tamborine":
+		volume_db = 0
+		randNum = generator.randf_range(0,2) as int
+		stream = load(tamborineAudioPaths[randNum])
 	play()
 
 func changeTerrain(t):
