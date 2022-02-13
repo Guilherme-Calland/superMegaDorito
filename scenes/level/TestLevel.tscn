@@ -52,10 +52,10 @@ extents = Vector2( 85, 10 )
 extents = Vector2( 120, 13.5 )
 
 [sub_resource type="RectangleShape2D" id=21]
-extents = Vector2( 4, 12.5 )
+extents = Vector2( 5, 12.5 )
 
 [sub_resource type="RectangleShape2D" id=22]
-extents = Vector2( 4, 14 )
+extents = Vector2( 6.5, 14 )
 
 [sub_resource type="RectangleShape2D" id=25]
 extents = Vector2( 8, 34 )
@@ -64,12 +64,12 @@ extents = Vector2( 8, 34 )
 extents = Vector2( 28.5, 13.5 )
 
 [sub_resource type="RectangleShape2D" id=24]
-extents = Vector2( 3.375, 12.5 )
+extents = Vector2( 4.1875, 12.5 )
 
 [node name="TestLevel" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -104, 116 )
+position = Vector2( -115, -31 )
 collision_mask = 0
 collision/safe_margin = 0.001
 
@@ -209,7 +209,6 @@ position = Vector2( 173, 18 )
 shape = SubResource( 15 )
 
 [node name="MetalArea" type="Area2D" parent="Terrain"]
-visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/MetalArea"]
@@ -236,7 +235,7 @@ position = Vector2( 584, 158 )
 shape = SubResource( 11 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Terrain/MetalArea/MetalAreaChild"]
-position = Vector2( 400, 157.5 )
+position = Vector2( 400, 157 )
 shape = SubResource( 17 )
 
 [node name="BongoArea" type="Area2D" parent="Terrain"]
@@ -253,7 +252,7 @@ shape = SubResource( 19 )
 [node name="BongoAreaChild" type="Area2D" parent="Terrain/BongoArea"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/BongoArea/BongoAreaChild"]
-position = Vector2( 61, -18.5 )
+position = Vector2( 62, -18.5 )
 shape = SubResource( 21 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Terrain/BongoArea/BongoAreaChild"]
@@ -265,7 +264,7 @@ position = Vector2( -203, -17 )
 shape = SubResource( 21 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Terrain/BongoArea/BongoAreaChild"]
-position = Vector2( -455, -18 )
+position = Vector2( -457.5, -18 )
 shape = SubResource( 22 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Terrain/BongoArea"]
@@ -273,7 +272,6 @@ position = Vector2( -336, -75 )
 shape = SubResource( 25 )
 
 [node name="TamborineArea" type="Area2D" parent="Terrain"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/TamborineArea"]
 position = Vector2( 167.5, 149.5 )
@@ -282,7 +280,7 @@ shape = SubResource( 23 )
 [node name="TamborineArea" type="Area2D" parent="Terrain/TamborineArea"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/TamborineArea/TamborineArea"]
-position = Vector2( 201.625, 155 )
+position = Vector2( 200.813, 155 )
 shape = SubResource( 24 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Terrain/TamborineArea/TamborineArea"]
@@ -329,26 +327,26 @@ cell_size = Vector2( 20, 5 )
 format = 1
 tile_data = PoolIntArray( 2293745, 536870915, 0, 2293746, 3, 0, 2293747, 536870914, 0, 2293748, 536870914, 0, 2293749, 536870915, 0, 2293750, 3, 0, 2293751, 2, 0, 2293752, 1, 0 )
 
-[connection signal="body_entered" from="Terrain/PianoArea/PianoC" to="Player" method="_on_PianoC_body_entered"]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoCsh" to="Player" method="_on_PianoCsh_body_entered"]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoD" to="Player" method="_on_PianoD_body_entered"]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoDsh" to="Player" method="_on_PianoDsh_body_entered"]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoE" to="Player" method="_on_PianoE_body_entered"]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoF" to="Player" method="_on_PianoF_body_entered"]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoFsh" to="Player" method="_on_PianoFsh_body_entered"]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoG" to="Player" method="_on_PianoG_body_entered"]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoGsh" to="Player" method="_on_PianoGsh_body_entered"]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoA" to="Player" method="_on_PianoA_body_entered"]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoAsh" to="Player" method="_on_PianoAsh_body_entered"]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoB" to="Player" method="_on_PianoB_body_entered"]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoC8" to="Player" method="_on_PianoC8_body_entered"]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoC8sh" to="Player" method="_on_PianoC8sh_body_entered"]
-[connection signal="body_entered" from="Terrain/WoodArea" to="Player" method="_on_WoodArea_body_entered"]
-[connection signal="body_entered" from="Terrain/GrassArea" to="Player" method="_on_GrassArea_body_entered"]
-[connection signal="body_entered" from="Terrain/GrassArea/GrassArea" to="Player" method="_on_GrassArea_body_entered"]
-[connection signal="body_entered" from="Terrain/MetalArea" to="Player" method="_on_MetalArea_body_entered"]
-[connection signal="body_entered" from="Terrain/MetalArea/MetalAreaChild" to="Player" method="_on_MetalArea_body_entered"]
-[connection signal="body_entered" from="Terrain/BongoArea" to="Player" method="_on_BongoArea_body_entered"]
-[connection signal="body_entered" from="Terrain/BongoArea/BongoAreaChild" to="Player" method="_on_BongoArea_body_entered"]
-[connection signal="body_entered" from="Terrain/TamborineArea" to="Player" method="_on_TamborineArea_body_entered"]
-[connection signal="body_entered" from="Terrain/TamborineArea/TamborineArea" to="Player" method="_on_TamborineArea_body_entered"]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoC" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoC" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoCsh" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoCsh" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoD" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoD" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoDsh" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoDsh" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoE" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoE" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoF" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoF" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoFsh" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoFsh" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoG" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoG" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoGsh" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoGsh" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoA" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoA" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoAsh" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoAsh" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoB" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoB" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoC8" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoC8" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoC8sh" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoC8sh" ]]
+[connection signal="body_entered" from="Terrain/WoodArea" to="Player" method="_on_Terrain_body_entered" binds= [ "wood" ]]
+[connection signal="body_entered" from="Terrain/GrassArea" to="Player" method="_on_Terrain_body_entered" binds= [ "grass" ]]
+[connection signal="body_entered" from="Terrain/GrassArea/GrassArea" to="Player" method="_on_Terrain_body_entered" binds= [ "grass" ]]
+[connection signal="body_entered" from="Terrain/MetalArea" to="Player" method="_on_Terrain_body_entered" binds= [ "metal" ]]
+[connection signal="body_entered" from="Terrain/MetalArea/MetalAreaChild" to="Player" method="_on_Terrain_body_entered" binds= [ "metal" ]]
+[connection signal="body_entered" from="Terrain/BongoArea" to="Player" method="_on_Terrain_body_entered" binds= [ "bongo" ]]
+[connection signal="body_entered" from="Terrain/BongoArea/BongoAreaChild" to="Player" method="_on_Terrain_body_entered" binds= [ "bongo" ]]
+[connection signal="body_entered" from="Terrain/TamborineArea" to="Player" method="_on_Terrain_body_entered" binds= [ "tamborine" ]]
+[connection signal="body_entered" from="Terrain/TamborineArea/TamborineArea" to="Player" method="_on_Terrain_body_entered" binds= [ "tamborine" ]]
