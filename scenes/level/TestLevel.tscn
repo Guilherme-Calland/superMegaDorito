@@ -68,13 +68,14 @@ extents = Vector2( 3.375, 12.5 )
 [node name="TestLevel" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -105, -31 )
+position = Vector2( -105, -39 )
 collision_mask = 0
 collision/safe_margin = 0.001
 
 [node name="Terrain" type="Node" parent="."]
 
 [node name="WoodArea" type="Area2D" parent="Terrain"]
+visible = false
 position = Vector2( 165, -8 )
 collision_layer = 2
 

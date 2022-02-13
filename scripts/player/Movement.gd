@@ -24,26 +24,9 @@ signal wallJumpLock
 
 func move(bundle):
 	unpackBundle(bundle)
-	
-	if isOnWall:
-		if jumpPressed:
-			wallJumpLock = true
-			emit_signal("wallJumpLock", true)
-			motion.y = -jumpForce
-			if facingLeft:
-				emit_signal("facingLeft", false)
-				facingLeft = false
-				motion.x = speed
-			else:
-				facingLeft = true
-				emit_signal("facingLeft", true)
-				motion.x = -speed
-		elif grabPressed:
-			motion.y = 0
-			emit_signal("motion", motion)
-			return
-		emit_signal("motion", motion)
-		
+	var grabbing = handleWallPhysics()
+	if grabbing:
+		return
 	handleHorizontalPhysics()
 	handleVerticalPhysics()
 	emit_signal("motion", motion)
@@ -96,18 +79,24 @@ func handleVerticalPhysics():
 		emit_signal("wallJumpLock", false)
 
 func handleWallPhysics():
-	motion.y = 0
-	if jumpPressed:
-		emit_signal("wallJumpLock", true)
-		motion.y = -jumpForce
-		if facingLeft:
-			motion.x = speed
-			emit_signal("facingLeft", false)
-		else:
-			motion.x = -speed
-			emit_signal("facingLeft", true)
-	emit_signal("motion", motion)
-	return
-
+	if isOnWall:
+		if jumpPressed:
+			wallJumpLock = true
+			emit_signal("wallJumpLock", true)
+			motion.y = -jumpForce
+			if facingLeft:
+				emit_signal("facingLeft", false)
+				facingLeft = false
+				motion.x = speed
+			else:
+				facingLeft = true
+				emit_signal("facingLeft", true)
+				motion.x = -speed
+			return false
+		elif grabPressed:
+			motion.y = 0
+			emit_signal("motion", motion)
+			return true
+		
 func grabbingWall():
 	return isOnWall and grabPressed
