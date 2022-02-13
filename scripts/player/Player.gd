@@ -67,3 +67,6 @@ func _on_WoodArea_body_entered(body):
 
 func _on_MetalArea_body_entered(body):
 	$Audio.changeTerrain("metal")
+
+func _on_BongoArea_body_entered(body):
+	$Audio.changeTerrain("bongo")

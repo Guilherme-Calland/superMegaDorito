@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bongoA.ogg-b291cb7ee0f698cc7c6b49123d38be73.oggstr"
+
+[deps]
+
+source_file="res://audio/player/bongo/bongoA.ogg"
+dest_files=[ "res://.import/bongoA.ogg-b291cb7ee0f698cc7c6b49123d38be73.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

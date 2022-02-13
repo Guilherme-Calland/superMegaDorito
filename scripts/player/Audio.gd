@@ -46,6 +46,16 @@ var metalAudioPaths = {
 	7 : "res://audio/player/metal/7.ogg"
 }
 
+var bongoAudioPaths = {
+	0 : "res://audio/player/bongo/bongoA.ogg",
+	1 : "res://audio/player/bongo/bongoB.ogg",
+	2 : "res://audio/player/bongo/bongoC.ogg",
+	3 : "res://audio/player/bongo/bongoD.ogg",
+	4 : "res://audio/player/bongo/bongoE.ogg",
+	5 : "res://audio/player/bongo/bongoF.ogg",
+	6 : "res://audio/player/bongo/bongoG.ogg"
+}
+
 func emitAudio(sprite, flags):
 	unpackBundle(flags)
 	handleRunAudio(sprite)
@@ -119,6 +129,11 @@ func playTerrainAudio():
 		randNum = generator.randf_range(0, 8) as int
 		volume_db = 0
 		stream = load(metalAudioPaths[randNum])
+	elif terrain == "bongo":
+		volume_db = 0
+		randNum = generator.randf_range(0,7) as int
+		print(randNum)
+		stream = load(bongoAudioPaths[randNum])
 	play()
 
 func changeTerrain(t):
