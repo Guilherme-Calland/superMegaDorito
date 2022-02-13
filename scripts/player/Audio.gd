@@ -62,7 +62,14 @@ var tamborineAudioPaths = {
 }
 
 var instrumentAudioPaths = {
-	"pianoC" : "res://audio/player/keys/piano/c_long.ogg"
+	"pianoC" : "res://audio/player/keys/piano/c.ogg",
+	"pianoD" : "res://audio/player/keys/piano/d.ogg",
+	"pianoE" : "res://audio/player/keys/piano/e.ogg",
+	"pianoF" : "res://audio/player/keys/piano/f.ogg",
+	"pianoG" : "res://audio/player/keys/piano/g.ogg",
+	"pianoA" : "res://audio/player/keys/piano/a.ogg",
+	"pianoB" : "res://audio/player/keys/piano/b.ogg",
+	"pianoC8" : "res://audio/player/keys/piano/c8.ogg"
 }
 
 func emitAudio(sprite, flags):

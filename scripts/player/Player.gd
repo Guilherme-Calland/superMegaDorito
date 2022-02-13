@@ -76,3 +76,24 @@ func _on_TamborineArea_body_entered(body):
 
 func _on_PianoC_body_entered(body):
 	$Audio.changeTerrain("pianoC")
+
+func _on_PianoD_body_entered(body):
+	$Audio.changeTerrain("pianoD")
+
+func _on_PianoE_body_entered(body):
+	$Audio.changeTerrain("pianoE")
+
+func _on_PianoF_body_entered(body):
+	$Audio.changeTerrain("pianoF")
+
+func _on_PianoG_body_entered(body):
+	$Audio.changeTerrain("pianoG")
+
+func _on_PianoA_body_entered(body):
+	$Audio.changeTerrain("pianoA")
+
+func _on_PianoB_body_entered(body):
+	$Audio.changeTerrain("pianoB")
+
+func _on_PianoC8_body_entered(body):
+	$Audio.changeTerrain("pianoC8")
