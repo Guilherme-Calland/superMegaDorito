@@ -20,7 +20,6 @@ extents = Vector2( 11, 3 )
 extents = Vector2( 6, 6 )
 
 [sub_resource type="StreamTexture" id=5]
-load_path = "res://.import/drum_1.png-e2adfd538a0852b8f3b45c17273a05bb.stex"
 
 [resource]
 0/name = "Wood1"
