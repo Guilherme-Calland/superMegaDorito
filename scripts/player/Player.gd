@@ -11,6 +11,7 @@ var facingLeft
 var wallJumpLock
 var dashing
 var dashReady
+var dashFloorStop
 
 var bundle
 var inputs
@@ -26,7 +27,7 @@ func _process(delta):
 	$Animation.animate($AnimatedSprite, bundle)
 	$Audio.emitAudio($AnimatedSprite, flags)
 	move_and_slide(motion, Vector2(0,-1))
-
+	
 func updateBundle():
 	inputs = $Inputs.retrieveInput()
 	physics = {
@@ -43,7 +44,8 @@ func updateBundle():
 		"facingLeft" : facingLeft,
 		"wallJumpLock" : wallJumpLock,
 		"dashing" : dashing,
-		"dashReady" : dashReady
+		"dashReady" : dashReady,
+		"dashFloorStop" : dashFloorStop
 	}
 	bundle = {
 		"inputs" : inputs,
@@ -66,12 +68,16 @@ func updateDashLock(d):
 func updateDashReady(d):
 	dashReady = d
 
+func updateDashFloorStop(d):
+	dashFloorStop = d
+
 func connectToSignals():
 	$Movement.connect("motion", self, "updateMotion")
 	$Movement.connect("facingLeft", self, "updateFacingLeft")
 	$Movement.connect("wallJumpLock", self, "updateWallJumpLock")
 	$Movement.connect("dashing", self, "updateDashLock")
 	$Movement.connect("dashReady", self, "updateDashReady")
+	$Movement.connect("dashFloorStop", self, "updateDashFloorStop")
 
 func _on_Terrain_body_entered(body, terrain, key):
 	$Audio.changeTerrain(terrain, key)

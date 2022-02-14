@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://tileSet/BoxTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
@@ -19,7 +19,7 @@ extents = Vector2( 6.625, 13 )
 extents = Vector2( 1.5, 27.5 )
 
 [sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 192, 18.5 )
+extents = Vector2( 183, 18.5 )
 
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 27, 9.5 )
@@ -27,14 +27,17 @@ extents = Vector2( 27, 9.5 )
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 9, 48 )
 
+[sub_resource type="RectangleShape2D" id=30]
+extents = Vector2( 8, 18.5 )
+
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 77.5, 10.25 )
 
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 6, 10 )
+extents = Vector2( 5.5, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 141.5, 10 )
+extents = Vector2( 134.5, 10 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 78.625, 13 )
@@ -50,6 +53,9 @@ extents = Vector2( 20.5, 13.25 )
 
 [sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 4, 12.5 )
+
+[sub_resource type="RectangleShape2D" id=31]
+extents = Vector2( 7, 10 )
 
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 85, 10 )
@@ -284,7 +290,7 @@ position = Vector2( 165, -8 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/WoodArea"]
-position = Vector2( -184, 8.5 )
+position = Vector2( -193, 8.5 )
 shape = SubResource( 12 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Terrain/WoodArea"]
@@ -294,6 +300,12 @@ shape = SubResource( 13 )
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Terrain/WoodArea"]
 position = Vector2( 418, 121 )
 shape = SubResource( 16 )
+
+[node name="WoodArea" type="Area2D" parent="Terrain/WoodArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/WoodArea/WoodArea"]
+position = Vector2( 0, 8.5 )
+shape = SubResource( 30 )
 
 [node name="GrassArea" type="Area2D" parent="Terrain"]
 visible = false
@@ -305,9 +317,10 @@ position = Vector2( 87.5, 18.25 )
 shape = SubResource( 14 )
 
 [node name="GrassArea" type="Area2D" parent="Terrain/GrassArea"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/GrassArea/GrassArea"]
-position = Vector2( 2, 18 )
+position = Vector2( 2.5, 18 )
 shape = SubResource( 15 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Terrain/GrassArea/GrassArea"]
@@ -319,7 +332,7 @@ visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/MetalArea"]
-position = Vector2( 486.5, 4 )
+position = Vector2( 493.5, 4 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Terrain/MetalArea"]
@@ -344,6 +357,10 @@ shape = SubResource( 11 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Terrain/MetalArea/MetalAreaChild"]
 position = Vector2( 400, 157 )
 shape = SubResource( 17 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Terrain/MetalArea/MetalAreaChild"]
+position = Vector2( 350, 3 )
+shape = SubResource( 31 )
 
 [node name="BongoArea" type="Area2D" parent="Terrain"]
 visible = false
@@ -465,6 +482,7 @@ tile_data = PoolIntArray( 2293736, 536870915, 0, 2293737, 3, 0, 2293738, 5368709
 [connection signal="body_entered" from="Terrain/KeyboardArea/KeyboardC8" to="Player" method="_on_Terrain_body_entered" binds= [ "keyboard", "c8" ]]
 [connection signal="body_entered" from="Terrain/KeyboardArea/KeyboardC8Sh" to="Player" method="_on_Terrain_body_entered" binds= [ "keyboard", "c8Sh" ]]
 [connection signal="body_entered" from="Terrain/WoodArea" to="Player" method="_on_Terrain_body_entered" binds= [ "wood", "" ]]
+[connection signal="body_entered" from="Terrain/WoodArea/WoodArea" to="Player" method="_on_Terrain_body_entered" binds= [ "wood", "" ]]
 [connection signal="body_entered" from="Terrain/GrassArea" to="Player" method="_on_Terrain_body_entered" binds= [ "grass", "" ]]
 [connection signal="body_entered" from="Terrain/GrassArea/GrassArea" to="Player" method="_on_Terrain_body_entered" binds= [ "grass", "" ]]
 [connection signal="body_entered" from="Terrain/MetalArea" to="Player" method="_on_Terrain_body_entered" binds= [ "metal", "" ]]

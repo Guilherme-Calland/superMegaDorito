@@ -9,6 +9,7 @@ var ceilingTouchAudioUnlocked = false
 var isOnFloor
 var isOnWall
 var isOnCeiling
+var dashFloorStop
 
 var terrain = "wood"
 var key = "middle"
@@ -101,11 +102,14 @@ func emitAudio(sprite, flags):
 	unpackBundle(flags)
 	handleRunAudio(sprite)
 	handleCollisionAudio()
+	if dashFloorStop:
+		playTerrainAudio()
 
 func unpackBundle(flags):
 	isOnFloor = flags["isOnFloor"]
 	isOnWall = flags["isOnWall"]
 	isOnCeiling = flags["isOnCeiling"]
+	dashFloorStop = flags["dashFloorStop"]
 
 func handleFloorCollisionAudio():
 	if not isOnFloor:

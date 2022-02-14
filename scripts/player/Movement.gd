@@ -26,8 +26,10 @@ signal motion
 signal wallJumpLock
 signal dashing
 signal dashReady
+signal dashFloorStop
 
 func move(bundle):
+	emit_signal("dashFloorStop", false)
 	unpackBundle(bundle)
 	var grabbing = handleWallPhysics()
 	if grabbing:
@@ -87,6 +89,8 @@ func handleHorizontalPhysics():
 			if motion.x <= 0:
 				dashing = false
 				emit_signal("dashing", false)
+		if not dashing and isOnFloor:
+			emit_signal("dashFloorStop", true)
 		emit_signal("motion", motion)
 		return true
 	
