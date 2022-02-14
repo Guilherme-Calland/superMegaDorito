@@ -7,7 +7,8 @@ func retrieveInput():
 		"right" : false,
 		"left" : false,
 		"jump" : false,
-		"grab" : false
+		"grab" : false,
+		"dash" : false
 	}
 	
 	if Input.is_action_pressed("right") and not Input.is_action_pressed("left"):
@@ -20,6 +21,8 @@ func retrieveInput():
 	
 	if Input.is_action_pressed("grab"):
 		inputs["grab"] = true
-		emit_signal("test")
+	
+	if Input.is_action_just_pressed("dash"):
+		inputs["dash"] = true
 	
 	return inputs

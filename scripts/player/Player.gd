@@ -5,9 +5,11 @@ var motion = Vector2(0,0)
 export var speed = 10
 export var jumpForce = 100
 export var gravity = 5
+export var dashForce = 100
 #flags
 var facingLeft
 var wallJumpLock
+var dashLock
 
 var bundle
 var inputs
@@ -30,14 +32,16 @@ func updateBundle():
 		"motion" : motion,
 		"speed" : speed,
 		"jumpForce" : jumpForce,
-		"gravity" : gravity
+		"gravity" : gravity,
+		"dashForce" : dashForce
 	}
 	flags = {
 		"isOnFloor" : is_on_floor(),
 		"isOnWall" : is_on_wall(),
 		"isOnCeiling" : is_on_ceiling(),
 		"facingLeft" : facingLeft,
-		"wallJumpLock" : wallJumpLock
+		"wallJumpLock" : wallJumpLock,
+		"dashLock" : dashLock
 	}
 	bundle = {
 		"inputs" : inputs,
@@ -54,10 +58,14 @@ func updateFacingLeft(f):
 func updateWallJumpLock(w):
 	wallJumpLock = w
 
+func updateDashLock(d):
+	dashLock = d
+
 func connectToSignals():
 	$Movement.connect("motion", self, "updateMotion")
 	$Movement.connect("facingLeft", self, "updateFacingLeft")
 	$Movement.connect("wallJumpLock", self, "updateWallJumpLock")
+	$Movement.connect("dashLock", self, "updateDashLock")
 
 func _on_Terrain_body_entered(body, terrain, key):
 	$Audio.changeTerrain(terrain, key)
