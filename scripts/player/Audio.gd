@@ -11,6 +11,8 @@ var isOnWall
 var isOnCeiling
 
 var terrain = "wood"
+var key = "middle"
+
 var woodAudioPaths = {
 	0 : "res://audio/player/wood/0.ogg",
 	1 : "res://audio/player/wood/1.ogg",
@@ -57,25 +59,42 @@ var bongoAudioPaths = {
 }
 
 var tamborineAudioPaths = {
-	0 : "res://audio/player/tamborine/tamborine1.ogg",
-	1 : "res://audio/player/tamborine/tamborine2.ogg"
+	"middle" : "res://audio/player/tamborine/tamborine1.ogg",
+	"side" : "res://audio/player/tamborine/tamborine2.ogg"
 }
 
-var instrumentAudioPaths = {
-	"pianoC" : "res://audio/player/keys/piano/c.ogg",
-	"pianoCsh" : "res://audio/player/keys/piano/csh.ogg",
-	"pianoD" : "res://audio/player/keys/piano/d.ogg",
-	"pianoDsh" : "res://audio/player/keys/piano/dsh.ogg",
-	"pianoE" : "res://audio/player/keys/piano/e.ogg",
-	"pianoF" : "res://audio/player/keys/piano/f.ogg",
-	"pianoFsh" : "res://audio/player/keys/piano/fsh.ogg",
-	"pianoG" : "res://audio/player/keys/piano/g.ogg",
-	"pianoGsh" : "res://audio/player/keys/piano/gsh.ogg",
-	"pianoA" : "res://audio/player/keys/piano/a.ogg",
-	"pianoAsh" : "res://audio/player/keys/piano/ash.ogg",
-	"pianoB" : "res://audio/player/keys/piano/b.ogg",
-	"pianoC8" : "res://audio/player/keys/piano/c8.ogg",
-	"pianoC8sh" : "res://audio/player/keys/piano/c8sh.ogg"
+var pianoAudioPaths = {
+	"c" : "res://audio/player/keys/piano/c.ogg",
+	"cSh" : "res://audio/player/keys/piano/csh.ogg",
+	"d" : "res://audio/player/keys/piano/d.ogg",
+	"dSh" : "res://audio/player/keys/piano/dsh.ogg",
+	"e" : "res://audio/player/keys/piano/e.ogg",
+	"f" : "res://audio/player/keys/piano/f.ogg",
+	"fSh" : "res://audio/player/keys/piano/fsh.ogg",
+	"g" : "res://audio/player/keys/piano/g.ogg",
+	"gSh" : "res://audio/player/keys/piano/gsh.ogg",
+	"a" : "res://audio/player/keys/piano/a.ogg",
+	"aSh" : "res://audio/player/keys/piano/ash.ogg",
+	"b" : "res://audio/player/keys/piano/b.ogg",
+	"c8" : "res://audio/player/keys/piano/c8.ogg",
+	"c8Sh" : "res://audio/player/keys/piano/c8sh.ogg"
+}
+
+var keyboardAudioPaths = {
+	"c" : "res://audio/player/keys/keyboard/c.ogg",
+	"cSh" : "res://audio/player/keys/keyboard/csh.ogg",
+	"d" : "res://audio/player/keys/keyboard/d.ogg",
+	"dSh" : "res://audio/player/keys/keyboard/dsh.ogg",
+	"e" : "res://audio/player/keys/keyboard/e.ogg",
+	"f" : "res://audio/player/keys/keyboard/f.ogg",
+	"fSh" : "res://audio/player/keys/keyboard/fsh.ogg",
+	"g" : "res://audio/player/keys/keyboard/g.ogg",
+	"gSh" : "res://audio/player/keys/keyboard/gsh.ogg",
+	"a" : "res://audio/player/keys/keyboard/a.ogg",
+	"aSh" : "res://audio/player/keys/keyboard/ash.ogg",
+	"b" : "res://audio/player/keys/keyboard/b.ogg",
+	"c8" : "res://audio/player/keys/keyboard/c8.ogg",
+	"c8Sh" : "res://audio/player/keys/keyboard/c8sh.ogg"
 }
 
 func emitAudio(sprite, flags):
@@ -157,12 +176,15 @@ func playTerrainAudio():
 		stream = load(bongoAudioPaths[randNum])
 	elif terrain == "tamborine":
 		volume_db = 0
-		randNum = generator.randf_range(0,2) as int
-		stream = load(tamborineAudioPaths[randNum])
-	else:
+		stream = load(tamborineAudioPaths[key])
+	elif terrain == "piano":
 		volume_db = 0
-		stream = load(instrumentAudioPaths[terrain])
+		stream = load(pianoAudioPaths[key])
+	elif terrain == "keyboard":
+		volume_db = 0
+		stream = load(keyboardAudioPaths[key])
 	play()
 
-func changeTerrain(t):
+func changeTerrain(t, k):
 	terrain = t
+	key = k

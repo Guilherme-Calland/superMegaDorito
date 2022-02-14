@@ -75,7 +75,7 @@ func handleVerticalPhysics():
 		motion.y += gravity
 	if isOnCeiling:
 		motion.y = gravity
-	if motion.y >= 0:
+	if motion.y >= 0 and (leftPressed or rightPressed or isOnFloor):
 		emit_signal("wallJumpLock", false)
 
 func handleWallPhysics():

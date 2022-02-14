@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://tileSet/BoxTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
@@ -6,11 +6,17 @@
 [ext_resource path="res://tileSet/GrassTiles.tres" type="TileSet" id=4]
 [ext_resource path="res://tileSet/PianoTiles.tres" type="TileSet" id=5]
 
-[sub_resource type="RectangleShape2D" id=26]
-extents = Vector2( 6.25, 13 )
+[sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 10, 30.5 )
 
 [sub_resource type="RectangleShape2D" id=27]
 extents = Vector2( 1, 9 )
+
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 6.625, 13 )
+
+[sub_resource type="RectangleShape2D" id=29]
+extents = Vector2( 1.5, 27.5 )
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 192, 18.5 )
@@ -58,30 +64,31 @@ extents = Vector2( 5, 12.5 )
 extents = Vector2( 6.5, 14 )
 
 [sub_resource type="RectangleShape2D" id=25]
-extents = Vector2( 8, 34 )
+extents = Vector2( 8, 22.5 )
 
 [sub_resource type="RectangleShape2D" id=23]
-extents = Vector2( 28.5, 13.5 )
+extents = Vector2( 14.5, 14.75 )
 
 [sub_resource type="RectangleShape2D" id=24]
-extents = Vector2( 4.1875, 12.5 )
+extents = Vector2( 8.5, 13 )
 
 [node name="TestLevel" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -115, -31 )
+position = Vector2( -110, -27 )
 collision_mask = 0
 collision/safe_margin = 0.001
 
 [node name="Terrain" type="Node" parent="."]
 
-[node name="PianoArea" type="Node" parent="Terrain"]
+[node name="PianoArea" type="Node2D" parent="Terrain"]
+visible = false
 
 [node name="PianoC" type="Area2D" parent="Terrain/PianoArea"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/PianoArea/PianoC"]
-position = Vector2( -161, 174 )
-shape = SubResource( 26 )
+position = Vector2( -157, 191.5 )
+shape = SubResource( 28 )
 
 [node name="PianoCsh" type="Area2D" parent="Terrain/PianoArea"]
 position = Vector2( -166, 168 )
@@ -170,10 +177,110 @@ shape = SubResource( 26 )
 position = Vector2( -305, 168 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/PianoArea/PianoC8sh"]
+position = Vector2( -7.5, 26.5 )
+shape = SubResource( 29 )
+
+[node name="KeyboardArea" type="Node2D" parent="Terrain"]
+position = Vector2( -180, 1 )
+
+[node name="KeyboardC" type="Area2D" parent="Terrain/KeyboardArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardC"]
+position = Vector2( -157, 191.5 )
+shape = SubResource( 28 )
+
+[node name="KeyboardCsh" type="Area2D" parent="Terrain/KeyboardArea"]
+position = Vector2( -166, 168 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardCsh"]
 position = Vector2( -6, 9 )
 shape = SubResource( 27 )
 
+[node name="KeyboardD" type="Area2D" parent="Terrain/KeyboardArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardD"]
+position = Vector2( -182, 174 )
+shape = SubResource( 26 )
+
+[node name="KeyboardDsh" type="Area2D" parent="Terrain/KeyboardArea"]
+position = Vector2( -186, 169 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardDsh"]
+position = Vector2( -6, 9 )
+shape = SubResource( 27 )
+
+[node name="KeyboardE" type="Area2D" parent="Terrain/KeyboardArea"]
+position = Vector2( -25, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardE"]
+position = Vector2( -177, 174 )
+shape = SubResource( 26 )
+
+[node name="KeyboardF" type="Area2D" parent="Terrain/KeyboardArea"]
+position = Vector2( -47, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardF"]
+position = Vector2( -175, 174 )
+shape = SubResource( 26 )
+
+[node name="KeyboardFsh" type="Area2D" parent="Terrain/KeyboardArea"]
+position = Vector2( -226, 169 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardFsh"]
+position = Vector2( -6, 9 )
+shape = SubResource( 27 )
+
+[node name="KeyboardG" type="Area2D" parent="Terrain/KeyboardArea"]
+position = Vector2( -72, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardG"]
+position = Vector2( -170, 174 )
+shape = SubResource( 26 )
+
+[node name="KeyboardGSh" type="Area2D" parent="Terrain/KeyboardArea"]
+position = Vector2( -246, 169 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardGSh"]
+position = Vector2( -6, 9 )
+shape = SubResource( 27 )
+
+[node name="KeyboardA" type="Area2D" parent="Terrain/KeyboardArea"]
+position = Vector2( -96, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardA"]
+position = Vector2( -165.5, 174 )
+shape = SubResource( 26 )
+
+[node name="KeyboardAsh" type="Area2D" parent="Terrain/KeyboardArea"]
+position = Vector2( -266, 169 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardAsh"]
+position = Vector2( -6, 9 )
+shape = SubResource( 27 )
+
+[node name="KeyboardB" type="Area2D" parent="Terrain/KeyboardArea"]
+position = Vector2( -121, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardB"]
+position = Vector2( -161, 174 )
+shape = SubResource( 26 )
+
+[node name="KeyboardC8" type="Area2D" parent="Terrain/KeyboardArea"]
+position = Vector2( -143, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardC8"]
+position = Vector2( -158, 174 )
+shape = SubResource( 26 )
+
+[node name="KeyboardC8Sh" type="Area2D" parent="Terrain/KeyboardArea"]
+position = Vector2( -305, 168 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardC8Sh"]
+position = Vector2( -7.5, 26.5 )
+shape = SubResource( 29 )
+
 [node name="WoodArea" type="Area2D" parent="Terrain"]
+visible = false
 position = Vector2( 165, -8 )
 collision_layer = 2
 
@@ -209,6 +316,7 @@ position = Vector2( 173, 18 )
 shape = SubResource( 15 )
 
 [node name="MetalArea" type="Area2D" parent="Terrain"]
+visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/MetalArea"]
@@ -239,6 +347,7 @@ position = Vector2( 400, 157 )
 shape = SubResource( 17 )
 
 [node name="BongoArea" type="Area2D" parent="Terrain"]
+visible = false
 position = Vector2( 329, 176 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/BongoArea"]
@@ -268,23 +377,24 @@ position = Vector2( -457.5, -18 )
 shape = SubResource( 22 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Terrain/BongoArea"]
-position = Vector2( -336, -75 )
+position = Vector2( -336, -63.5 )
 shape = SubResource( 25 )
 
 [node name="TamborineArea" type="Area2D" parent="Terrain"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/TamborineArea"]
-position = Vector2( 167.5, 149.5 )
+position = Vector2( 168, 154 )
 shape = SubResource( 23 )
 
 [node name="TamborineArea" type="Area2D" parent="Terrain/TamborineArea"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/TamborineArea/TamborineArea"]
-position = Vector2( 200.813, 155 )
+position = Vector2( 192, 154 )
 shape = SubResource( 24 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Terrain/TamborineArea/TamborineArea"]
-position = Vector2( 134.5, 156 )
+position = Vector2( 143.5, 154 )
 shape = SubResource( 24 )
 
 [node name="BoxTiles" type="TileMap" parent="Terrain"]
@@ -315,38 +425,52 @@ tile_data = PoolIntArray( 14, 536870912, 0, 15, 536870912, 0, 16, 536870912, 0, 
 [node name="TamborineTiles" type="TileMap" parent="Terrain"]
 position = Vector2( -11.991, 0 )
 tile_set = ExtResource( 3 )
-cell_size = Vector2( 24, 4 )
+cell_size = Vector2( 6, 4 )
 format = 1
-tile_data = PoolIntArray( 2359303, 536870912, 0, 2490374, 536870912, 0, 2490376, 536870912, 0 )
+tile_data = PoolIntArray( 2490393, 2, 0 )
 
 [node name="PianoTiles" type="TileMap" parent="Terrain"]
-position = Vector2( -11.849, 6.307 )
+position = Vector2( -11.849, 3.124 )
 z_index = -2
 tile_set = ExtResource( 5 )
 cell_size = Vector2( 20, 5 )
 format = 1
-tile_data = PoolIntArray( 2293745, 536870915, 0, 2293746, 3, 0, 2293747, 536870914, 0, 2293748, 536870914, 0, 2293749, 536870915, 0, 2293750, 3, 0, 2293751, 2, 0, 2293752, 1, 0 )
+tile_data = PoolIntArray( 2293736, 536870915, 0, 2293737, 3, 0, 2293738, 2, 0, 2293739, 2, 0, 2293740, 536870915, 0, 2293741, 3, 0, 2293742, 536870914, 0, 2293743, 1, 0, 2293745, 536870915, 0, 2293746, 3, 0, 2293747, 536870914, 0, 2293748, 536870914, 0, 2293749, 536870915, 0, 2293750, 3, 0, 2293751, 2, 0, 2293752, 1, 0 )
 
-[connection signal="body_entered" from="Terrain/PianoArea/PianoC" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoC" ]]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoCsh" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoCsh" ]]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoD" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoD" ]]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoDsh" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoDsh" ]]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoE" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoE" ]]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoF" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoF" ]]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoFsh" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoFsh" ]]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoG" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoG" ]]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoGsh" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoGsh" ]]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoA" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoA" ]]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoAsh" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoAsh" ]]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoB" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoB" ]]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoC8" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoC8" ]]
-[connection signal="body_entered" from="Terrain/PianoArea/PianoC8sh" to="Player" method="_on_Terrain_body_entered" binds= [ "pianoC8sh" ]]
-[connection signal="body_entered" from="Terrain/WoodArea" to="Player" method="_on_Terrain_body_entered" binds= [ "wood" ]]
-[connection signal="body_entered" from="Terrain/GrassArea" to="Player" method="_on_Terrain_body_entered" binds= [ "grass" ]]
-[connection signal="body_entered" from="Terrain/GrassArea/GrassArea" to="Player" method="_on_Terrain_body_entered" binds= [ "grass" ]]
-[connection signal="body_entered" from="Terrain/MetalArea" to="Player" method="_on_Terrain_body_entered" binds= [ "metal" ]]
-[connection signal="body_entered" from="Terrain/MetalArea/MetalAreaChild" to="Player" method="_on_Terrain_body_entered" binds= [ "metal" ]]
-[connection signal="body_entered" from="Terrain/BongoArea" to="Player" method="_on_Terrain_body_entered" binds= [ "bongo" ]]
-[connection signal="body_entered" from="Terrain/BongoArea/BongoAreaChild" to="Player" method="_on_Terrain_body_entered" binds= [ "bongo" ]]
-[connection signal="body_entered" from="Terrain/TamborineArea" to="Player" method="_on_Terrain_body_entered" binds= [ "tamborine" ]]
-[connection signal="body_entered" from="Terrain/TamborineArea/TamborineArea" to="Player" method="_on_Terrain_body_entered" binds= [ "tamborine" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoC" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "c" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoCsh" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "cSh" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoD" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "d" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoDsh" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "dSh" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoE" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "e" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoF" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "f" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoFsh" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "fSh" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoG" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "g" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoGsh" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "gSh" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoA" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "a" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoAsh" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "aSh" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoB" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "b" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoC8" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "c8" ]]
+[connection signal="body_entered" from="Terrain/PianoArea/PianoC8sh" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "c8Sh" ]]
+[connection signal="body_entered" from="Terrain/KeyboardArea/KeyboardC" to="Player" method="_on_Terrain_body_entered" binds= [ "keyboard", "c" ]]
+[connection signal="body_entered" from="Terrain/KeyboardArea/KeyboardCsh" to="Player" method="_on_Terrain_body_entered" binds= [ "keyboard", "cSh" ]]
+[connection signal="body_entered" from="Terrain/KeyboardArea/KeyboardD" to="Player" method="_on_Terrain_body_entered" binds= [ "keyboard", "d" ]]
+[connection signal="body_entered" from="Terrain/KeyboardArea/KeyboardDsh" to="Player" method="_on_Terrain_body_entered" binds= [ "keyboard", "dSh" ]]
+[connection signal="body_entered" from="Terrain/KeyboardArea/KeyboardE" to="Player" method="_on_Terrain_body_entered" binds= [ "keyboard", "e" ]]
+[connection signal="body_entered" from="Terrain/KeyboardArea/KeyboardF" to="Player" method="_on_Terrain_body_entered" binds= [ "keyboard", "f" ]]
+[connection signal="body_entered" from="Terrain/KeyboardArea/KeyboardFsh" to="Player" method="_on_Terrain_body_entered" binds= [ "keyboard", "fSh" ]]
+[connection signal="body_entered" from="Terrain/KeyboardArea/KeyboardG" to="Player" method="_on_Terrain_body_entered" binds= [ "keyboard", "g" ]]
+[connection signal="body_entered" from="Terrain/KeyboardArea/KeyboardGSh" to="Player" method="_on_Terrain_body_entered" binds= [ "keyboard", "gSh" ]]
+[connection signal="body_entered" from="Terrain/KeyboardArea/KeyboardA" to="Player" method="_on_Terrain_body_entered" binds= [ "keyboard", "a" ]]
+[connection signal="body_entered" from="Terrain/KeyboardArea/KeyboardAsh" to="Player" method="_on_Terrain_body_entered" binds= [ "keyboard", "aSh" ]]
+[connection signal="body_entered" from="Terrain/KeyboardArea/KeyboardB" to="Player" method="_on_Terrain_body_entered" binds= [ "keyboard", "b" ]]
+[connection signal="body_entered" from="Terrain/KeyboardArea/KeyboardC8" to="Player" method="_on_Terrain_body_entered" binds= [ "keyboard", "c8" ]]
+[connection signal="body_entered" from="Terrain/KeyboardArea/KeyboardC8Sh" to="Player" method="_on_Terrain_body_entered" binds= [ "keyboard", "c8Sh" ]]
+[connection signal="body_entered" from="Terrain/WoodArea" to="Player" method="_on_Terrain_body_entered" binds= [ "wood", "" ]]
+[connection signal="body_entered" from="Terrain/GrassArea" to="Player" method="_on_Terrain_body_entered" binds= [ "grass", "" ]]
+[connection signal="body_entered" from="Terrain/GrassArea/GrassArea" to="Player" method="_on_Terrain_body_entered" binds= [ "grass", "" ]]
+[connection signal="body_entered" from="Terrain/MetalArea" to="Player" method="_on_Terrain_body_entered" binds= [ "metal", "" ]]
+[connection signal="body_entered" from="Terrain/MetalArea/MetalAreaChild" to="Player" method="_on_Terrain_body_entered" binds= [ "metal", "" ]]
+[connection signal="body_entered" from="Terrain/BongoArea" to="Player" method="_on_Terrain_body_entered" binds= [ "bongo", "" ]]
+[connection signal="body_entered" from="Terrain/BongoArea/BongoAreaChild" to="Player" method="_on_Terrain_body_entered" binds= [ "bongo", "" ]]
+[connection signal="body_entered" from="Terrain/TamborineArea" to="Player" method="_on_Terrain_body_entered" binds= [ "tamborine", "middle" ]]
+[connection signal="body_entered" from="Terrain/TamborineArea/TamborineArea" to="Player" method="_on_Terrain_body_entered" binds= [ "tamborine", "side" ]]

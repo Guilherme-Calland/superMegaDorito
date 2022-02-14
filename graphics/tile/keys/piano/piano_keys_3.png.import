@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/piano_keys_4.png-5653868bdb916dbc6a9230ac1e254035.stex"
+path="res://.import/piano_keys_3.png-68bb8ff9d4219b5efde3e51f7372f9bd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/tile/keys/piano_keys_4.png"
-dest_files=[ "res://.import/piano_keys_4.png-5653868bdb916dbc6a9230ac1e254035.stex" ]
+source_file="res://graphics/tile/keys/piano/piano_keys_3.png"
+dest_files=[ "res://.import/piano_keys_3.png-68bb8ff9d4219b5efde3e51f7372f9bd.stex" ]
 
 [params]
 
