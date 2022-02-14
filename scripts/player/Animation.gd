@@ -7,6 +7,7 @@ var grabPressed
 var isOnFloor
 var isOnWall
 var facingLeft
+var dashing
 #physics
 var motion
 
@@ -21,6 +22,9 @@ func animate(sprite, bundle):
 		handleFloorAnimation()
 	else:
 		sprite.play("jump")
+	
+	if dashing:
+		sprite.play("dash")
 	
 func init(inSprite, bundle):
 	sprite = inSprite
@@ -59,6 +63,7 @@ func unpackBundle(bundle):
 	isOnFloor = flags["isOnFloor"]
 	isOnWall = flags["isOnWall"]
 	facingLeft = flags["facingLeft"]
+	dashing = flags["dashing"]
 	
 func helloWorld():
 	print("hello world")

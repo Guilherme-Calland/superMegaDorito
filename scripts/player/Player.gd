@@ -9,8 +9,9 @@ export var dashForce = 100
 #flags
 var facingLeft
 var wallJumpLock
-var dashLock
-###
+var dashing
+var dashReady
+
 var bundle
 var inputs
 var physics
@@ -41,7 +42,8 @@ func updateBundle():
 		"isOnCeiling" : is_on_ceiling(),
 		"facingLeft" : facingLeft,
 		"wallJumpLock" : wallJumpLock,
-		"dashLock" : dashLock
+		"dashing" : dashing,
+		"dashReady" : dashReady
 	}
 	bundle = {
 		"inputs" : inputs,
@@ -59,13 +61,17 @@ func updateWallJumpLock(w):
 	wallJumpLock = w
 
 func updateDashLock(d):
-	dashLock = d
+	dashing = d
+
+func updateDashReady(d):
+	dashReady = d
 
 func connectToSignals():
 	$Movement.connect("motion", self, "updateMotion")
 	$Movement.connect("facingLeft", self, "updateFacingLeft")
 	$Movement.connect("wallJumpLock", self, "updateWallJumpLock")
-	$Movement.connect("dashLock", self, "updateDashLock")
+	$Movement.connect("dashing", self, "updateDashLock")
+	$Movement.connect("dashReady", self, "updateDashReady")
 
 func _on_Terrain_body_entered(body, terrain, key):
 	$Audio.changeTerrain(terrain, key)

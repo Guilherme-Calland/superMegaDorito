@@ -18,12 +18,14 @@ var isOnWall
 var isOnCeiling
 var facingLeft
 var wallJumpLock
-var dashLock
+var dashing
+var dashReady
 #signals
 signal facingLeft
 signal motion
 signal wallJumpLock
-signal dashLock
+signal dashing
+signal dashReady
 
 func move(bundle):
 	unpackBundle(bundle)
@@ -58,61 +60,62 @@ func unpackBundle(bundle):
 	isOnCeiling = flags["isOnCeiling"]
 	facingLeft = flags["facingLeft"]
 	wallJumpLock = flags["wallJumpLock"]
-	dashLock = flags["dashLock"]
+	dashing = flags["dashing"]
 
 func handleHorizontalPhysics():
-	if wallJumpLock:
-		return false
+	if dashPressed and dashReady and not isOnWall:
+		dashReady = false
+		emit_signal("dashReady", false)
+		dashing = true
+		emit_signal("dashing", true) 
+		if facingLeft:
+			motion.x = -dashForce
+		else:
+			motion.x = dashForce
+		emit_signal("motion", motion)
+		return true
 	
-	if dashLock:
+	if dashing:
 		motion.y = 0
 		if facingLeft:
 			motion.x += gravity
 			if motion.x >= 0:
-				dashLock = false
-				emit_signal("dashLock", false)
+				dashing = false
+				emit_signal("dashing", false)
 		else:
 			motion.x -= gravity
 			if motion.x <= 0:
-				dashLock = false
-				emit_signal("dashLock", false)
+				dashing = false
+				emit_signal("dashing", false)
 		emit_signal("motion", motion)
 		return true
+	
+	if wallJumpLock:
+		return false
 	
 	if leftPressed:
 		facingLeft = true
 		emit_signal("facingLeft", true)
-		if dashPressed:
-			motion.x = -dashForce
-			dashLock = true
-			emit_signal("dashLock", true)
-		else:
-			motion.x = -speed
+		motion.x = -speed
 	elif rightPressed:
 		facingLeft = false
 		emit_signal("facingLeft", false)
-		if dashPressed:
-			motion.x = dashForce
-			dashLock = true
-			emit_signal("dashLock", true)
-		else:
-			motion.x = speed
+		motion.x = speed
 	else:
 		motion.x = 0
-
+	
 func handleVerticalPhysics():
 	if isOnFloor:
 		motion.y = gravity
 		if jumpPressed:
 			motion.y = -jumpForce
-		dashLock = false
-		emit_signal("dashLock", false)
+		dashing = false
+		dashReady = true
+		emit_signal("wallJumpLock", false)
 	elif not isOnFloor:
 		motion.y += gravity
 	if isOnCeiling:
 		motion.y = gravity
-	if motion.y >= 0 and (leftPressed or rightPressed or isOnFloor):
-		emit_signal("wallJumpLock", false)
 
 func handleWallPhysics():
 	if isOnWall:
@@ -137,6 +140,8 @@ func handleWallPhysics():
 			motion.y = 0
 			emit_signal("motion", motion)
 			return true
+	if motion.y >= 0 and (rightPressed or leftPressed or isOnWall):
+		emit_signal("wallJumpLock", false)
 		
 func grabbingWall():
 	return isOnWall and grabPressed
