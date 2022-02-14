@@ -75,14 +75,13 @@ extents = Vector2( 8.5, 13 )
 [node name="TestLevel" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -110, -27 )
+position = Vector2( -104, -46 )
 collision_mask = 0
 collision/safe_margin = 0.001
 
 [node name="Terrain" type="Node" parent="."]
 
 [node name="PianoArea" type="Node2D" parent="Terrain"]
-visible = false
 
 [node name="PianoC" type="Area2D" parent="Terrain/PianoArea"]
 
@@ -193,7 +192,7 @@ shape = SubResource( 28 )
 position = Vector2( -166, 168 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardCsh"]
-position = Vector2( -6, 9 )
+position = Vector2( -6, 7 )
 shape = SubResource( 27 )
 
 [node name="KeyboardD" type="Area2D" parent="Terrain/KeyboardArea"]
@@ -206,7 +205,7 @@ shape = SubResource( 26 )
 position = Vector2( -186, 169 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardDsh"]
-position = Vector2( -6, 9 )
+position = Vector2( -6, 7 )
 shape = SubResource( 27 )
 
 [node name="KeyboardE" type="Area2D" parent="Terrain/KeyboardArea"]
@@ -227,7 +226,7 @@ shape = SubResource( 26 )
 position = Vector2( -226, 169 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardFsh"]
-position = Vector2( -6, 9 )
+position = Vector2( -6, 7 )
 shape = SubResource( 27 )
 
 [node name="KeyboardG" type="Area2D" parent="Terrain/KeyboardArea"]
@@ -241,7 +240,7 @@ shape = SubResource( 26 )
 position = Vector2( -246, 169 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardGSh"]
-position = Vector2( -6, 9 )
+position = Vector2( -6, 7 )
 shape = SubResource( 27 )
 
 [node name="KeyboardA" type="Area2D" parent="Terrain/KeyboardArea"]
@@ -255,7 +254,7 @@ shape = SubResource( 26 )
 position = Vector2( -266, 169 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardAsh"]
-position = Vector2( -6, 9 )
+position = Vector2( -6, 7 )
 shape = SubResource( 27 )
 
 [node name="KeyboardB" type="Area2D" parent="Terrain/KeyboardArea"]
@@ -276,7 +275,7 @@ shape = SubResource( 26 )
 position = Vector2( -305, 168 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/KeyboardArea/KeyboardC8Sh"]
-position = Vector2( -7.5, 26.5 )
+position = Vector2( -7.5, 24.5 )
 shape = SubResource( 29 )
 
 [node name="WoodArea" type="Area2D" parent="Terrain"]
@@ -430,12 +429,12 @@ format = 1
 tile_data = PoolIntArray( 2490393, 2, 0 )
 
 [node name="PianoTiles" type="TileMap" parent="Terrain"]
-position = Vector2( -11.849, 3.124 )
+position = Vector2( -11.849, 0.482 )
 z_index = -2
 tile_set = ExtResource( 5 )
 cell_size = Vector2( 20, 5 )
 format = 1
-tile_data = PoolIntArray( 2293736, 536870915, 0, 2293737, 3, 0, 2293738, 2, 0, 2293739, 2, 0, 2293740, 536870915, 0, 2293741, 3, 0, 2293742, 536870914, 0, 2293743, 1, 0, 2293745, 536870915, 0, 2293746, 3, 0, 2293747, 536870914, 0, 2293748, 536870914, 0, 2293749, 536870915, 0, 2293750, 3, 0, 2293751, 2, 0, 2293752, 1, 0 )
+tile_data = PoolIntArray( 2293736, 536870915, 0, 2293737, 3, 0, 2293738, 536870914, 0, 2293739, 536870914, 0, 2293740, 536870915, 0, 2293741, 3, 0, 2293742, 2, 0, 2293743, 1, 0, 2293745, 536870915, 0, 2293746, 3, 0, 2293747, 536870914, 0, 2293748, 536870914, 0, 2293749, 536870915, 0, 2293750, 3, 0, 2293751, 2, 0, 2293752, 1, 0 )
 
 [connection signal="body_entered" from="Terrain/PianoArea/PianoC" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "c" ]]
 [connection signal="body_entered" from="Terrain/PianoArea/PianoCsh" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "cSh" ]]

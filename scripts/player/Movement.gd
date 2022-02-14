@@ -80,6 +80,10 @@ func handleVerticalPhysics():
 
 func handleWallPhysics():
 	if isOnWall:
+		if facingLeft:
+			motion.x = -1
+		else:
+			motion.x = 1
 		if jumpPressed:
 			wallJumpLock = true
 			emit_signal("wallJumpLock", true)
