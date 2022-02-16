@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://graphics/player/idle/player_idle_1.png" type="Texture" id=1]
 [ext_resource path="res://graphics/player/run/player_running_2.png" type="Texture" id=2]
@@ -22,6 +22,10 @@
 [ext_resource path="res://graphics/level/position_2_name.png" type="Texture" id=20]
 [ext_resource path="res://graphics/level/position_3_name.png" type="Texture" id=21]
 [ext_resource path="res://graphics/level/position_3_shortcut.png" type="Texture" id=22]
+[ext_resource path="res://graphics/level/position_4_shortcut.png" type="Texture" id=23]
+[ext_resource path="res://graphics/level/position_5_name.png" type="Texture" id=24]
+[ext_resource path="res://graphics/level/position_5_shortcut.png" type="Texture" id=25]
+[ext_resource path="res://graphics/level/position_4_name.png" type="Texture" id=26]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -126,9 +130,27 @@ position = Vector2( 160, 195 )
 texture = ExtResource( 19 )
 
 [node name="Sprite5" type="Sprite" parent="Camera2D/Node2D"]
-position = Vector2( 530, -15 )
+position = Vector2( 620, -15 )
 texture = ExtResource( 21 )
 
 [node name="Sprite6" type="Sprite" parent="Camera2D/Node2D"]
-position = Vector2( 665, -15 )
+position = Vector2( 850, -10 )
 texture = ExtResource( 22 )
+
+[node name="Sprite7" type="Sprite" parent="Camera2D/Node2D"]
+position = Vector2( 560, 90 )
+texture = ExtResource( 26 )
+
+[node name="Sprite8" type="Sprite" parent="Camera2D/Node2D"]
+position = Vector2( 840, 95 )
+texture = ExtResource( 23 )
+
+[node name="Position5Name" type="Sprite" parent="Camera2D/Node2D"]
+position = Vector2( 565, 195 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 24 )
+
+[node name="Position5Shortcut" type="Sprite" parent="Camera2D/Node2D"]
+position = Vector2( 845, 185 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 25 )

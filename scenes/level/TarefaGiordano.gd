@@ -6,6 +6,7 @@ onready var track0 = $Pos0/Track
 onready var track1 = $Pos1/Track
 onready var track2 = $Pos2/Track
 onready var track3 = $Pos3/Track
+onready var track4 = $Pos4/Track
 
 func _ready():
 	placeholderTrack.play()
@@ -54,3 +55,11 @@ func _on_AddTrack3_body_entered(body):
 
 func _on_RemoveTrack3_body_entered(body):
 	track3.stop()
+
+func _on_AddTrack4_body_entered(body):
+	if not track4.playing:
+		var pos = placeholderTrackLong.get_playback_position()
+		track4.play(pos)
+
+func _on_RemoveTrack4_body_entered(body):
+	track4.stop()
