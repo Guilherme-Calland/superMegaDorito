@@ -11,8 +11,8 @@ var isOnWall
 var isOnCeiling
 var dashFloorStop
 
-var terrain = "wood"
-var key = "middle"
+var terrain = ""
+var key = ""
 
 var woodAudioPaths = {
 	0 : "res://audio/player/wood/0.ogg",

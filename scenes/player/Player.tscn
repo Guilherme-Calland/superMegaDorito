@@ -13,7 +13,7 @@
 [ext_resource path="res://graphics/player/touch/player_touching_2.png" type="Texture" id=11]
 [ext_resource path="res://graphics/player/player_grabbing_1.png" type="Texture" id=12]
 [ext_resource path="res://scripts/player/Audio.gd" type="Script" id=13]
-[ext_resource path="res://audio/player/keys/keyboard/dSh.ogg" type="AudioStream" id=14]
+[ext_resource path="res://graphics/level/position_0_small.png" type="Texture" id=14]
 [ext_resource path="res://graphics/player/player_dashing.png" type="Texture" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -28,14 +28,14 @@ animations = [ {
 "name": "grab",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ) ],
-"loop": false,
-"name": "jump",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 15 ) ],
 "loop": true,
 "name": "dash",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "jump",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
@@ -43,15 +43,15 @@ animations = [ {
 "name": "touch",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "touchIdle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 10 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "run",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "touchIdle",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -83,11 +83,14 @@ script = ExtResource( 5 )
 script = ExtResource( 8 )
 
 [node name="Audio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 14 )
 script = ExtResource( 13 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 23, -83 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
+
+[node name="Sprite" type="Sprite" parent="Camera2D"]
+position = Vector2( -195, -124 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )

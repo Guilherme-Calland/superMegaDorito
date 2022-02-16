@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://tileSet/BoxTiles.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/level/TarefaGiordano.gd" type="Script" id=3]
+[ext_resource path="res://graphics/level/new_track.png" type="Texture" id=4]
+[ext_resource path="res://graphics/level/remove_track.png" type="Texture" id=5]
+[ext_resource path="res://graphics/level/position_0.png" type="Texture" id=6]
+[ext_resource path="res://graphics/level/position_1.png" type="Texture" id=7]
+[ext_resource path="res://audio/music/percussion/percussion_1.ogg" type="AudioStream" id=8]
+[ext_resource path="res://audio/music/percussion/percussion_2.ogg" type="AudioStream" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 123 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 126 )
+
+[node name="TarefaGiordano" type="Node"]
+script = ExtResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 78, -10 )
+dashForce = 120
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 12, 12 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 131064, 536870912, 0, 131065, 536870912, 0, 131066, 536870912, 0, 131067, 536870912, 0, 131068, 536870912, 0, 131069, 536870912, 0, 131070, 536870912, 0, 131071, 536870912, 0, 65536, 536870912, 0, 65537, 536870912, 0, 65538, 536870912, 0, 65539, 536870912, 0, 65540, 536870912, 0, 65541, 536870912, 0, 65542, 536870912, 0, 65543, 536870912, 0, 65544, 536870912, 0, 65545, 536870912, 0, 65546, 536870912, 0, 65547, 536870912, 0, 65548, 536870912, 0, 65549, 536870912, 0, 65550, 536870912, 0, 65551, 536870912, 0, 65552, 536870912, 0, 65553, 536870912, 0, 65554, 536870912, 0, 65555, 536870912, 0, 65556, 536870912, 0, 65557, 536870912, 0, 65558, 536870912, 0, 65559, 536870912, 0, 65560, 536870912, 0, 65561, 536870912, 0, 65562, 536870912, 0, 65563, 536870912, 0, 65564, 536870912, 0, 65565, 536870912, 0, 65566, 536870912, 0, 65567, 536870912, 0, 65568, 536870912, 0, 65569, 536870912, 0, 65570, 536870912, 0, 65571, 536870912, 0, 65572, 536870912, 0, 65573, 536870912, 0, 65574, 536870912, 0, 65575, 536870912, 0, 65576, 536870912, 0, 65577, 536870912, 0, 65578, 536870912, 0, 65579, 536870912, 0, 65580, 536870912, 0, 65581, 536870912, 0, 65582, 536870912, 0, 65583, 536870912, 0, 65584, 536870912, 0, 65585, 536870912, 0, 65586, 536870912, 0, 65587, 536870912, 0, 65588, 536870912, 0, 65589, 536870912, 0, 65590, 536870912, 0 )
+
+[node name="Pos0" type="Node2D" parent="."]
+
+[node name="AddTrack1" type="Area2D" parent="Pos0"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pos0/AddTrack1"]
+position = Vector2( 127, -51 )
+shape = SubResource( 1 )
+
+[node name="RemoveTrack1" type="Area2D" parent="Pos0"]
+position = Vector2( 5, 4 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pos0/RemoveTrack1"]
+position = Vector2( 46, -56 )
+shape = SubResource( 2 )
+
+[node name="NewTrack" type="Sprite" parent="Pos0"]
+position = Vector2( 118, -17 )
+z_index = -10
+texture = ExtResource( 4 )
+
+[node name="RemoveTrack" type="Sprite" parent="Pos0"]
+position = Vector2( 56, -17 )
+z_index = -10
+texture = ExtResource( 5 )
+
+[node name="Info" type="Sprite" parent="Pos0"]
+position = Vector2( 93, -98 )
+scale = Vector2( 0.5, 0.5 )
+z_index = -20
+texture = ExtResource( 6 )
+
+[node name="Track1" type="AudioStreamPlayer" parent="Pos0"]
+stream = ExtResource( 8 )
+
+[node name="Pos" type="Node2D" parent="Pos0"]
+position = Vector2( 87, -3 )
+
+[node name="Pos1" type="Node2D" parent="."]
+position = Vector2( 295, 0 )
+
+[node name="AddTrack2" type="Area2D" parent="Pos1"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pos1/AddTrack2"]
+position = Vector2( 127, -51 )
+shape = SubResource( 1 )
+
+[node name="RemoveTrack2" type="Area2D" parent="Pos1"]
+position = Vector2( 5, 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pos1/RemoveTrack2"]
+position = Vector2( 46, -56 )
+shape = SubResource( 2 )
+
+[node name="NewTrack" type="Sprite" parent="Pos1"]
+position = Vector2( 118, -17 )
+z_index = -10
+texture = ExtResource( 4 )
+
+[node name="RemoveTrack" type="Sprite" parent="Pos1"]
+position = Vector2( 56, -17 )
+z_index = -10
+texture = ExtResource( 5 )
+
+[node name="Info" type="Sprite" parent="Pos1"]
+position = Vector2( 91, -104 )
+scale = Vector2( 0.5, 0.5 )
+z_index = -20
+texture = ExtResource( 7 )
+
+[node name="Track2" type="AudioStreamPlayer" parent="Pos1"]
+stream = ExtResource( 9 )
+
+[connection signal="body_entered" from="Pos0/AddTrack1" to="." method="_on_AddTrack1_body_entered"]
+[connection signal="body_entered" from="Pos0/RemoveTrack1" to="." method="_on_RemoveTrack1_body_entered"]
+[connection signal="body_entered" from="Pos1/AddTrack2" to="." method="_on_AddTrack2_body_entered"]
+[connection signal="body_entered" from="Pos1/RemoveTrack2" to="." method="_on_RemoveTrack2_body_entered"]
