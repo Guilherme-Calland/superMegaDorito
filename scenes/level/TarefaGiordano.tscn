@@ -1,18 +1,20 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://tileSet/BoxTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/level/TarefaGiordano.gd" type="Script" id=3]
 [ext_resource path="res://graphics/level/new_track.png" type="Texture" id=4]
 [ext_resource path="res://graphics/level/remove_track.png" type="Texture" id=5]
-[ext_resource path="res://graphics/level/position_0.png" type="Texture" id=6]
-[ext_resource path="res://graphics/level/position_1.png" type="Texture" id=7]
+[ext_resource path="res://graphics/level/position_0_name.png" type="Texture" id=6]
+[ext_resource path="res://graphics/level/position_1_name.png" type="Texture" id=7]
 [ext_resource path="res://audio/music/percussion/percussion_1.ogg" type="AudioStream" id=8]
 [ext_resource path="res://audio/music/percussion/percussion_2.ogg" type="AudioStream" id=9]
 [ext_resource path="res://audio/music/placeholder_130bpm.ogg" type="AudioStream" id=10]
-[ext_resource path="res://graphics/level/position_2_shortcut.png" type="Texture" id=11]
+[ext_resource path="res://graphics/level/position_3_name.png" type="Texture" id=11]
 [ext_resource path="res://graphics/level/position_2_name.png" type="Texture" id=12]
 [ext_resource path="res://audio/music/keys/keyboard/keyboard1.ogg" type="AudioStream" id=13]
+[ext_resource path="res://audio/music/bass/bass1.ogg" type="AudioStream" id=14]
+[ext_resource path="res://audio/music/placeholder_130bpm_long.ogg" type="AudioStream" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 123 )
@@ -32,7 +34,7 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 12, 12 )
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( 131064, 536870912, 0, 131065, 536870912, 0, 131066, 536870912, 0, 131067, 536870912, 0, 131068, 536870912, 0, 131069, 536870912, 0, 131070, 536870912, 0, 131071, 536870912, 0, 65536, 536870912, 0, 65537, 536870912, 0, 65538, 536870912, 0, 65539, 536870912, 0, 65540, 536870912, 0, 65541, 536870912, 0, 65542, 536870912, 0, 65543, 536870912, 0, 65544, 536870912, 0, 65545, 536870912, 0, 65546, 536870912, 0, 65547, 536870912, 0, 65548, 536870912, 0, 65549, 536870912, 0, 65550, 536870912, 0, 65551, 536870912, 0, 65552, 536870912, 0, 65553, 536870912, 0, 65554, 536870912, 0, 65555, 536870912, 0, 65556, 536870912, 0, 65557, 536870912, 0, 65558, 536870912, 0, 65559, 536870912, 0, 65560, 536870912, 0, 65561, 536870912, 0, 65562, 536870912, 0, 65563, 536870912, 0, 65564, 536870912, 0, 65565, 536870912, 0, 65566, 536870912, 0, 65567, 536870912, 0, 65568, 536870912, 0, 65569, 536870912, 0, 65570, 536870912, 0, 65571, 536870912, 0, 65572, 536870912, 0, 65573, 536870912, 0, 65574, 536870912, 0, 65575, 536870912, 0, 65576, 536870912, 0, 65577, 536870912, 0, 65578, 536870912, 0, 65579, 536870912, 0, 65580, 536870912, 0, 65581, 536870912, 0, 65582, 536870912, 0, 65583, 536870912, 0, 65584, 536870912, 0, 65585, 536870912, 0, 65586, 536870912, 0, 65587, 536870912, 0, 65588, 536870912, 0, 65589, 536870912, 0, 65590, 536870912, 0, 65591, 536870912, 0, 65592, 536870912, 0, 65593, 536870912, 0, 65594, 536870912, 0, 65595, 536870912, 0, 65596, 536870912, 0, 65597, 536870912, 0, 65598, 536870912, 0, 65599, 536870912, 0, 65600, 536870912, 0, 65601, 536870912, 0, 65602, 536870912, 0, 65603, 536870912, 0, 65604, 536870912, 0, 65605, 536870912, 0, 65606, 536870912, 0, 65607, 536870912, 0 )
+tile_data = PoolIntArray( 131064, 536870912, 0, 131065, 536870912, 0, 131066, 536870912, 0, 131067, 536870912, 0, 131068, 536870912, 0, 131069, 536870912, 0, 131070, 536870912, 0, 131071, 536870912, 0, 65536, 536870912, 0, 65537, 536870912, 0, 65538, 536870912, 0, 65539, 536870912, 0, 65540, 536870912, 0, 65541, 536870912, 0, 65542, 536870912, 0, 65543, 536870912, 0, 65544, 536870912, 0, 65545, 536870912, 0, 65546, 536870912, 0, 65547, 536870912, 0, 65548, 536870912, 0, 65549, 536870912, 0, 65550, 536870912, 0, 65551, 536870912, 0, 65552, 536870912, 0, 65553, 536870912, 0, 65554, 536870912, 0, 65555, 536870912, 0, 65556, 536870912, 0, 65557, 536870912, 0, 65558, 536870912, 0, 65559, 536870912, 0, 65560, 536870912, 0, 65561, 536870912, 0, 65562, 536870912, 0, 65563, 536870912, 0, 65564, 536870912, 0, 65565, 536870912, 0, 65566, 536870912, 0, 65567, 536870912, 0, 65568, 536870912, 0, 65569, 536870912, 0, 65570, 536870912, 0, 65571, 536870912, 0, 65572, 536870912, 0, 65573, 536870912, 0, 65574, 536870912, 0, 65575, 536870912, 0, 65576, 536870912, 0, 65577, 536870912, 0, 65578, 536870912, 0, 65579, 536870912, 0, 65580, 536870912, 0, 65581, 536870912, 0, 65582, 536870912, 0, 65583, 536870912, 0, 65584, 536870912, 0, 65585, 536870912, 0, 65586, 536870912, 0, 65587, 536870912, 0, 65588, 536870912, 0, 65589, 536870912, 0, 65590, 536870912, 0, 65591, 536870912, 0, 65592, 536870912, 0, 65593, 536870912, 0, 65594, 536870912, 0, 65595, 536870912, 0, 65596, 536870912, 0, 65597, 536870912, 0, 65598, 536870912, 0, 65599, 536870912, 0, 65600, 536870912, 0, 65601, 536870912, 0, 65602, 536870912, 0, 65603, 536870912, 0, 65604, 536870912, 0, 65605, 536870912, 0, 65606, 536870912, 0, 65607, 536870912, 0, 65608, 536870912, 0, 65609, 536870912, 0, 65610, 536870912, 0, 65611, 536870912, 0, 65612, 536870912, 0, 65613, 536870912, 0, 65614, 536870912, 0, 65615, 536870912, 0, 65616, 536870912, 0, 65617, 536870912, 0, 65618, 536870912, 0, 65619, 536870912, 0, 65620, 536870912, 0, 65621, 536870912, 0, 65622, 536870912, 0, 65623, 536870912, 0, 65624, 536870912, 0, 65625, 536870912, 0, 65626, 536870912, 0, 65627, 536870912, 0, 65628, 536870912, 0, 65629, 536870912, 0, 65630, 536870912, 0, 65631, 536870912, 0, 65632, 536870912, 0, 65633, 536870912, 0, 65634, 536870912, 0, 65635, 536870912, 0, 65636, 536870912, 0, 65637, 536870912, 0, 65638, 536870912, 0, 65639, 536870912, 0, 65640, 536870912, 0, 65641, 536870912, 0, 65642, 536870912, 0, 65643, 536870912, 0, 65644, 536870912, 0, 65645, 536870912, 0, 65646, 536870912, 0, 65647, 536870912, 0, 65648, 536870912, 0, 65649, 536870912, 0, 65650, 536870912, 0, 65651, 536870912, 0, 65652, 536870912, 0, 65653, 536870912, 0, 65654, 536870912, 0, 65655, 536870912, 0, 65656, 536870912, 0, 65657, 536870912, 0, 65658, 536870912, 0, 65659, 536870912, 0, 65660, 536870912, 0, 65661, 536870912, 0, 65662, 536870912, 0, 65663, 536870912, 0, 65664, 536870912, 0, 65665, 536870912, 0, 65666, 536870912, 0, 65667, 536870912, 0, 65668, 536870912, 0, 65669, 536870912, 0, 65670, 536870912, 0, 65671, 536870912, 0, 65672, 536870912, 0, 65673, 536870912, 0, 65674, 536870912, 0, 65675, 536870912, 0, 65676, 536870912, 0, 65677, 536870912, 0, 65678, 536870912, 0 )
 
 [node name="Pos0" type="Node2D" parent="."]
 
@@ -62,12 +64,12 @@ z_index = -10
 texture = ExtResource( 5 )
 
 [node name="Info" type="Sprite" parent="Pos0"]
-position = Vector2( 93, -98 )
+position = Vector2( 93, -79 )
 scale = Vector2( 0.5, 0.5 )
 z_index = -20
 texture = ExtResource( 6 )
 
-[node name="Track0" type="AudioStreamPlayer" parent="Pos0"]
+[node name="Track" type="AudioStreamPlayer" parent="Pos0"]
 stream = ExtResource( 8 )
 
 [node name="Pos" type="Node2D" parent="Pos0"]
@@ -101,12 +103,12 @@ z_index = -10
 texture = ExtResource( 5 )
 
 [node name="Info" type="Sprite" parent="Pos1"]
-position = Vector2( 91, -104 )
+position = Vector2( 93, -84 )
 scale = Vector2( 0.5, 0.5 )
 z_index = -20
 texture = ExtResource( 7 )
 
-[node name="Track1" type="AudioStreamPlayer" parent="Pos1"]
+[node name="Track" type="AudioStreamPlayer" parent="Pos1"]
 stream = ExtResource( 9 )
 
 [node name="Pos" type="Node2D" parent="Pos1"]
@@ -139,20 +141,53 @@ position = Vector2( 56, -17 )
 z_index = -10
 texture = ExtResource( 5 )
 
-[node name="Track2" type="AudioStreamPlayer" parent="Pos2"]
+[node name="Track" type="AudioStreamPlayer" parent="Pos2"]
 stream = ExtResource( 13 )
 
 [node name="Pos" type="Node2D" parent="Pos2"]
 position = Vector2( 86, 0 )
 
 [node name="Position2Name" type="Sprite" parent="Pos2"]
-position = Vector2( 91, -119.75 )
+position = Vector2( 92, -90 )
 scale = Vector2( 0.5, 0.5 )
 z_index = -20
 texture = ExtResource( 12 )
 
-[node name="Position2Shortcut" type="Sprite" parent="Pos2"]
-position = Vector2( 94, -73.75 )
+[node name="Pos3" type="Node2D" parent="."]
+position = Vector2( 1050, 2 )
+
+[node name="AddTrack3" type="Area2D" parent="Pos3"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pos3/AddTrack3"]
+position = Vector2( 127, -51 )
+shape = SubResource( 1 )
+
+[node name="RemoveTrack3" type="Area2D" parent="Pos3"]
+position = Vector2( 5, 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pos3/RemoveTrack3"]
+position = Vector2( 46, -56 )
+shape = SubResource( 2 )
+
+[node name="NewTrack" type="Sprite" parent="Pos3"]
+position = Vector2( 118, -17 )
+z_index = -10
+texture = ExtResource( 4 )
+
+[node name="RemoveTrack" type="Sprite" parent="Pos3"]
+position = Vector2( 56, -17 )
+z_index = -10
+texture = ExtResource( 5 )
+
+[node name="Track" type="AudioStreamPlayer" parent="Pos3"]
+stream = ExtResource( 14 )
+
+[node name="Pos" type="Node2D" parent="Pos3"]
+position = Vector2( 86, 0 )
+
+[node name="TrackName" type="Sprite" parent="Pos3"]
+position = Vector2( 118, -90 )
 scale = Vector2( 0.5, 0.5 )
 z_index = -20
 texture = ExtResource( 11 )
@@ -160,9 +195,14 @@ texture = ExtResource( 11 )
 [node name="PlaceholderTrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 
+[node name="PlaceholderTrackLong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+
 [connection signal="body_entered" from="Pos0/AddTrack0" to="." method="_on_AddTrack0_body_entered"]
 [connection signal="body_entered" from="Pos0/RemoveTrack0" to="." method="_on_RemoveTrack0_body_entered"]
 [connection signal="body_entered" from="Pos1/AddTrack1" to="." method="_on_AddTrack1_body_entered"]
 [connection signal="body_entered" from="Pos1/RemoveTrack1" to="." method="_on_RemoveTrack1_body_entered"]
 [connection signal="body_entered" from="Pos2/AddTrack2" to="." method="_on_AddTrack2_body_entered"]
 [connection signal="body_entered" from="Pos2/RemoveTrack2" to="." method="_on_RemoveTrack2_body_entered"]
+[connection signal="body_entered" from="Pos3/AddTrack3" to="." method="_on_AddTrack3_body_entered"]
+[connection signal="body_entered" from="Pos3/RemoveTrack3" to="." method="_on_RemoveTrack3_body_entered"]

@@ -1,12 +1,15 @@
 extends Node2D
 
 onready var placeholderTrack = $PlaceholderTrack
-onready var track0 = $Pos0/Track0
-onready var track1 = $Pos1/Track1
-onready var track2 = $Pos2/Track2
+onready var placeholderTrackLong = $PlaceholderTrackLong
+onready var track0 = $Pos0/Track
+onready var track1 = $Pos1/Track
+onready var track2 = $Pos2/Track
+onready var track3 = $Pos3/Track
 
 func _ready():
-	$PlaceholderTrack.play()
+	placeholderTrack.play()
+	placeholderTrackLong.play()
 
 func _process(delta):
 	$Player.play()
@@ -16,7 +19,9 @@ func _process(delta):
 		$Player.position = $Pos1/Pos.global_position
 	elif Input.is_action_just_pressed("pos2"):
 		$Player.position = $Pos2/Pos.global_position
-
+	elif Input.is_action_just_pressed("pos3"):
+			$Player.position = $Pos3/Pos.global_position
+			
 func _on_AddTrack0_body_entered(body):
 	if not track0.playing:
 		var pos = placeholderTrack.get_playback_position()
@@ -35,8 +40,17 @@ func _on_RemoveTrack1_body_entered(body):
 	
 func _on_AddTrack2_body_entered(body):
 	if not track2.playing:
-		var pos = placeholderTrack.get_playback_position()
+		var pos = placeholderTrackLong.get_playback_position()
 		track2.play(pos)
 
 func _on_RemoveTrack2_body_entered(body):
 	track2.stop()
+
+func _on_AddTrack3_body_entered(body):
+	if not track3.playing:
+		track3.volume_db = 10
+		var pos = placeholderTrackLong.get_playback_position()
+		track3.play(pos)
+
+func _on_RemoveTrack3_body_entered(body):
+	track3.stop()

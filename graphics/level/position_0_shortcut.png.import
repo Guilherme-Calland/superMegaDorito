@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/position_1.png-a672d919c91836071bfde8269a184e37.stex"
+path="res://.import/position_0_shortcut.png-308bd25e0bab3fb4b36823bce54368c5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/level/position_1.png"
-dest_files=[ "res://.import/position_1.png-a672d919c91836071bfde8269a184e37.stex" ]
+source_file="res://graphics/level/position_0_shortcut.png"
+dest_files=[ "res://.import/position_0_shortcut.png-308bd25e0bab3fb4b36823bce54368c5.stex" ]
 
 [params]
 

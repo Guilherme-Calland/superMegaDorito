@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://graphics/player/idle/player_idle_1.png" type="Texture" id=1]
 [ext_resource path="res://graphics/player/run/player_running_2.png" type="Texture" id=2]
@@ -13,9 +13,15 @@
 [ext_resource path="res://graphics/player/touch/player_touching_2.png" type="Texture" id=11]
 [ext_resource path="res://graphics/player/player_grabbing_1.png" type="Texture" id=12]
 [ext_resource path="res://scripts/player/Audio.gd" type="Script" id=13]
-[ext_resource path="res://graphics/level/position_0_small.png" type="Texture" id=14]
+[ext_resource path="res://graphics/level/position_0_name.png" type="Texture" id=14]
 [ext_resource path="res://graphics/player/player_dashing.png" type="Texture" id=15]
-[ext_resource path="res://graphics/level/position_1_small.png" type="Texture" id=16]
+[ext_resource path="res://graphics/level/position_1_name.png" type="Texture" id=16]
+[ext_resource path="res://graphics/level/position_0_shortcut.png" type="Texture" id=17]
+[ext_resource path="res://graphics/level/position_1_shortcut.png" type="Texture" id=18]
+[ext_resource path="res://graphics/level/position_2_shortcut.png" type="Texture" id=19]
+[ext_resource path="res://graphics/level/position_2_name.png" type="Texture" id=20]
+[ext_resource path="res://graphics/level/position_3_name.png" type="Texture" id=21]
+[ext_resource path="res://graphics/level/position_3_shortcut.png" type="Texture" id=22]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -91,12 +97,38 @@ position = Vector2( 23, -83 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
-[node name="pos0" type="Sprite" parent="Camera2D"]
-position = Vector2( -195, -124 )
+[node name="Node2D" type="Sprite" parent="Camera2D"]
+position = Vector2( -165, -120 )
 scale = Vector2( 0.2, 0.2 )
+
+[node name="Position0Name" type="Sprite" parent="Camera2D/Node2D"]
+position = Vector2( -140, 5 )
 texture = ExtResource( 14 )
 
-[node name="pos1" type="Sprite" parent="Camera2D"]
-position = Vector2( -195, -103 )
-scale = Vector2( 0.2, 0.2 )
+[node name="Position0Shortcut" type="Sprite" parent="Camera2D/Node2D"]
+position = Vector2( 145, 0 )
+texture = ExtResource( 17 )
+
+[node name="Sprite" type="Sprite" parent="Camera2D/Node2D"]
+position = Vector2( -150, 95 )
 texture = ExtResource( 16 )
+
+[node name="Sprite2" type="Sprite" parent="Camera2D/Node2D"]
+position = Vector2( 145, 90 )
+texture = ExtResource( 18 )
+
+[node name="Sprite3" type="Sprite" parent="Camera2D/Node2D"]
+position = Vector2( -150, 190 )
+texture = ExtResource( 20 )
+
+[node name="Sprite4" type="Sprite" parent="Camera2D/Node2D"]
+position = Vector2( 160, 195 )
+texture = ExtResource( 19 )
+
+[node name="Sprite5" type="Sprite" parent="Camera2D/Node2D"]
+position = Vector2( 530, -15 )
+texture = ExtResource( 21 )
+
+[node name="Sprite6" type="Sprite" parent="Camera2D/Node2D"]
+position = Vector2( 665, -15 )
+texture = ExtResource( 22 )
