@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://graphics/player/idle/player_idle_1.png" type="Texture" id=1]
 [ext_resource path="res://graphics/player/run/player_running_2.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://scripts/player/Audio.gd" type="Script" id=13]
 [ext_resource path="res://graphics/level/position_0_small.png" type="Texture" id=14]
 [ext_resource path="res://graphics/player/player_dashing.png" type="Texture" id=15]
+[ext_resource path="res://graphics/level/position_1_small.png" type="Texture" id=16]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -90,7 +91,12 @@ position = Vector2( 23, -83 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
-[node name="Sprite" type="Sprite" parent="Camera2D"]
+[node name="pos0" type="Sprite" parent="Camera2D"]
 position = Vector2( -195, -124 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 14 )
+
+[node name="pos1" type="Sprite" parent="Camera2D"]
+position = Vector2( -195, -103 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 16 )

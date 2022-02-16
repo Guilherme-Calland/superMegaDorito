@@ -21,7 +21,7 @@ var flags
 func _ready():
 	connectToSignals()
 
-func _process(delta):
+func play():
 	updateBundle()
 	$Movement.move(bundle)
 	$Animation.animate($AnimatedSprite, bundle)
@@ -81,3 +81,4 @@ func connectToSignals():
 
 func _on_Terrain_body_entered(body, terrain, key):
 	$Audio.changeTerrain(terrain, key)
+
