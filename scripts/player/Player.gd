@@ -12,6 +12,7 @@ var wallJumpLock
 var dashing
 var dashReady
 var dashFloorStop
+var onDash
 
 var bundle
 var inputs
@@ -25,8 +26,10 @@ func _process(delta):
 	updateBundle()
 	$Movement.move(bundle)
 	$Animation.animate($AnimatedSprite, bundle)
-	$Audio.emitAudio($AnimatedSprite, flags)
+	$Audio/AmbientAudio.emitAudio($AnimatedSprite, flags)
+	$Audio/PlayerAudio.emitAudio(onDash)
 	move_and_slide(motion, Vector2(0,-1))
+	onDash = false
 	
 func updateBundle():
 	inputs = $Inputs.retrieveInput()
@@ -71,6 +74,9 @@ func updateDashReady(d):
 func updateDashFloorStop(d):
 	dashFloorStop = d
 
+func onDash():
+	onDash = true
+
 func connectToSignals():
 	$Movement.connect("motion", self, "updateMotion")
 	$Movement.connect("facingLeft", self, "updateFacingLeft")
@@ -78,6 +84,7 @@ func connectToSignals():
 	$Movement.connect("dashing", self, "updateDashLock")
 	$Movement.connect("dashReady", self, "updateDashReady")
 	$Movement.connect("dashFloorStop", self, "updateDashFloorStop")
+	$Movement.connect("onDash", self, "onDash")
 
 func _on_Terrain_body_entered(body, terrain, key):
-	$Audio.changeTerrain(terrain, key)
+	$Audio/AmbientAudio.changeTerrain(terrain, key)

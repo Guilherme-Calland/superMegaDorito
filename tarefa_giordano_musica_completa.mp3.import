@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/tarefa_giordano_musica_completa.mp3-55215c20279fbf28928e48e1d572299a.mp3str"
+
+[deps]
+
+source_file="res://tarefa_giordano_musica_completa.mp3"
+dest_files=[ "res://.import/tarefa_giordano_musica_completa.mp3-55215c20279fbf28928e48e1d572299a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://graphics/player/idle/player_idle_1.png" type="Texture" id=1]
 [ext_resource path="res://graphics/player/run/player_running_2.png" type="Texture" id=2]
@@ -12,9 +12,11 @@
 [ext_resource path="res://graphics/player/idle/player_idle_2.png" type="Texture" id=10]
 [ext_resource path="res://graphics/player/touch/player_touching_2.png" type="Texture" id=11]
 [ext_resource path="res://graphics/player/player_grabbing_1.png" type="Texture" id=12]
-[ext_resource path="res://scripts/player/Audio.gd" type="Script" id=13]
+[ext_resource path="res://scripts/player/AmbientAudio.gd" type="Script" id=13]
 [ext_resource path="res://audio/player/keys/keyboard/dSh.ogg" type="AudioStream" id=14]
 [ext_resource path="res://graphics/player/player_dashing.png" type="Texture" id=15]
+[ext_resource path="res://scripts/player/PlayerAudio.gd" type="Script" id=16]
+[ext_resource path="res://audio/player/simple_dash.ogg" type="AudioStream" id=17]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -28,14 +30,14 @@ animations = [ {
 "name": "grab",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ) ],
-"loop": false,
-"name": "jump",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 15 ) ],
 "loop": true,
 "name": "dash",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "jump",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
@@ -43,15 +45,15 @@ animations = [ {
 "name": "touch",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "touchIdle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 10 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "run",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "touchIdle",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -82,9 +84,15 @@ script = ExtResource( 5 )
 [node name="Animation" type="Node" parent="."]
 script = ExtResource( 8 )
 
-[node name="Audio" type="AudioStreamPlayer" parent="."]
+[node name="Audio" type="Node" parent="."]
+
+[node name="AmbientAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 14 )
 script = ExtResource( 13 )
+
+[node name="PlayerAudio" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 17 )
+script = ExtResource( 16 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
