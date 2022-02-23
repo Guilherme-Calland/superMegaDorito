@@ -7,6 +7,7 @@ onready var track1 = $Pos1/Track
 onready var track2 = $Pos2/Track
 onready var track3 = $Pos3/Track
 onready var track4 = $Pos4/Track
+onready var track5 = $Pos5/Track
 
 func _ready():
 	placeholderTrack.play()
@@ -22,6 +23,10 @@ func _process(delta):
 		$Player.position = $Pos2/Pos.global_position
 	elif Input.is_action_just_pressed("pos3"):
 			$Player.position = $Pos3/Pos.global_position
+	elif Input.is_action_just_pressed("pos4"):
+			$Player.position = $Pos4/Pos.global_position
+	elif Input.is_action_just_pressed("pos5"):
+			$Player.position = $Pos5/Pos.global_position
 			
 func _on_AddTrack0_body_entered(body):
 	if not track0.playing:
@@ -63,3 +68,11 @@ func _on_AddTrack4_body_entered(body):
 
 func _on_RemoveTrack4_body_entered(body):
 	track4.stop()
+
+func _on_AddTrack5_body_entered(body):
+	if not track5.playing:
+		var pos = placeholderTrackLong.get_playback_position()
+		track5.play(pos)
+
+func _on_RemoveTrack5_body_entered(body):
+	track5.stop()
