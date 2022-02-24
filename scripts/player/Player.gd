@@ -28,7 +28,7 @@ var flags
 func _ready():
 	connectToSignals()
 
-func _process(delta):
+func run():
 	updateBundle()
 	$Movement.move(bundle)
 	# update bundle again so we update the changed values we will still need in this frame
