@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://tileSet/BoxTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
@@ -12,10 +12,12 @@
 [sub_resource type="RectangleShape2D" id=32]
 
 [sub_resource type="RectangleShape2D" id=33]
-extents = Vector2( 0.5, 10 )
+extents = Vector2( 3.25, 26.5 )
 
 [sub_resource type="RectangleShape2D" id=34]
 extents = Vector2( 106, 2.5 )
+
+[sub_resource type="RectangleShape2D" id=35]
 
 [sub_resource type="RectangleShape2D" id=28]
 extents = Vector2( 10, 30.5 )
@@ -54,7 +56,7 @@ extents = Vector2( 134.5, 10 )
 extents = Vector2( 78.625, 13 )
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 47.5, 10 )
+extents = Vector2( 47.5, 17 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 10, 33 )
@@ -94,7 +96,7 @@ position = Vector2( 0, -1 )
 script = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -98, -100 )
+position = Vector2( -112, -65 )
 collision_mask = 0
 collision/safe_margin = 0.001
 dashForce = 120
@@ -103,7 +105,7 @@ playerDashAudioEnabled = false
 playerTerrainAudioEnabled = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 518, -124 )
+position = Vector2( 34, 34 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 smoothing_enabled = true
@@ -118,9 +120,8 @@ script = ExtResource( 7 )
 shape = SubResource( 32 )
 
 [node name="MovementLock1" type="Area2D" parent="."]
-position = Vector2( 291, -2 )
+position = Vector2( 281, -2 )
 collision_layer = 0
-script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovementLock1"]
 shape = SubResource( 33 )
@@ -128,13 +129,33 @@ disabled = true
 
 [node name="MoveCameraTrigger2" type="Area2D" parent="."]
 position = Vector2( 702, 16 )
+collision_layer = 0
+script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MoveCameraTrigger2"]
 shape = SubResource( 34 )
 
+[node name="MoveCameraTrigger3" type="Area2D" parent="."]
+position = Vector2( 239, 146 )
+collision_layer = 0
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoveCameraTrigger3"]
+shape = SubResource( 35 )
+
+[node name="MovementLock3" type="Area2D" parent="."]
+position = Vector2( 269, 146 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovementLock3"]
+position = Vector2( -2, -16 )
+shape = SubResource( 33 )
+disabled = true
+
 [node name="Terrain" type="Node" parent="."]
 
 [node name="PianoArea" type="Node2D" parent="Terrain"]
+visible = false
 
 [node name="PianoC" type="Area2D" parent="Terrain/PianoArea"]
 
@@ -233,6 +254,7 @@ position = Vector2( -7.5, 26.5 )
 shape = SubResource( 29 )
 
 [node name="KeyboardArea" type="Node2D" parent="Terrain"]
+visible = false
 position = Vector2( -180, 1 )
 
 [node name="KeyboardC" type="Area2D" parent="Terrain/KeyboardArea"]
@@ -375,7 +397,6 @@ position = Vector2( 173, 18 )
 shape = SubResource( 15 )
 
 [node name="MetalArea" type="Area2D" parent="Terrain"]
-visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/MetalArea"]
@@ -387,7 +408,7 @@ position = Vector2( 484.625, 158 )
 shape = SubResource( 8 )
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Terrain/MetalArea"]
-position = Vector2( 653, 160 )
+position = Vector2( 653, 153 )
 shape = SubResource( 10 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Terrain/MetalArea"]
@@ -444,6 +465,7 @@ position = Vector2( -336, -63.5 )
 shape = SubResource( 25 )
 
 [node name="TamborineArea" type="Area2D" parent="Terrain"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/TamborineArea"]
 position = Vector2( 166.75, 154 )
@@ -465,7 +487,7 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 12, 12 )
 collision_layer = 0
 format = 1
-tile_data = PoolIntArray( -262143, 536870912, 0, -262142, 536870912, 0, -262141, 536870912, 0, -262140, 536870912, 0, -131085, 536870912, 0, -131084, 536870912, 0, -131083, 536870912, 0, -196607, 536870912, 0, -196606, 536870912, 0, -196605, 536870912, 0, -196604, 536870912, 0, -196565, 536870912, 0, -196564, 536870912, 0, -196563, 536870912, 0, -196562, 536870912, 0, -65549, 536870912, 0, -65548, 536870912, 0, -65547, 536870912, 0, -13, 536870912, 0, -12, 536870912, 0, -11, 536870912, 0, -7, 536870912, 0, -6, 536870912, 0, 65519, 536870912, 0, 65520, 536870912, 0, 65521, 536870912, 0, 65522, 536870912, 0, 65523, 536870912, 0, 65524, 536870912, 0, 65525, 536870912, 0, 65526, 536870912, 0, 65527, 536870912, 0, 65528, 536870912, 0, 65529, 536870912, 0, 65530, 536870912, 0, 65531, 536870912, 0, 65532, 536870912, 0, 65533, 536870912, 0, 65534, 536870912, 0, 65535, 536870912, 0, 0, 536870912, 0, 1, 536870912, 0, 2, 536870912, 0, 3, 536870912, 0, 4, 536870912, 0, 5, 536870912, 0, 6, 536870912, 0, 7, 536870912, 0, 8, 536870912, 0, 9, 536870912, 0, 10, 536870912, 0, 11, 536870912, 0, 12, 536870912, 0, 13, 536870912, 0, 29, 536870916, 0, 30, 536870916, 0, 31, 536870916, 0, 32, 536870916, 0, 33, 536870916, 0, 34, 536870916, 0, 35, 536870916, 0, 36, 536870916, 0, 37, 536870916, 0, 38, 536870916, 0, 39, 536870916, 0, 40, 536870916, 0, 41, 536870916, 0, 42, 536870916, 0, 43, 536870916, 0, 44, 536870916, 0, 45, 536870916, 0, 46, 536870916, 0, 47, 536870916, 0, 48, 536870916, 0, 49, 536870916, 0, 50, 536870916, 0, 51, 536870916, 0, 393267, 536870916, 0, 458803, 536870916, 0, 524336, 536870912, 0, 524339, 536870916, 0, 655359, -2147483632, 0, 589872, 536870912, 0, 589875, 536870916, 0, 589882, 536870916, 0, 589883, 536870916, 0, 720895, -1073741815, 0, 655408, 536870912, 0, 655411, 536870916, 0, 655418, 536870916, 0, 655419, 536870916, 0, 786428, -1610612720, 0, 720944, 536870912, 0, 720954, 536870916, 0, 720955, 536870916, 0, 851964, -1610612727, 0, 786480, 536870912, 0, 786490, 536870916, 0, 786491, 536870916, 0, 917493, 536870920, 0, 917494, 536870920, 0, 917495, 536870920, 0, 917496, 536870920, 0, 917497, 536870920, 0, 917498, 536870920, 0, 917499, 536870920, 0, 917500, 536870920, 0, 917501, 536870920, 0, 917502, 536870920, 0, 917503, 536870920, 0, 851968, 536870920, 0, 851969, 536870920, 0, 851970, 536870920, 0, 851971, 536870920, 0, 851972, 536870920, 0, 851973, 536870920, 0, 851974, 536870920, 0, 851975, 536870920, 0, 851976, 536870920, 0, 851977, 536870920, 0, 851978, 536870920, 0, 851985, 536870920, 0, 851986, 536870920, 0, 851987, 536870920, 0, 851988, 536870920, 0, 851989, 536870920, 0, 851990, 536870920, 0, 851991, 536870920, 0, 851992, 536870920, 0, 851993, 536870920, 0, 851994, 536870920, 0, 851995, 536870920, 0, 851996, 536870920, 0, 851997, 536870920, 0, 851998, 536870920, 0, 851999, 536870920, 0, 852000, 536870920, 0, 852001, 536870916, 0, 852002, 536870916, 0, 852003, 536870916, 0, 852004, 536870916, 0, 852005, 536870916, 0, 852006, 536870916, 0, 852007, 536870916, 0, 852008, 536870916, 0, 852009, 536870916, 0, 852010, 536870916, 0, 852011, 536870916, 0, 852012, 536870916, 0, 852013, 536870916, 0, 852014, 536870916, 0, 852015, 536870916, 0, 852016, 536870916, 0, 852017, 536870916, 0, 852018, 536870916, 0, 852019, 536870916, 0, 852020, 536870916, 0, 852021, 536870916, 0, 852022, 536870916, 0, 852023, 536870916, 0, 852024, 536870916, 0, 852025, 536870916, 0, 852026, 536870916, 0, 852027, 536870916, 0 )
+tile_data = PoolIntArray( -262143, 536870912, 0, -262142, 536870912, 0, -262141, 536870912, 0, -262140, 536870912, 0, -131085, 536870912, 0, -131084, 536870912, 0, -131083, 536870912, 0, -196607, 536870912, 0, -196606, 536870912, 0, -196605, 536870912, 0, -196604, 536870912, 0, -196565, 536870912, 0, -196564, 536870912, 0, -196563, 536870912, 0, -196562, 536870912, 0, -65549, 536870912, 0, -65548, 536870912, 0, -65547, 536870912, 0, -13, 536870912, 0, -12, 536870912, 0, -11, 536870912, 0, -7, 536870912, 0, -6, 536870912, 0, 65519, 536870912, 0, 65520, 536870912, 0, 65521, 536870912, 0, 65522, 536870912, 0, 65523, 536870912, 0, 65524, 536870912, 0, 65525, 536870912, 0, 65526, 536870912, 0, 65527, 536870912, 0, 65528, 536870912, 0, 65529, 536870912, 0, 65530, 536870912, 0, 65531, 536870912, 0, 65532, 536870912, 0, 65533, 536870912, 0, 65534, 536870912, 0, 65535, 536870912, 0, 0, 536870912, 0, 1, 536870912, 0, 2, 536870912, 0, 3, 536870912, 0, 4, 536870912, 0, 5, 536870912, 0, 6, 536870912, 0, 7, 536870912, 0, 8, 536870912, 0, 9, 536870912, 0, 10, 536870912, 0, 11, 536870912, 0, 12, 536870912, 0, 13, 536870912, 0, 29, 536870916, 0, 30, 536870916, 0, 31, 536870916, 0, 32, 536870916, 0, 33, 536870916, 0, 34, 536870916, 0, 35, 536870916, 0, 36, 536870916, 0, 37, 536870916, 0, 38, 536870916, 0, 39, 536870916, 0, 40, 536870916, 0, 41, 536870916, 0, 42, 536870916, 0, 43, 536870916, 0, 44, 536870916, 0, 45, 536870916, 0, 46, 536870916, 0, 47, 536870916, 0, 48, 536870916, 0, 49, 536870916, 0, 50, 536870916, 0, 51, 536870916, 0, 393267, 536870916, 0, 458800, 536870912, 0, 458803, 536870916, 0, 524336, 536870912, 0, 524339, 536870916, 0, 655359, -2147483632, 0, 589872, 536870912, 0, 589875, 536870916, 0, 589882, 536870916, 0, 589883, 536870916, 0, 720895, -1073741815, 0, 655408, 536870912, 0, 655411, 536870916, 0, 655418, 536870916, 0, 655419, 536870916, 0, 786428, -1610612720, 0, 720944, 536870912, 0, 720954, 536870916, 0, 720955, 536870916, 0, 851964, -1610612727, 0, 786480, 536870912, 0, 786490, 536870916, 0, 786491, 536870916, 0, 917493, 536870920, 0, 917494, 536870920, 0, 917495, 536870920, 0, 917496, 536870920, 0, 917497, 536870920, 0, 917498, 536870920, 0, 917499, 536870920, 0, 917500, 536870920, 0, 917501, 536870920, 0, 917502, 536870920, 0, 917503, 536870920, 0, 851968, 536870920, 0, 851969, 536870920, 0, 851970, 536870920, 0, 851971, 536870920, 0, 851972, 536870920, 0, 851973, 536870920, 0, 851974, 536870920, 0, 851975, 536870920, 0, 851976, 536870920, 0, 851977, 536870920, 0, 851978, 536870920, 0, 851985, 536870920, 0, 851986, 536870920, 0, 851987, 536870920, 0, 851988, 536870920, 0, 851989, 536870920, 0, 851990, 536870920, 0, 851991, 536870920, 0, 851992, 536870920, 0, 851993, 536870920, 0, 851994, 536870920, 0, 851995, 536870920, 0, 851996, 536870920, 0, 851997, 536870920, 0, 851998, 536870920, 0, 851999, 536870920, 0, 852000, 536870920, 0, 852001, 536870916, 0, 852002, 536870916, 0, 852003, 536870916, 0, 852004, 536870916, 0, 852005, 536870916, 0, 852006, 536870916, 0, 852007, 536870916, 0, 852008, 536870916, 0, 852009, 536870916, 0, 852010, 536870916, 0, 852011, 536870916, 0, 852012, 536870916, 0, 852013, 536870916, 0, 852014, 536870916, 0, 852015, 536870916, 0, 852016, 536870916, 0, 852017, 536870916, 0, 852018, 536870916, 0, 852019, 536870916, 0, 852020, 536870916, 0, 852021, 536870916, 0, 852022, 536870916, 0, 852023, 536870916, 0, 852024, 536870916, 0, 852025, 536870916, 0, 852026, 536870916, 0, 852027, 536870916, 0 )
 
 [node name="BoxScenary" type="TileMap" parent="Terrain"]
 position = Vector2( 2.784, 0 )
@@ -499,9 +521,13 @@ cell_size = Vector2( 20, 5 )
 format = 1
 tile_data = PoolIntArray( 2293736, 536870915, 0, 2293737, 3, 0, 2293738, 536870914, 0, 2293739, 536870914, 0, 2293740, 536870915, 0, 2293741, 3, 0, 2293742, 2, 0, 2293743, 1, 0, 2293745, 536870915, 0, 2293746, 3, 0, 2293747, 536870914, 0, 2293748, 536870914, 0, 2293749, 536870915, 0, 2293750, 3, 0, 2293751, 2, 0, 2293752, 1, 0 )
 
-[connection signal="body_entered" from="MoveCameraTrigger1" to="MoveCameraTrigger1" method="_on_body_entered"]
-[connection signal="body_entered" from="MovementLock1" to="." method="_on_MovementLock1_body_entered"]
-[connection signal="body_exited" from="MovementLock1" to="." method="_on_MovementLock1_body_exited"]
+[connection signal="body_entered" from="MoveCameraTrigger1" to="MoveCameraTrigger1" method="_on_body_entered" binds= [ Vector2( 518, -123 ), 1 ]]
+[connection signal="body_entered" from="MovementLock1" to="." method="_on_MovementLock_body_entered" binds= [ "left" ]]
+[connection signal="body_exited" from="MovementLock1" to="." method="_on_MovementLock_body_exited"]
+[connection signal="body_entered" from="MoveCameraTrigger2" to="MoveCameraTrigger2" method="_on_body_entered" binds= [ Vector2( 467, 32 ), 0 ]]
+[connection signal="body_entered" from="MoveCameraTrigger3" to="MoveCameraTrigger3" method="_on_body_entered" binds= [ Vector2( 33, 33 ), 3 ]]
+[connection signal="body_entered" from="MovementLock3" to="." method="_on_MovementLock_body_entered" binds= [ "right" ]]
+[connection signal="body_exited" from="MovementLock3" to="." method="_on_MovementLock_body_exited"]
 [connection signal="body_entered" from="Terrain/PianoArea/PianoC" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "c" ]]
 [connection signal="body_entered" from="Terrain/PianoArea/PianoCsh" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "cSh" ]]
 [connection signal="body_entered" from="Terrain/PianoArea/PianoD" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "d" ]]

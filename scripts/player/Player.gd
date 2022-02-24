@@ -20,6 +20,7 @@ var dashFloorStop
 var onDash
 var onJump
 var leftLock
+var rightLock
 
 var bundle
 var inputs
@@ -59,7 +60,8 @@ func updateBundle():
 		"dashFloorStop" : dashFloorStop,
 		"onDash": onDash,
 		"onJump" : onJump,
-		"leftLock": leftLock
+		"leftLock": leftLock,
+		"rightLock" : rightLock
 	}
 	bundle = {
 		"inputs" : inputs,
