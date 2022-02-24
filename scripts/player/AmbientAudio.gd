@@ -165,7 +165,7 @@ func playTerrainAudio():
 	if terrain == "wood":
 		randNum = generator.randf_range(0, 9) as int
 		volume_db = 0
-		pitch_scale = 3
+		pitch_scale = 2
 		stream = load(woodAudioPaths[randNum]) 
 	elif terrain == "grass":
 		randNum = generator.randf_range(0, 9) as int

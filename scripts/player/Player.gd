@@ -6,6 +6,11 @@ export var speed = 10
 export var jumpForce = 100
 export var gravity = 5
 export var dashForce = 100
+
+export var playerJumpingAudioEnabled = true
+export var playerDashAudioEnabled = true
+export var playerTerrainAudioEnabled = true
+
 #flags
 var facingLeft
 var wallJumpLock
@@ -13,6 +18,7 @@ var dashing
 var dashReady
 var dashFloorStop
 var onDash
+var onJump
 
 var bundle
 var inputs
@@ -25,11 +31,12 @@ func _ready():
 func _process(delta):
 	updateBundle()
 	$Movement.move(bundle)
+	# update bundle again so we update the changed values we will still need in this frame
+	updateBundle()
 	$Animation.animate($AnimatedSprite, bundle)
-	$Audio/AmbientAudio.emitAudio($AnimatedSprite, flags)
-	$Audio/PlayerAudio.emitAudio(onDash)
+	$Audio.emitAudio($AnimatedSprite, flags, playerJumpingAudioEnabled, playerDashAudioEnabled, playerTerrainAudioEnabled)
 	move_and_slide(motion, Vector2(0,-1))
-	onDash = false
+	setAllOneShotFlagsToFalse()
 	
 func updateBundle():
 	inputs = $Inputs.retrieveInput()
@@ -48,7 +55,9 @@ func updateBundle():
 		"wallJumpLock" : wallJumpLock,
 		"dashing" : dashing,
 		"dashReady" : dashReady,
-		"dashFloorStop" : dashFloorStop
+		"dashFloorStop" : dashFloorStop,
+		"onDash": onDash,
+		"onJump" : onJump
 	}
 	bundle = {
 		"inputs" : inputs,
@@ -77,6 +86,13 @@ func updateDashFloorStop(d):
 func onDash():
 	onDash = true
 
+func onJump():
+	onJump = true
+
+func setAllOneShotFlagsToFalse():
+	onDash = false
+	onJump = false
+
 func connectToSignals():
 	$Movement.connect("motion", self, "updateMotion")
 	$Movement.connect("facingLeft", self, "updateFacingLeft")
@@ -85,6 +101,7 @@ func connectToSignals():
 	$Movement.connect("dashReady", self, "updateDashReady")
 	$Movement.connect("dashFloorStop", self, "updateDashFloorStop")
 	$Movement.connect("onDash", self, "onDash")
+	$Movement.connect("onJump", self, "onJump")
 
 func _on_Terrain_body_entered(body, terrain, key):
 	$Audio/AmbientAudio.changeTerrain(terrain, key)

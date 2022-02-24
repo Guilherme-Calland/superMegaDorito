@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/dash.wav-ed3e491b4a57bab1107d5bf3002ad687.sample"
+path="res://.import/dash.wav-99e42ef9542ca6637c16bfcdb2677b75.sample"
 
 [deps]
 
-source_file="res://audio/player/dash.wav"
-dest_files=[ "res://.import/dash.wav-ed3e491b4a57bab1107d5bf3002ad687.sample" ]
+source_file="res://audio/player/dash/dash.wav"
+dest_files=[ "res://.import/dash.wav-99e42ef9542ca6637c16bfcdb2677b75.sample" ]
 
 [params]
 
