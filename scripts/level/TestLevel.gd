@@ -1,20 +1,19 @@
 extends Node2D
 
-var cameraLock = false
-
 func _ready():
-	$MoveCameraTrigger1.connect("cameraTrigger", self, "onCameraTrigger1")
+	$MoveCameraTrigger1.connect("cameraTrigger", self, "changeCameraPosition")
 
 func _process(delta):
 	$Player.run()
-	if not cameraLock:
-		setCameraToLowerLeftPosition(-36, 5)
-		if $Player.is_on_floor():
-			cameraLock = true
 
-func onCameraTrigger1():
-	setCameraToLowerLeftPosition(-5, 1)
+func _on_MovementLock1_body_entered(body):
+	$Player.leftLock = true
 
-func setCameraToLowerLeftPosition(xOffset, yOffset):
-	$Camera2D.position = $Player.position + Vector2(230 + xOffset, -120 + yOffset)
+func _on_MovementLock1_body_exited(body):
+	$Player.leftLock = false
 	
+func enableMovementLock():
+	$MovementLock1/CollisionShape2D.set_deferred("disabled", false)
+
+func changeCameraPosition(newPosition):
+	$Camera2D.changePosition(newPosition)

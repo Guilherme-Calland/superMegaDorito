@@ -20,6 +20,7 @@ var facingLeft
 var wallJumpLock
 var dashing
 var dashReady
+var leftLock
 #signals
 signal facingLeft
 signal motion
@@ -65,6 +66,7 @@ func unpackBundle(bundle):
 	facingLeft = flags["facingLeft"]
 	wallJumpLock = flags["wallJumpLock"]
 	dashing = flags["dashing"]
+	leftLock = flags["leftLock"]
 
 func handleHorizontalPhysics():
 	if dashPressed and dashReady and not isOnWall:
@@ -73,9 +75,9 @@ func handleHorizontalPhysics():
 		emit_signal("dashReady", false)
 		dashing = true
 		emit_signal("dashing", true) 
-		if facingLeft:
+		if facingLeft and not leftLock:
 			motion.x = -dashForce
-		else:
+		elif not facingLeft:
 			motion.x = dashForce
 		emit_signal("motion", motion)
 		return true
@@ -83,7 +85,10 @@ func handleHorizontalPhysics():
 	if dashing:
 		motion.y = 0
 		if facingLeft:
-			motion.x += gravity
+			if leftLock:
+				motion.x = 0
+			else:
+				motion.x += gravity
 			if motion.x >= 0:
 				dashing = false
 				emit_signal("dashing", false)
@@ -100,7 +105,7 @@ func handleHorizontalPhysics():
 	if wallJumpLock:
 		return false
 	
-	if leftPressed:
+	if leftPressed and not leftLock:
 		facingLeft = true
 		emit_signal("facingLeft", true)
 		motion.x = -speed

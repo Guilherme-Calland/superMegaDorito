@@ -19,6 +19,7 @@ var dashReady
 var dashFloorStop
 var onDash
 var onJump
+var leftLock
 
 var bundle
 var inputs
@@ -57,7 +58,8 @@ func updateBundle():
 		"dashReady" : dashReady,
 		"dashFloorStop" : dashFloorStop,
 		"onDash": onDash,
-		"onJump" : onJump
+		"onJump" : onJump,
+		"leftLock": leftLock
 	}
 	bundle = {
 		"inputs" : inputs,
@@ -105,3 +107,4 @@ func connectToSignals():
 
 func _on_Terrain_body_entered(body, terrain, key):
 	$Audio/AmbientAudio.changeTerrain(terrain, key)
+
