@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://tileSet/BoxTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
@@ -8,16 +8,6 @@
 [ext_resource path="res://scripts/level/TestLevel.gd" type="Script" id=6]
 [ext_resource path="res://scripts/triggers/levels/testLevel/CameraTrigger.gd" type="Script" id=7]
 [ext_resource path="res://scripts/Camera2D.gd" type="Script" id=8]
-
-[sub_resource type="RectangleShape2D" id=32]
-
-[sub_resource type="RectangleShape2D" id=33]
-extents = Vector2( 3.25, 26.5 )
-
-[sub_resource type="RectangleShape2D" id=34]
-extents = Vector2( 106, 2.5 )
-
-[sub_resource type="RectangleShape2D" id=35]
 
 [sub_resource type="RectangleShape2D" id=28]
 extents = Vector2( 10, 30.5 )
@@ -91,71 +81,35 @@ extents = Vector2( 15.75, 14.75 )
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 5.875, 13 )
 
+[sub_resource type="RectangleShape2D" id=32]
+
+[sub_resource type="RectangleShape2D" id=33]
+extents = Vector2( 3.25, 26.5 )
+
+[sub_resource type="RectangleShape2D" id=34]
+extents = Vector2( 106, 2.5 )
+
+[sub_resource type="RectangleShape2D" id=36]
+
+[sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 94, 3 )
+
 [node name="TestLevel" type="Node2D"]
 position = Vector2( 0, -1 )
 script = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -112, -65 )
+position = Vector2( -97, -38 )
 collision_mask = 0
 collision/safe_margin = 0.001
 dashForce = 120
 playerJumpingAudioEnabled = false
-playerDashAudioEnabled = false
-playerTerrainAudioEnabled = false
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 34, 34 )
-current = true
-zoom = Vector2( 0.5, 0.5 )
-smoothing_enabled = true
-script = ExtResource( 8 )
-
-[node name="MoveCameraTrigger1" type="Area2D" parent="."]
-position = Vector2( 315, -2 )
-collision_layer = 0
-script = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MoveCameraTrigger1"]
-shape = SubResource( 32 )
-
-[node name="MovementLock1" type="Area2D" parent="."]
-position = Vector2( 281, -2 )
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MovementLock1"]
-shape = SubResource( 33 )
-disabled = true
-
-[node name="MoveCameraTrigger2" type="Area2D" parent="."]
-position = Vector2( 702, 16 )
-collision_layer = 0
-script = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MoveCameraTrigger2"]
-shape = SubResource( 34 )
-
-[node name="MoveCameraTrigger3" type="Area2D" parent="."]
-position = Vector2( 239, 146 )
-collision_layer = 0
-script = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MoveCameraTrigger3"]
-shape = SubResource( 35 )
-
-[node name="MovementLock3" type="Area2D" parent="."]
-position = Vector2( 269, 146 )
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MovementLock3"]
-position = Vector2( -2, -16 )
-shape = SubResource( 33 )
-disabled = true
 
 [node name="Terrain" type="Node" parent="."]
 
 [node name="PianoArea" type="Node2D" parent="Terrain"]
 visible = false
+position = Vector2( 0, 11 )
 
 [node name="PianoC" type="Area2D" parent="Terrain/PianoArea"]
 
@@ -255,7 +209,7 @@ shape = SubResource( 29 )
 
 [node name="KeyboardArea" type="Node2D" parent="Terrain"]
 visible = false
-position = Vector2( -180, 1 )
+position = Vector2( -180, 12 )
 
 [node name="KeyboardC" type="Area2D" parent="Terrain/KeyboardArea"]
 
@@ -514,20 +468,72 @@ format = 1
 tile_data = PoolIntArray( 2490393, 2, 0 )
 
 [node name="PianoTiles" type="TileMap" parent="Terrain"]
-position = Vector2( -11.849, 0.482 )
+position = Vector2( -12, 14 )
 z_index = -2
 tile_set = ExtResource( 5 )
 cell_size = Vector2( 20, 5 )
 format = 1
 tile_data = PoolIntArray( 2293736, 536870915, 0, 2293737, 3, 0, 2293738, 536870914, 0, 2293739, 536870914, 0, 2293740, 536870915, 0, 2293741, 3, 0, 2293742, 2, 0, 2293743, 1, 0, 2293745, 536870915, 0, 2293746, 3, 0, 2293747, 536870914, 0, 2293748, 536870914, 0, 2293749, 536870915, 0, 2293750, 3, 0, 2293751, 2, 0, 2293752, 1, 0 )
 
-[connection signal="body_entered" from="MoveCameraTrigger1" to="MoveCameraTrigger1" method="_on_body_entered" binds= [ Vector2( 518, -123 ), 1 ]]
-[connection signal="body_entered" from="MovementLock1" to="." method="_on_MovementLock_body_entered" binds= [ "left" ]]
-[connection signal="body_exited" from="MovementLock1" to="." method="_on_MovementLock_body_exited"]
-[connection signal="body_entered" from="MoveCameraTrigger2" to="MoveCameraTrigger2" method="_on_body_entered" binds= [ Vector2( 467, 32 ), 0 ]]
-[connection signal="body_entered" from="MoveCameraTrigger3" to="MoveCameraTrigger3" method="_on_body_entered" binds= [ Vector2( 33, 33 ), 3 ]]
-[connection signal="body_entered" from="MovementLock3" to="." method="_on_MovementLock_body_entered" binds= [ "right" ]]
-[connection signal="body_exited" from="MovementLock3" to="." method="_on_MovementLock_body_exited"]
+[node name="CameraNodes" type="Node" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="CameraNodes"]
+position = Vector2( -317, 148 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+smoothing_enabled = true
+script = ExtResource( 8 )
+
+[node name="MoveCameraTrigger1" type="Area2D" parent="CameraNodes"]
+position = Vector2( 315, -3 )
+collision_layer = 0
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraNodes/MoveCameraTrigger1"]
+shape = SubResource( 32 )
+
+[node name="MovementLock1" type="Area2D" parent="CameraNodes"]
+position = Vector2( 281, -3 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraNodes/MovementLock1"]
+shape = SubResource( 33 )
+disabled = true
+
+[node name="MoveCameraTrigger2" type="Area2D" parent="CameraNodes"]
+position = Vector2( 702, 15 )
+collision_layer = 0
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraNodes/MoveCameraTrigger2"]
+shape = SubResource( 34 )
+
+[node name="MoveCameraTrigger3" type="Area2D" parent="CameraNodes"]
+position = Vector2( 239, 145 )
+collision_layer = 0
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraNodes/MoveCameraTrigger3"]
+shape = SubResource( 36 )
+
+[node name="MovementLock3" type="Area2D" parent="CameraNodes"]
+position = Vector2( 269, 145 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraNodes/MovementLock3"]
+position = Vector2( -2, -16 )
+shape = SubResource( 33 )
+disabled = true
+
+[node name="MoveCameraTrigger4" type="Area2D" parent="CameraNodes"]
+position = Vector2( -169, 169 )
+collision_layer = 0
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraNodes/MoveCameraTrigger4"]
+position = Vector2( -47, 7 )
+shape = SubResource( 35 )
+
 [connection signal="body_entered" from="Terrain/PianoArea/PianoC" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "c" ]]
 [connection signal="body_entered" from="Terrain/PianoArea/PianoCsh" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "cSh" ]]
 [connection signal="body_entered" from="Terrain/PianoArea/PianoD" to="Player" method="_on_Terrain_body_entered" binds= [ "piano", "d" ]]
@@ -566,3 +572,11 @@ tile_data = PoolIntArray( 2293736, 536870915, 0, 2293737, 3, 0, 2293738, 5368709
 [connection signal="body_entered" from="Terrain/BongoArea/BongoAreaChild" to="Player" method="_on_Terrain_body_entered" binds= [ "bongo", "" ]]
 [connection signal="body_entered" from="Terrain/TamborineArea" to="Player" method="_on_Terrain_body_entered" binds= [ "tamborine", "middle" ]]
 [connection signal="body_entered" from="Terrain/TamborineArea/TamborineArea" to="Player" method="_on_Terrain_body_entered" binds= [ "tamborine", "side" ]]
+[connection signal="body_entered" from="CameraNodes/MoveCameraTrigger1" to="CameraNodes/MoveCameraTrigger1" method="_on_body_entered" binds= [ Vector2( 518, -123 ), 1 ]]
+[connection signal="body_entered" from="CameraNodes/MovementLock1" to="." method="_on_MovementLock_body_entered" binds= [ "left" ]]
+[connection signal="body_exited" from="CameraNodes/MovementLock1" to="." method="_on_MovementLock_body_exited"]
+[connection signal="body_entered" from="CameraNodes/MoveCameraTrigger2" to="CameraNodes/MoveCameraTrigger2" method="_on_body_entered" binds= [ Vector2( 467, 32 ), 0 ]]
+[connection signal="body_entered" from="CameraNodes/MoveCameraTrigger3" to="CameraNodes/MoveCameraTrigger3" method="_on_body_entered" binds= [ Vector2( 33, 33 ), 3 ]]
+[connection signal="body_entered" from="CameraNodes/MovementLock3" to="." method="_on_MovementLock_body_entered" binds= [ "right" ]]
+[connection signal="body_exited" from="CameraNodes/MovementLock3" to="." method="_on_MovementLock_body_exited"]
+[connection signal="body_entered" from="CameraNodes/MoveCameraTrigger4" to="CameraNodes/MoveCameraTrigger4" method="_on_body_entered" binds= [ Vector2( -317, 149 ), 3 ]]
