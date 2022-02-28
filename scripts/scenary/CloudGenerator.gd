@@ -12,3 +12,4 @@ func _on_Timer_timeout():
 		$Pos2.add_child(cloud)
 	elif randNum == 2:
 		$Pos3.add_child(cloud)
+
