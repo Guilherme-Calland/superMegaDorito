@@ -86,6 +86,7 @@ down={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Terrain"
 2d_physics/layer_3="Hazard"
+2d_physics/layer_4="Cloud"
 
 [physics]
 
