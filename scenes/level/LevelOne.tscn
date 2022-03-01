@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/background/Cloud.tscn" type="PackedScene" id=2]
@@ -7,9 +7,11 @@
 [ext_resource path="res://tileSets/GrassTiles.tres" type="TileSet" id=5]
 [ext_resource path="res://scripts/level/levelOne/CloudDestroyer.gd" type="Script" id=6]
 [ext_resource path="res://scripts/level/levelOne/CloudGenerator.gd" type="Script" id=7]
-[ext_resource path="res://scripts/level/levelOne/LevelStageTriggers.gd" type="Script" id=8]
+[ext_resource path="res://scripts/level/levelOne/LevelStageTrigger.gd" type="Script" id=8]
 [ext_resource path="res://scripts/level/levelOne/Camera2D.gd" type="Script" id=9]
 [ext_resource path="res://scripts/level/levelOne/Terrain.gd" type="Script" id=10]
+[ext_resource path="res://scripts/level/levelOne/LevelStageTriggerParent.gd" type="Script" id=11]
+[ext_resource path="res://graphics/friend/idle/friend_idle_1.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 130.5 )
@@ -62,7 +64,7 @@ position = Vector2( 1001, -129 )
 script = ExtResource( 7 )
 
 [node name="Timer" type="Timer" parent="Background/CloudGenerator"]
-wait_time = 10.0
+wait_time = 20.0
 autostart = true
 
 [node name="Pos1" type="Node2D" parent="Background/CloudGenerator"]
@@ -147,21 +149,22 @@ shape = SubResource( 1 )
 [node name="Area2" type="Node" parent="AudioTriggers"]
 
 [node name="LevelStageTriggers" type="Node" parent="."]
-script = ExtResource( 8 )
+script = ExtResource( 11 )
 
 [node name="Trigger1" type="Area2D" parent="LevelStageTriggers"]
 position = Vector2( 477, -8 )
 collision_layer = 0
+script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStageTriggers/Trigger1"]
 position = Vector2( 0, -46.5 )
 shape = SubResource( 3 )
 
-[node name="Area1Barrier" type="Area2D" parent="LevelStageTriggers"]
-position = Vector2( 445, -8 )
+[node name="AreaBarrier" type="Area2D" parent="LevelStageTriggers/Trigger1"]
+position = Vector2( -32, 0 )
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStageTriggers/Area1Barrier"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStageTriggers/Trigger1/AreaBarrier"]
 position = Vector2( 0, -45.5 )
 shape = SubResource( 4 )
 disabled = true
@@ -169,26 +172,31 @@ disabled = true
 [node name="Trigger2" type="Area2D" parent="LevelStageTriggers"]
 position = Vector2( 894, -2 )
 collision_layer = 0
+script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStageTriggers/Trigger2"]
 position = Vector2( 0, -46.5 )
 shape = SubResource( 3 )
 
-[node name="Area1Barrier2" type="Area2D" parent="LevelStageTriggers"]
-position = Vector2( 862, -2 )
+[node name="Area1Barrier2" type="Area2D" parent="LevelStageTriggers/Trigger2"]
+position = Vector2( -32, 0 )
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStageTriggers/Area1Barrier2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStageTriggers/Trigger2/Area1Barrier2"]
 position = Vector2( 0, -45.5 )
 shape = SubResource( 4 )
 disabled = true
 
+[node name="FriendIdle1" type="Sprite" parent="."]
+position = Vector2( 552, -7 )
+texture = ExtResource( 12 )
+
 [connection signal="timeout" from="Background/CloudGenerator/Timer" to="Background/CloudGenerator" method="_on_Timer_timeout"]
 [connection signal="area_entered" from="Background/CloudGenerator/CloudDestroyer" to="Background/CloudGenerator/CloudDestroyer" method="_on_CloudDestroyer_area_entered"]
 [connection signal="body_entered" from="AudioTriggers/Area1/GrassArea" to="Player" method="_on_Terrain_body_entered" binds= [ "grass", "" ]]
-[connection signal="body_entered" from="LevelStageTriggers/Trigger1" to="LevelStageTriggers" method="_on_Trigger1_body_entered"]
-[connection signal="body_entered" from="LevelStageTriggers/Area1Barrier" to="Player" method="_on_AreaBarrier_body_entered" binds= [ "left" ]]
-[connection signal="body_exited" from="LevelStageTriggers/Area1Barrier" to="Player" method="_on_AreaBarrier_body_exited"]
-[connection signal="body_entered" from="LevelStageTriggers/Trigger2" to="LevelStageTriggers" method="_on_Trigger1_body_entered"]
-[connection signal="body_entered" from="LevelStageTriggers/Area1Barrier2" to="Player" method="_on_AreaBarrier_body_entered" binds= [ "left" ]]
-[connection signal="body_exited" from="LevelStageTriggers/Area1Barrier2" to="Player" method="_on_AreaBarrier_body_exited"]
+[connection signal="body_entered" from="LevelStageTriggers/Trigger1" to="LevelStageTriggers/Trigger1" method="_on_Trigger_body_entered" binds= [ Vector2( 690, -115 ), Vector2( 1500, -128 ), 3, 1, true ]]
+[connection signal="body_entered" from="LevelStageTriggers/Trigger1/AreaBarrier" to="Player" method="_on_AreaBarrier_body_entered" binds= [ "left" ]]
+[connection signal="body_exited" from="LevelStageTriggers/Trigger1/AreaBarrier" to="Player" method="_on_AreaBarrier_body_exited"]
+[connection signal="body_entered" from="LevelStageTriggers/Trigger2" to="LevelStageTriggers/Trigger2" method="_on_Trigger_body_entered" binds= [ Vector2( 0, 0 ), Vector2( 0, 0 ), 3, 1, true ]]
+[connection signal="body_entered" from="LevelStageTriggers/Trigger2/Area1Barrier2" to="Player" method="_on_AreaBarrier_body_entered" binds= [ "left" ]]
+[connection signal="body_exited" from="LevelStageTriggers/Trigger2/Area1Barrier2" to="Player" method="_on_AreaBarrier_body_exited"]
