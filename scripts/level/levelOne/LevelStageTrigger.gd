@@ -15,7 +15,6 @@ func _on_Trigger_body_entered(body, cameraPosition, cloudPosition, instanciateAr
 		emit_signal("areaDestroy", destroyArea)
 	
 	if instanciateArea != -1:
-		print('helllo 1')
 		emit_signal("areaInstanciate", instanciateArea)
 	
 
