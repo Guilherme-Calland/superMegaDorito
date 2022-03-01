@@ -1,9 +1,11 @@
 extends Node
 
-func animate(inputs, spriteNormal, spriteTired, isOnFloor, isOnWall, direction, duckLock, dashing, tired, dying):
+func animate(inputs, motion, spriteNormal, spriteTired, isOnFloor, isOnWall, duckLock, dashing, tired, dying):
 	if inputs == null:
 		return
 	var sprite
+	
+	var direction = motionToDirection(motion)
 	
 	if dying:
 		spriteNormal.show()
@@ -31,6 +33,8 @@ func animate(inputs, spriteNormal, spriteTired, isOnFloor, isOnWall, direction, 
 	
 	var left = inputs["left"]
 	var right = inputs["right"]
+	var down = inputs["down"]
+	var up = inputs["up"]
 	var duck = inputs["duck"]
 	var grab = inputs["grab"]
 	var jump = inputs["jump"]
@@ -38,9 +42,9 @@ func animate(inputs, spriteNormal, spriteTired, isOnFloor, isOnWall, direction, 
 	if dashing:
 		if direction == "left" or direction == "right":
 			sprite.play("dashHorizontal")
-		elif direction == "up":
+		elif direction == "up" and up:
 			sprite.play("dashUp")
-		elif direction == "down":
+		elif direction == "down" and down:
 			sprite.play("dashDown")
 		return
 	
@@ -92,4 +96,14 @@ func animate(inputs, spriteNormal, spriteTired, isOnFloor, isOnWall, direction, 
 	elif not isOnFloor:
 		sprite.play("jump")
 		
-	
+func motionToDirection(motion):
+	if motion.x > 0:
+		return "right"
+	elif motion.x < 0:
+		return "left"
+	elif motion.y < 0:
+		return "up"
+	elif motion.y < 0:
+		return "down"
+	else:
+		return "still"

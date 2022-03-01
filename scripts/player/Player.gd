@@ -27,20 +27,17 @@ func _ready():
 	$Movement.connect("onDash", self, "onDash")
 #	inputs, motion, speed, jumpForce, dashForce, gravity, windResistance, direction, dashDirection, isOnFloor, isOnWall, isOnCeiling, duckLock, dashing, tired, wallJumpLock, dying
 func play():
-	$Sound.areaType = areaType
 	inputs = $Inputs.retrieveInput()
-	var motionBundle = $Movement.move(
+	motion = $Movement.move(
 		inputs,
 		motion, speed, jumpForce, dashForce, gravity, windResistance, 
 		is_on_floor(), is_on_wall(), is_on_ceiling(), 
 		duckLock, dashing, tired, wallJumpLock, dying)
-	motion = motionBundle["motion"]
-	direction = motionBundle["direction"]
 	$Animation.animate(
 		inputs, 
+		motion,
 		$AnimatedSpriteNormal, $AnimatedSpriteTired, 
 		is_on_floor(), is_on_wall(), 
-		direction,
 		duckLock, dashing, tired, dying)
 	move_and_slide(motion, Vector2(0,-1))
 	$Sound.emitAudio(onJump, onDash)

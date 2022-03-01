@@ -117,17 +117,11 @@ func move(inputs, motion, speed, jumpForce, dashForce, gravity, windResistance, 
 		print(motionToDirection(motion))
 		emit_signal("onDash")
 	
-	return {
-		"motion": motion, 
-		"direction": motionToDirection(motion)
-		}
+	return motion
 
 
 func onDying():
-		return {
-		"motion": Vector2(0,0), 
-		"direction": ""
-		}
+		return Vector2(0,0)
 
 func onDashing(motion, dashForce, gravity, isOnFloor, isOnWall, isOnCeiling, dashing):
 	var direction = motionToDirection(motion)
@@ -162,10 +156,7 @@ func onDashing(motion, dashForce, gravity, isOnFloor, isOnWall, isOnCeiling, das
 	emit_signal("wallJumpLock", false)
 	emit_signal("dashing", dashing, motionToDirection(motion))
 	
-	return {
-	"motion": motion, 
-	"direction": motionToDirection(motion)
-	}
+	return motion
 
 func onInit():
 	pass
