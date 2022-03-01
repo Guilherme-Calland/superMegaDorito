@@ -110,3 +110,12 @@ func connectToSignals():
 func _on_Terrain_body_entered(body, terrain, key):
 	$Audio/AmbientAudio.changeTerrain(terrain, key)
 
+func _on_AreaBarrier_body_entered(body, directionLock):
+	if directionLock == "left":
+		leftLock = true
+	elif directionLock == "right":
+		rightLock = true
+
+func _on_AreaBarrier_body_exited(body):
+	leftLock = false
+	rightLock = false
