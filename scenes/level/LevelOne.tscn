@@ -35,7 +35,7 @@ playerDashAudioEnabled = false
 playerTerrainAudioEnabled = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 243, -125 )
+position = Vector2( 671, -127 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 smoothing_enabled = true
@@ -129,7 +129,7 @@ tile_set = ExtResource( 5 )
 cell_size = Vector2( 12, 12 )
 collision_layer = 0
 format = 1
-tile_data = PoolIntArray( 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 32, 0, 0, 33, 0, 0, 34, 0, 0, 35, 0, 0, 36, 0, 0, 37, 0, 0, 38, 0, 0, 39, 0, 0, 40, 0, 0, 41, 0, 0, 42, 0, 0, 43, 0, 0, 44, 0, 0, 45, 0, 0, 46, 0, 0, 47, 0, 0, 48, 0, 0, 131069, 8, 0, 131070, 7, 0, 131071, 8, 0, 65536, 7, 0, 65537, 8, 0, 65538, 7, 0, 65539, 8, 0, 65540, 7, 0, 65541, 8, 0, 65542, 7, 0, 65543, 8, 0, 65544, 7, 0, 65545, 8, 0, 65546, 7, 0, 65547, 8, 0, 65548, 7, 0, 65549, 8, 0, 65550, 7, 0, 65551, 8, 0, 65552, 7, 0, 65553, 8, 0, 65554, 7, 0, 65555, 8, 0, 65556, 7, 0, 65557, 8, 0, 65558, 7, 0, 65559, 8, 0, 65560, 7, 0, 65561, 8, 0, 65562, 7, 0, 65563, 8, 0, 65564, 7, 0, 65565, 8, 0, 65566, 7, 0, 65567, 8, 0, 65568, 7, 0, 65569, 8, 0, 65570, 7, 0, 65571, 8, 0, 65572, 7, 0, 65573, 8, 0, 65574, 7, 0, 65575, 8, 0, 65576, 7, 0, 65577, 8, 0, 65578, 7, 0, 65579, 8, 0, 65580, 7, 0, 65581, 8, 0, 65582, 2, 0, 65583, 2, 0, 65584, 2, 0 )
+tile_data = PoolIntArray( 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 32, 0, 0, 33, 0, 0, 34, 0, 0, 131069, 8, 0, 131070, 7, 0, 131071, 8, 0, 65536, 7, 0, 65537, 8, 0, 65538, 7, 0, 65539, 8, 0, 65540, 7, 0, 65541, 8, 0, 65542, 7, 0, 65543, 8, 0, 65544, 7, 0, 65545, 8, 0, 65546, 7, 0, 65547, 8, 0, 65548, 7, 0, 65549, 8, 0, 65550, 7, 0, 65551, 8, 0, 65552, 7, 0, 65553, 8, 0, 65554, 7, 0, 65555, 8, 0, 65556, 7, 0, 65557, 8, 0, 65558, 7, 0, 65559, 8, 0, 65560, 7, 0, 65561, 8, 0, 65562, 7, 0, 65563, 8, 0, 65564, 7, 0, 65565, 8, 0, 65566, 7, 0, 65567, 8, 0, 65568, 7, 0, 65569, 8, 0, 65570, 7, 0 )
 
 [node name="AudioTriggers" type="Node" parent="."]
 
@@ -166,9 +166,29 @@ position = Vector2( 0, -45.5 )
 shape = SubResource( 4 )
 disabled = true
 
+[node name="Trigger2" type="Area2D" parent="LevelStageTriggers"]
+position = Vector2( 894, -2 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStageTriggers/Trigger2"]
+position = Vector2( 0, -46.5 )
+shape = SubResource( 3 )
+
+[node name="Area1Barrier2" type="Area2D" parent="LevelStageTriggers"]
+position = Vector2( 862, -2 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStageTriggers/Area1Barrier2"]
+position = Vector2( 0, -45.5 )
+shape = SubResource( 4 )
+disabled = true
+
 [connection signal="timeout" from="Background/CloudGenerator/Timer" to="Background/CloudGenerator" method="_on_Timer_timeout"]
 [connection signal="area_entered" from="Background/CloudGenerator/CloudDestroyer" to="Background/CloudGenerator/CloudDestroyer" method="_on_CloudDestroyer_area_entered"]
 [connection signal="body_entered" from="AudioTriggers/Area1/GrassArea" to="Player" method="_on_Terrain_body_entered" binds= [ "grass", "" ]]
 [connection signal="body_entered" from="LevelStageTriggers/Trigger1" to="LevelStageTriggers" method="_on_Trigger1_body_entered"]
 [connection signal="body_entered" from="LevelStageTriggers/Area1Barrier" to="Player" method="_on_AreaBarrier_body_entered" binds= [ "left" ]]
 [connection signal="body_exited" from="LevelStageTriggers/Area1Barrier" to="Player" method="_on_AreaBarrier_body_exited"]
+[connection signal="body_entered" from="LevelStageTriggers/Trigger2" to="LevelStageTriggers" method="_on_Trigger1_body_entered"]
+[connection signal="body_entered" from="LevelStageTriggers/Area1Barrier2" to="Player" method="_on_AreaBarrier_body_entered" binds= [ "left" ]]
+[connection signal="body_exited" from="LevelStageTriggers/Area1Barrier2" to="Player" method="_on_AreaBarrier_body_exited"]
