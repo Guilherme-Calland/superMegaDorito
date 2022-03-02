@@ -1,24 +1,24 @@
 extends Node2D
 
+var section2 = preload("res://scenes/level/levelOne/Section2.tscn").instance()
+
 func _ready():
-	$LevelStageTriggers.connect("cameraMove", self, "moveCamera")
-	$LevelStageTriggers.connect("cloudGeneratorMove",self,"moveCloudGenerator")
-	$LevelStageTriggers.connect("areaDestroy", self, "destroyArea")
-	$LevelStageTriggers.connect("areaInstanciate", self, "instanciateArea")
-	
+	$Sections/Section1/AudioTriggers.connect("onTerrainEntered", self, "onTerrainEntered")
+	$Sections/Section1/NewSectionTrigger.connect("moveCamera", self, "moveCamera")
+	$Sections/Section1/MovementBlockTrigger.connect("playerMovementBlock", self, "blockPlayerMovement")
+	$Sections/Section1/MovementBlockTrigger.connect("playerMovementFree", self, "freePlayerMovement")
 
 func _process(delta):
 	$Player.run()
 	
-func moveCamera(position):
-	$Camera2D.move(position)
+func onTerrainEntered(terrain, key):
+	$Player.onTerrainEntered(terrain, key)
 	
-func moveCloudGenerator(position):
-	$Background/CloudGenerator.move(position)
+func moveCamera(position):
+	$Camera.move(position)
 
-func destroyArea(area):
-	$Terrain.destroyArea(area)
+func blockPlayerMovement(direction):
+	$Player.blockMovement(direction)
 
-func instanciateArea(area):
-	$Terrain.instanciateArea(area)
-
+func freePlayerMovement():
+	$Player.freeMovement()

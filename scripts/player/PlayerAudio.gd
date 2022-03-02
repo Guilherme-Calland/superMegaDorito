@@ -37,7 +37,6 @@ func playDashAudio():
 	play()
 
 func playJumpAudio():
-	print("hello1")	
 	var generator = RandomNumberGenerator.new()
 	generator.randomize()
 	var randNum

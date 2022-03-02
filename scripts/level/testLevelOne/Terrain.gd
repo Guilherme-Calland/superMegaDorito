@@ -1,6 +1,6 @@
 extends Node2D
 
-var area3 = preload("res://scenes/level/levelOne/Area3.tscn").instance()
+var area3 = preload("res://scenes/level/testLevelOne/Area3.tscn").instance()
 var testScene = preload("res://scenes/player/Player.tscn").instance()
 
 func destroyArea(area):

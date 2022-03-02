@@ -107,15 +107,15 @@ func connectToSignals():
 	$Movement.connect("onDash", self, "onDash")
 	$Movement.connect("onJump", self, "onJump")
 
-func _on_Terrain_body_entered(body, terrain, key):
+func onTerrainEntered(terrain, key):
 	$Audio/AmbientAudio.changeTerrain(terrain, key)
 
-func _on_AreaBarrier_body_entered(body, directionLock):
-	if directionLock == "left":
+func blockMovement(direction):
+	if direction == "left":
 		leftLock = true
-	elif directionLock == "right":
+	elif direction == "right":
 		rightLock = true
 
-func _on_AreaBarrier_body_exited(body):
+func freeMovement():
 	leftLock = false
 	rightLock = false
