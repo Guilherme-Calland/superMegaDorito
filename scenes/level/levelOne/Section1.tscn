@@ -23,6 +23,7 @@ extents = Vector2( 2.5, 50.5 )
 script = ExtResource( 6 )
 
 [node name="GrassTiles" type="TileMap" parent="."]
+z_index = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 12, 12 )
 collision_layer = 2
@@ -72,11 +73,8 @@ position = Vector2( 5, -40 )
 shape = SubResource( 4 )
 disabled = true
 
-[node name="NewSectionPosition" type="Node2D" parent="."]
-position = Vector2( 504, 0 )
-
 [connection signal="body_entered" from="AudioTriggers/GrassArea" to="AudioTriggers/GrassArea" method="_on_GrassArea_body_entered"]
 [connection signal="body_entered" from="AudioTriggers/GrassArea/GrassArea" to="AudioTriggers/GrassArea" method="_on_GrassArea_body_entered"]
-[connection signal="body_entered" from="NewSectionTrigger" to="NewSectionTrigger" method="_on_NewSectionTrigger_body_entered" binds= [ Vector2( 690, -115 ) ]]
+[connection signal="body_entered" from="NewSectionTrigger" to="NewSectionTrigger" method="_on_NewSectionTrigger_body_entered" binds= [ Vector2( 690, -115 ), 2, -1 ]]
 [connection signal="body_entered" from="MovementBlockTrigger" to="MovementBlockTrigger" method="_on_MovementBlockTrigger_body_entered"]
 [connection signal="body_exited" from="MovementBlockTrigger" to="MovementBlockTrigger" method="_on_MovementBlockTrigger_body_exited"]
