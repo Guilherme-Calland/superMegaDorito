@@ -5,3 +5,4 @@ func _ready():
 
 func enableCollision():
 	$MovementBlockTrigger.enableCollision()
+

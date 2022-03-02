@@ -10,11 +10,12 @@
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 412, -39 )
-dashForce = 120
+position = Vector2( 396, -46 )
+dashForce = 500
 playerJumpingAudioEnabled = false
 
 [node name="Camera" parent="." instance=ExtResource( 4 )]
+zoom = Vector2( 2, 2 )
 
 [node name="Sections" type="Node2D" parent="."]
 script = ExtResource( 5 )
@@ -23,5 +24,8 @@ script = ExtResource( 5 )
 
 [node name="Section" parent="Sections/Section1" instance=ExtResource( 3 )]
 
-[node name="Section2Position" type="Node2D" parent="Sections"]
+[node name="Section2" type="Node2D" parent="Sections"]
 position = Vector2( 504, 0 )
+
+[node name="Section3" type="Node2D" parent="Sections"]
+position = Vector2( 960, 0 )
