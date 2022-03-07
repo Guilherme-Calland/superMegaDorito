@@ -10,10 +10,13 @@ func _on_NewSectionTrigger_body_entered(body, cameraPos, sectionCreate, sectionD
 	emit_signal("cameraMove", cameraPos)
 	emit_signal("collisionEnable")
 	createSection(sectionCreate)
-	emit_signal("sectionDestroy", sectionDestroy)
+	if sectionDestroy != -1:
+		emit_signal("sectionDestroy", sectionDestroy)
 	queue_free()
 
 func createSection(sectionNum):
-	var section = load("res://scenes/level/levelOne/Section" + str(sectionNum) + ".tscn").instance()
-	emit_signal("sectionCreate", section, sectionNum)
+	var newSectionPosition = get_node('../NewSectionPosition').global_position
+	var newSection = load("res://scenes/level/levelOne/Section" + str(sectionNum) + ".tscn").instance()
+	newSection.global_position = newSectionPosition
+	emit_signal("sectionCreate", newSection)
 	

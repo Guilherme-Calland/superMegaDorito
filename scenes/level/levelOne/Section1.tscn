@@ -73,6 +73,9 @@ position = Vector2( -16.75, -40 )
 shape = SubResource( 4 )
 disabled = true
 
+[node name="NewSectionPosition" type="Node2D" parent="."]
+position = Vector2( 504, 0 )
+
 [connection signal="body_entered" from="AudioTriggers/GrassArea" to="AudioTriggers/GrassArea" method="_on_GrassArea_body_entered"]
 [connection signal="body_entered" from="AudioTriggers/GrassArea/GrassArea" to="AudioTriggers/GrassArea" method="_on_GrassArea_body_entered"]
 [connection signal="body_entered" from="NewSectionTrigger" to="NewSectionTrigger" method="_on_NewSectionTrigger_body_entered" binds= [ Vector2( 690, -115 ), 2, -1 ]]

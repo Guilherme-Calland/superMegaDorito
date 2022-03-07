@@ -25,8 +25,8 @@ func blockPlayerMovement(direction):
 func freePlayerMovement():
 	$Player.freeMovement()
 
-func createSection(newSection, sectionNum):
-	$Sections.createSection(newSection, sectionNum)
+func createSection(newSection):
+	$Sections.createSection(newSection)
 	connectNewSignals(newSection)
 
 func connectNewSignals(newSection):
