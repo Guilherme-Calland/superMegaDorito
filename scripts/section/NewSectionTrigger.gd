@@ -1,14 +1,12 @@
 extends Area2D
 
 signal cameraMove
-signal collisionEnable
 signal sectionCreate
 signal sectionDestroy
 
 
-func _on_NewSectionTrigger_body_entered(body, cameraPos, sectionCreate, sectionDestroy):
-	emit_signal("cameraMove", cameraPos)
-	emit_signal("collisionEnable")
+func _on_NewSectionTrigger_body_entered(body, cameraOffset, sectionCreate, sectionDestroy):
+	emit_signal("cameraMove", cameraOffset)
 	createSection(sectionCreate)
 	if sectionDestroy != -1:
 		emit_signal("sectionDestroy", sectionDestroy)
